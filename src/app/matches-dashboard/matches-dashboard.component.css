@@ -1,0 +1,157 @@
+.list_match_compitaton{
+    cursor: pointer;
+    text-align: center;
+    padding: 40px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.lt{
+text-align: right;
+}
+.vt{
+text-align: left
+}
+.score{
+    border: 1px solid #f3f3f3;
+    border-radius: 50%;
+    padding: 15px 0;
+    margin-top: -15px;
+}
+.match-page-header {
+  background:#081F2C; 
+  padding: 10px;
+  color: #fff;
+}
+.match-page-header h1{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0px;
+}
+
+
+.slogen{
+    padding: 10px 0px 0px 0px;
+    color: #838f95;
+    font-size: 14px;
+}
+.match-list-card{
+    
+}
+.match-list-card-header{
+    background: #1F324A;
+}
+.match-list-card-header h4{
+    color: #ffffff;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0px;
+}
+.match-list-card-body{
+    background: #ffffff;
+}
+.match-list{
+    border-bottom: 1px solid #eee;
+    padding:15px 10px 5px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.text-right{
+text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+
+.list_item{
+    margin-bottom: 20px;
+}
+.match_time_box p{
+    border: 1px solid transparent;
+    background: #00AC77;
+    line-height: 30px;
+    margin: auto;
+    color: #ffffff;
+    font-weight: 600;
+    width: 50px;
+    margin-top: -5px;
+}
+.match_status_box p{
+    border: 1px solid transparent;
+    background: #081F2C;
+    line-height: 30px;
+    margin: auto;
+    color: #ffffff;
+    font-weight: 600;
+    width: 40px;
+    margin-top: -5px;
+}
+
+
+
+.match-page-section{
+    padding: 40px;
+}
+.status_box_responsive{
+    padding: 12px;
+}
+.score_responsive{
+    margin-right: 10px;
+}
+
+.hide-responsive-list{
+ display: none;
+}
+
+@media (min-width: 992px) and (max-width: 1300px) {
+    .top-bar {height:auto;}
+    .match-page-section{
+        padding: 40px;
+    }
+    }
+    
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (min-width: 768px) and (max-width: 991px) {}
+@media (max-width: 992px) {
+    .match-page-section{
+        padding: 0px;
+    }
+}
+@media (max-width: 767px) {
+     .show-responsive-list{
+        display: none;
+       }
+       .hide-responsive-list{
+        display: block;
+       }
+}
+@media (max-width: 600px) {}
+@media (max-width: 480px) {
+
+}
+@media (max-width: 415px) {
+
+
+    
+}
+
+@media (max-width: 367px) {
+    .row.match-list.hide-responsive-list{
+        font-size: 12px;
+        text-align: center!important;
+        width: 100%;
+    }
+    .row.match-list.hide-responsive-list .col-xs-3{
+        width: 100%;
+    }
+    .text-left{
+        text-align: center !important;
+        width: 100%;
+    }
+}
+
+

@@ -1,0 +1,124 @@
+.match-detail-section{
+    padding: 40px;
+    text-transform: uppercase;
+}
+.team-detail-header{
+   
+    text-align: center;
+    background-color: #1F324A;
+    color: #FFF;
+    padding: 20px 10px 10px;
+}
+.visited-team, .local-team{
+    margin-top: 20px;
+}
+h2{
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0;
+}.border {
+    border: 1px solid #bbb;
+    width: 5%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.team-status p{
+    margin-bottom: 5px;
+}
+.match-name {
+    padding: 5px 0;
+    text-transform: none;
+}
+.match-name h6{
+    margin-bottom: 0px;
+} 
+.event, .status{
+    background-color: #ffffff;
+}
+.event, .primier, .status{
+    text-align: center;   
+    /* padding: 5px 0;  */
+}
+.event h4, .status h4{
+    color: #929292;
+    line-height: 3;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.event img{
+    width:18px;;
+}
+.left-text-wrapper {
+    padding: 0 0 0 8px;
+    border-left: 1px solid #ccc;
+    text-align: left;
+}
+.left-padding {
+    padding-left: 0px;
+}
+.right-text-wrapper {
+    padding: 0 8px 0 0;
+    border-right: 1px solid #ccc;
+    text-align: right;
+}
+.right-padding {
+    padding-right: 0px;
+}
+p.small {
+    font-size: 10px !important;
+    line-height: 12px;
+    color: #a0a0a0;
+    margin-bottom: 0px;
+}
+.keyevnt-detail {
+    margin-bottom: 15px;
+}
+.keyevnt-detail p{
+    margin-bottom: 0px;
+    font-size: 12px;
+  
+
+}
+.event {
+    padding-bottom: 15px;
+}
+
+@media (min-width: 992px) and (max-width: 1300px) {
+  
+    
+    .match-detail-section{
+        padding: 40px;
+    }
+    }
+    
+
+    
+
+    
+@media (max-width: 992px) {
+    .match-detail-section{
+        padding: 0px;
+    }
+}
+@media (max-width: 767px) {
+    
+    
+}
+@media (max-width: 600px) {}
+@media (max-width: 480px) {
+
+}
+@media (max-width: 415px) {
+
+
+    
+}
+
+@media (max-width: 400px) {
+    .event img{
+        width:16px;;
+    }
+  
+}
+
+
