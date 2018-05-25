@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Pipe, PipeTransform } from '@angular/core';
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import {MatchService} from '../service/match.service';
 
@@ -10,6 +10,7 @@ import {MatchService} from '../service/match.service';
     }
 )
 export class MatchesDetailComponentComponent implements OnInit {
+   
     public id;
     public comp_id;
     match_detailcollection = [];
@@ -46,12 +47,14 @@ export class MatchesDetailComponentComponent implements OnInit {
                     console.log("data", result)
                     for (var k = 0; k < result.length; k++) {
                         if (result[k].id == this.id) {
+                            let date_formatted = result[k].formatted_date.replace('.', '/');
+                            let date =  date_formatted.replace('.', '/');
 
                             this.match_detailcollection
                                 .push({
                                     "comp_id": result[k].comp_id,
                                     "et_score": result[k].et_score,
-                                    "formatted_date": result[k].formatted_date,
+                                    "formatted_date": date,
                                     "ft_score": result[k].ft_score,
                                     "ht_score": result[k].ht_score,
                                     "localteam_id": result[k].localteam_id,
@@ -75,6 +78,9 @@ export class MatchesDetailComponentComponent implements OnInit {
 
                             let events_data = result[k].events;
                             for (var e = 0; e < events_data.length; e++) {
+                                
+                                let result_pipe_l =  events_data[e].result.replace(']', '');
+                                let result_pipe = result_pipe_l.replace('[', '');
 
                                 this.events_collection
                                     .push({
@@ -87,7 +93,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                                         "assist_id": events_data[e].assist_id,
                                         "player": events_data[e].player,
                                         "player_id": events_data[e].player_id,
-                                        "result": events_data[e].result
+                                        "result":result_pipe
                                     });
                             }
 

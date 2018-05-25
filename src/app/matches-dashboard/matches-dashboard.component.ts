@@ -1,4 +1,13 @@
-import { Component, OnInit, ViewChild,AfterViewChecked  } from '@angular/core';
+import { Component,
+   OnInit, 
+   ViewChild,
+   AfterViewChecked,
+   DoCheck,
+   AfterContentInit,
+   AfterContentChecked,
+   AfterViewInit,
+   OnDestroy
+    } from '@angular/core';
 import { MatchesApiService } from '../service/matches-api.service';
 import { MatchService } from '../service/match.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -27,6 +36,7 @@ export class MatchesDashboardComponent implements OnInit {
   AllCompetitions_match = [];
   match_ground_details = [];
 
+  datepicker_afterview;
  alldaymatch_list = [];
   
   constructor(private matchesApiService: MatchesApiService,
@@ -35,113 +45,100 @@ export class MatchesDashboardComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  
+ 
+
+ 
 
   ngOnInit() {
-   
+
    // var array = ["2018-05-14","2018-05-15","2018-05-01","2018-05-18",];
 
-    var array = this.alldaymatch_list;
-    $('#datepicker').datepicker({
-      inline: true,
-      //nextText: '&rarr;',
-      //prevText: '&larr;',
-      showOtherMonths: true,
-      dateFormat: 'yy-mm-dd' ,
-      //dateFormat: 'dd MM yy',
-      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      //showOn: "button",
-      //buttonImage: "img/calendar-blue.png",
-      //buttonImageOnly: true,
-      beforeShowDay: function(date){
-        var string = $.datepicker.formatDate('yy-mm-dd', date);
-       // var newdate = string;
-       // var tooltip_text = "New event on " + newdate;
-            if(array.indexOf(string) != -1){
-              return [true];
-            }
-            return  [true, "highlight", string ]; 
-        }      
-  });
+   var array = this.alldaymatch_list;
+  
+   $('#datepicker').datepicker({
+     inline: true,
+     showOtherMonths: true,
+     dateFormat: 'yy-mm-dd' ,
+     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+     beforeShowDay: function(date){
+       var string = $.datepicker.formatDate('yy-mm-dd', date);
+           if(array.indexOf(string) != -1){
+             return [true];
+           }
+           return  [true, "highlight", string ]; 
+       }      
+ });
+   
+   $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
 
-    
-    $( "#datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+   function formatDate(date) {
+     var d = new Date(date),
+         month = '' + (d.getMonth() + 1),
+         day = '' + d.getDate(),
+         year = d.getFullYear();
 
- 
-    function formatDate(date) {
-      var d = new Date(date),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
- 
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
- 
-      return [year, month, day].join('-');
-  }
+     if (month.length < 2) month = '0' + month;
+     if (day.length < 2) day = '0' + day;
 
- 
+     return [year, month, day].join('-');
+ }
+
+   // $("#datepicker").on("change",function(){
+   //     var selected = $(this).val();
+   //     this.paramDate = selected;
+   //     this.GetMatchesByDate();
+   // });
 
 
-    // $("#datepicker").on("change",function(){
-    //     var selected = $(this).val();
-    //     this.paramDate = selected;
-    //     this.GetMatchesByDate();
-    // });
+   this.matchesApiService
+     .getMessages()
+     .subscribe((data: string) => {
+       //console.log("msg-data",data);
+       this.messages.push(data['data']);
+     });
+   //console.log('message_live_data_array', this.messages);
+
+   //var date = new Date('yy-mm-dd');
+   //var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+   $('#datepicker').datepicker('setDate', 'today');
+
+   var today = $('#datepicker').val();
+   this.paramDate = today;
+
+   
+   // var today :any  = new Date();
+   // var dd :any= today.getDate();
+   
+   // var mm :any = today.getMonth()+1; 
+   // var yyyy  :any= today.getFullYear();
+   // if(dd<10) 
+   // {
+   //     dd='0'+dd;
+   // } 
+   
+   // if(mm<10) 
+   // {
+   //     mm='0'+mm;
+   // } 
+   // today = mm+'-'+dd+'-'+yyyy;
+   // console.log(today);
+   // today = mm+'/'+dd+'/'+yyyy;
+   // console.log(today);
+   // today = dd+'-'+mm+'-'+yyyy;
+   // console.log(today);
+   // today = dd+'/'+mm+'/'+yyyy;
+   // console.log(today);
+   // today = yyyy+'-'+mm+'-'+dd;
+   // this.paramDate = today;
 
 
-    this.matchesApiService
-      .getMessages()
-      .subscribe((data: string) => {
-        //console.log("msg-data",data);
-        this.messages.push(data['data']);
-      });
-    //console.log('message_live_data_array', this.messages);
+   console.log("today",this.paramDate);
+   console.log("date-list",this.alldaymatch_list);
 
-    //var date = new Date('yy-mm-dd');
-    //var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    $('#datepicker').datepicker('setDate', 'today');
-
-
-    var today = $('#datepicker').val();
-    this.paramDate = today;
-
-    
-    // var today :any  = new Date();
-    // var dd :any= today.getDate();
-    
-    // var mm :any = today.getMonth()+1; 
-    // var yyyy  :any= today.getFullYear();
-    // if(dd<10) 
-    // {
-    //     dd='0'+dd;
-    // } 
-    
-    // if(mm<10) 
-    // {
-    //     mm='0'+mm;
-    // } 
-    // today = mm+'-'+dd+'-'+yyyy;
-    // console.log(today);
-    // today = mm+'/'+dd+'/'+yyyy;
-    // console.log(today);
-    // today = dd+'-'+mm+'-'+yyyy;
-    // console.log(today);
-    // today = dd+'/'+mm+'/'+yyyy;
-    // console.log(today);
-    // today = yyyy+'-'+mm+'-'+dd;
-    // this.paramDate = today;
-
-
-    console.log("today",this.paramDate);
-    console.log("date-list",this.alldaymatch_list);
-
-
-
-    this.GetAllCompetitions();
+  this.GetAllCompetitions();
     this.GetMatchesByDate(this.paramDate);
     let self=this;
-
+ 
     this.GetMatchesByDate(this.paramDate);
     
     $("#datepicker").on("change",function(){
@@ -149,13 +146,10 @@ export class MatchesDashboardComponent implements OnInit {
          // this.paramDate = selected;
           self.GetMatchesByDate(selected); 
       });
-  
-
+   
+ 
   }
-//   ngAfterViewChecked() {
-  
-    
-// }
+
 
   GetMatchesByDate(selected) {
 
@@ -294,6 +288,10 @@ export class MatchesDashboardComponent implements OnInit {
     console.log('AllCompetitions_details', this.AllCompetitions_match);
     //   console.log('match_ground_details', this.match_ground_details);
 
+
+
+
+    
   }
 
   matchdetails(id, comp_id) {
