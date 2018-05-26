@@ -19,7 +19,7 @@ text-align: left
     margin-top: -15px;
 }
 .match-page-header {
-  background:#081F2C; 
+  background:#2259c5; 
   padding: 10px;
   color: #fff;
 }
@@ -40,7 +40,7 @@ text-align: left
     
 }
 .match-list-card-header{
-    background: #1F324A;
+    background: #001c54;
 }
 .match-list-card-header h4{
     color: #ffffff;
@@ -135,8 +135,6 @@ text-align: right;
 }
 @media (max-width: 415px) {
 
-
-    
 }
 
 @media (max-width: 367px) {
@@ -155,3 +153,8 @@ text-align: right;
 }
 
 
+.status_offon{
+    color: green;
+    font-size: 18px;
+    margin: 10px 0px 0px 10px;
+}
