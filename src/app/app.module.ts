@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { MatchesApiService } from './service/matches-api.service';
+import { MatchesApiService } from './service/live_match/matches-api.service';
 import { MatchService } from './service/match.service';
 import { AppRoutingModule ,routingComponents} from './/app-routing.module';
 import {HttpClientModule} from '@angular/common/http';

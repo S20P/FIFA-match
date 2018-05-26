@@ -10,6 +10,7 @@ export class MatchService {
   GetCompetitionStandingById_API : string = "http://206.189.161.54:8080/MobileAPI/GetCompetitionStandingById";
   GetMatchesByCompetitionById_API :string = "http://206.189.161.54:8080/MobileAPI/GetMatchesByCompetitionId";
   GetMatchesByDate_API :string = "http://206.189.161.54:8080/MobileAPI/GetMatchesByDate";
+  GetCommentariesByMatchId_API :string = "http://206.189.161.54:8080/MobileAPI/GetCommentariesByMatchId";
 
   constructor(private http: HttpClient) 
    {
@@ -35,10 +36,13 @@ export class MatchService {
 
 
   GetMatchesByDate(date){
-
     let apiurl = `${this.GetMatchesByDate_API + '?date=' + date}`;
     return  this.http.get(apiurl);
   }
 
+  GetCommentariesByMatchId(match_id){
+    let apiurl = `${this.GetCommentariesByMatchId_API + '?match_id=' + match_id}`;
+    return  this.http.get(apiurl);
+  }
 
 }

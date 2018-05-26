@@ -16,12 +16,19 @@ export class MatchesDetailComponentComponent implements OnInit {
     match_detailcollection = [];
 
     events_collection = [];
-
+    
+    ic_event_penalty_scored;
+    ic_event_own_goal;
+    ic_event_goal;
     constructor(
         private route : ActivatedRoute,
         private router : Router,
         private matchService : MatchService,
-    ) {}
+    ) {
+                                this.ic_event_penalty_scored = false;
+                                this.ic_event_own_goal = false;
+                                this.ic_event_goal = false;
+    }
 
     ngOnInit() {
         this.route.paramMap.subscribe((params : ParamMap) => {
@@ -32,7 +39,7 @@ export class MatchesDetailComponentComponent implements OnInit {
             });
 
         this.GetMatchesByCompetition_ById();
-
+       
     }
 
     GetMatchesByCompetition_ById() {
@@ -50,6 +57,8 @@ export class MatchesDetailComponentComponent implements OnInit {
                             let date_formatted = result[k].formatted_date.replace('.', '/');
                             let date =  date_formatted.replace('.', '/');
 
+                             let current_matchId = result[0].id;
+                             this.GetCommentariesByMatchId(current_matchId);
                             this.match_detailcollection
                                 .push({
                                     "comp_id": result[k].comp_id,
@@ -82,6 +91,26 @@ export class MatchesDetailComponentComponent implements OnInit {
                                 let result_pipe_l =  events_data[e].result.replace(']', '');
                                 let result_pipe = result_pipe_l.replace('[', '');
 
+                                let  ic_event_penalty_scored =false;
+                                let ic_event_own_goal =false;
+                                let ic_event_goal = false;
+                                var type = events_data[e].type;
+
+                                if(type=="goal"){
+                                     
+                                    let player = events_data[e].player;
+                                    if(player.includes("(pen.)")){
+                                          ic_event_penalty_scored = true;
+                                    }
+                                    else if(player.includes("(o.g.)")){
+                                         ic_event_own_goal = true;
+                                   }
+                                    else{
+                                         ic_event_goal = true;
+                                    }
+                                    
+                                }
+
                                 this.events_collection
                                     .push({
                                         "id": events_data[e].id,
@@ -93,7 +122,10 @@ export class MatchesDetailComponentComponent implements OnInit {
                                         "assist_id": events_data[e].assist_id,
                                         "player": events_data[e].player,
                                         "player_id": events_data[e].player_id,
-                                        "result":result_pipe
+                                        "result":result_pipe,
+                                        "ic_event_penalty_scored":ic_event_penalty_scored,
+                                        "ic_event_own_goal":ic_event_own_goal,
+                                        "ic_event_goal":ic_event_goal
                                     });
                             }
 
@@ -106,6 +138,19 @@ export class MatchesDetailComponentComponent implements OnInit {
         console.log("*************current_event", this.events_collection);
 
     }
+
+
+    GetCommentariesByMatchId(current_matchId){
+        //this.match_detailcollection;
+    console.log("match_id", current_matchId);
+        this.matchService.GetCommentariesByMatchId(current_matchId).subscribe(data => {
+                console.log("GetCommentariesByMatchId", data);
+        });
+      }
+
+
+
+
 
     gotomatch() {
         let selectedId = this.id ? this.id : null;

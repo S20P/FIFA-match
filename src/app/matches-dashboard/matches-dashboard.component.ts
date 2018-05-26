@@ -8,7 +8,7 @@ import { Component,
    AfterViewInit,
    OnDestroy
     } from '@angular/core';
-import { MatchesApiService } from '../service/matches-api.service';
+import { MatchesApiService } from '../service/live_match/matches-api.service';
 import { MatchService } from '../service/match.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -45,11 +45,12 @@ export class MatchesDashboardComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
- 
-
- 
+  
 
   ngOnInit() {
+ 
+
+
 
    // var array = ["2018-05-14","2018-05-15","2018-05-01","2018-05-18",];
 
@@ -139,7 +140,7 @@ export class MatchesDashboardComponent implements OnInit {
     this.GetMatchesByDate(this.paramDate);
     let self=this;
  
-    this.GetMatchesByDate(this.paramDate);
+    //this.GetMatchesByDate(this.paramDate);
     
     $("#datepicker").on("change",function(){
           var selected = $(this).val();

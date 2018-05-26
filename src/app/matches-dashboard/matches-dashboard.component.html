@@ -118,7 +118,7 @@
             <div class="card-body">
               <div id="datepicker"></div>
               </div>
-            </div>
+        </div>
    </div>
    <div class="col-sm-12 col-md-8  col-lg-8 col-lg-pull-4 col-md-pull-4 ">
       <div id="accordion" role="tablist" aria-multiselectable="true">
@@ -134,8 +134,8 @@
           
             </div>
             <div class="match-list-card-body collapse in" id="collapse{{i}}"  role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                <div *ngFor="let item_details of match_ground_details">
-                        <div *ngIf="item_details.comp_id==item.id">
+                <div *ngFor="let item_details of match_ground_details;let j = index">
+                        <div *ngIf="item_details.comp_id==item.id;else nomatchcomp">
                            <div (click)="matchdetails(item_details.id,item_details.comp_id)">
                          <div class="row match-list show-responsive-list">
                             <div class="list-line">
@@ -218,6 +218,11 @@
 
                         </div>
                       </div>
+                      <ng-template #nomatchcomp>
+                        <div *ngIf="j==0" class="list-line row match-list show-responsive-list" >
+                          <p>No matches scheduled in this competition</p>
+                       </div>
+                      </ng-template>
               </div>
               <div *ngIf="match_ground_details.length <= 0" class="row match-list show-responsive-list">
                   <div class="list-line">
