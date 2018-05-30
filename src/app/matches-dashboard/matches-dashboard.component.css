@@ -25,11 +25,12 @@ text-align: left
 }
 .match-page-header h1{
     font-weight: 600;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 24px;
     margin: 0px;
+    padding: 5px 10px 0;
+    letter-spacing: 1px;
 }
-
 
 .slogen{
     padding: 10px 0px 0px 0px;
@@ -45,7 +46,7 @@ text-align: left
 .match-list-card-header h4{
     color: #ffffff;
     padding: 12px;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
     margin: 0px;
 }
@@ -70,27 +71,27 @@ text-align: right;
 }
 .match_time_box p{
     border: 1px solid transparent;
-    background: #00AC77;
+    /* background: #00AC77; */
     line-height: 30px;
     margin: auto;
-    color: #ffffff;
+    color: #00AC77;
     font-weight: 600;
     width: 50px;
     margin-top: -5px;
 }
 .match_status_box p{
     border: 1px solid transparent;
-    background: #081F2C;
+    /* background: #081F2C; */
     line-height: 30px;
     margin: auto;
-    color: #ffffff;
+    color: #081F2C;
     font-weight: 600;
     width: 40px;
     margin-top: -5px;
 }
-
-
-
+.score_r p {
+    font-weight: 600;
+}
 .match-page-section{
     padding: 40px;
 }
@@ -128,6 +129,10 @@ text-align: right;
        .hide-responsive-list{
         display: block;
        }
+      .top-header {
+    padding: 7px;
+    background: #2259c5d9;
+      } 
 }
 @media (max-width: 600px) {}
 @media (max-width: 480px) {
@@ -152,9 +157,40 @@ text-align: right;
     }
 }
 
-
 .status_offon{
     color: green;
-    font-size: 18px;
+    font-size: 14px;
     margin: 10px 0px 0px 10px;
 }
+
+.md-select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0px solid #bdbdbd;
+    border-radius: 0;
+    outline: 0;
+    /* height: 2.1rem; */
+    width: 100%;
+    color: #ffffff;
+    font-size: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    margin: 0px!important;
+    padding: 0px !important;
+    }
+    
+    .md-form{
+      color: #fff;
+      margin: 0px;
+    }
+  
+    .md-select option{
+      background: #001c54;
+    }
+    .md-select option:hover{
+      background: #001c54;
+    }

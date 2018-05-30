@@ -20,10 +20,12 @@
       "prefix": "app",
       "styles": [
         "styles/bootstrap/css/bootstrap.min.css",
+        "styles/MDB Free/css/mdb.min.css",
         "styles.css"
       ],
       "scripts": [
-        "styles/bootstrap/js/bootstrap.min.js"
+        "styles/bootstrap/js/bootstrap.min.js",
+        "styles/MDB Free/js/mdb.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -58,6 +60,7 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {
+    }
   }
 }

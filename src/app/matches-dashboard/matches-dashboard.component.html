@@ -5,115 +5,41 @@
   {{message.events}}
  </div> -->
 
-<div class="container">
-  <!-- <div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <h5 class="card-title">Football Scores & Fixtures</h5>
-              </div>
-              <div class="col-md-4"></div>
-                <form id="eventForm" method="post" class="form-horizontal text-right col-md-4">
-                  
-                    <div class="form-group row">
-                        <label class="control-label col-md-2">Date</label>
-                        <div class="date col-md-10">
-                            <div class="input-group input-append date" id="datePicker">
-                                <input type="text" class="form-control" name="date" />
-                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                            </div>
-                        </div>
-                    </div>
-                  
-                </form>
-              
-            </div>
-        </div>
-
-        <div class="bd-example" data-example-id="">
-            <div id="accordion" role="tablist" aria-multiselectable="true">
-              <div *ngFor="let item of AllCompetitions; let i = index">     
-              <div class="card">
-                <div class="card-header" role="tab" id="headingThree">
-                  <div class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                       <h3>{{item.name}}</h3>
-                        <p>{{item.region}}</p>
-                    </a>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <div id="collapse{{i}}" class="collapse in" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                  <div class="card-block">
-                      <div *ngFor="let item_details of match_ground_details">
-                          <div *ngIf="item_details.comp_id==item.id">
-                            <div class="list_match_compitaton" (click)="matchdetails(item_details.id,item_details.comp_id)">
-                           <div class="row container">
-                            
-                              <div class="col-md-4">
-                              <div class="lt"> 
-                                <p><b>{{item_details.localteam_name}}</b></p>
-                              </div>
-                              </div>
-
-                              <div *ngIf="item_details.status==='FT'; else time">
-                                  <div class="col-md-1">
-                                      <p  class="score">{{item_details.localteam_score}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>{{item_details.status}}</p>
-                                      </div>
-                                  <div class="col-md-1">
-                                      <p class="score">{{item_details.visitorteam_score}}</p>
-                                    </div>
-                              </div>
-                              
-                              <ng-template #time>
-                                  <div class="col-md-4">
-                                      <p>{{item_details.time}}</p>
-                                  </div>
-                              </ng-template>
-
-                              <div class="col-md-4"> 
-                              <div class="vt"> 
-                               <p><b>{{item_details.visitorteam_name}}</b></p>
-                                </div>
-                              </div>
-                             </div>
-                          </div>                 
-                          </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-            </div>
-      </div>
+ <section>
+    <div class="loader loader-1">
+      <div class="loader-outter"></div>
+      <div class="loader-inner"></div>
     </div>
-  </div>
-</div> -->
-  <div class="match-page-section">
+  </section>
 
+<div class="container">
+  <div class="match-page-section">
     <div class="row">
       <div class="col-md-12">
         <div class="match-page-header">
-          <h1>TODAY'S MATCHES
+          <div class="row">
+            <div class="col-md-4">
+                <div class="md-form">
+                    <select name="options" id="select" class="browser-default md-select form-control">
+                    <option  *ngFor="let title of match_dropdown_title;let i=index" value="{{title}}" [selected]="i==0">{{title}}</option>
+                    </select>
+                  </div>    
+           </div>
+          </div>
+          <!-- <h1>TODAY'S MATCHES
             <i class="fa fa-angle-down"></i> 
            <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
-          </h1>
+          </h1> -->
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <p class="slogen">Live Football Scores, Fixtures & Results</p>
-      </div>
+        <!-- Large button groups (default and split) -->
+        
     </div>
-
+    </div>
     <div class="row">
       <div class="col-sm-12 col-md-4  col-lg-4 col-lg-push-8 col-md-push-8 ">
         <div class="card">
@@ -159,7 +85,7 @@
                               </ng-template>
 
                               <div class="col-md-4 col-sm-4 col-xs-4">
-                                <div class="text-right">
+                                <div class="">
                                   <p>{{item_details.localteam_name}}</p>
                                 </div>
                               </div>
@@ -181,7 +107,7 @@
                                 </div>
                               </ng-template>
                               <div class="col-md-4 col-sm-4 col-xs-4">
-                                <div class="text-left">
+                                <div class="">
                                   <p>{{item_details.visitorteam_name}}</p>
                                 </div>
                               </div>
@@ -216,11 +142,8 @@
                                   <p>{{item_details.visitorteam_name}}</p>
                                 </ng-template>
                               </div>
-
                             </div>
                           </div>
-
-
                         </div>
                       </div>
                       <ng-template #nomatchcomp>
@@ -234,15 +157,12 @@
                         <p>No matches scheduled in this competition date</p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>

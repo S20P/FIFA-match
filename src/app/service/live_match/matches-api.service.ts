@@ -22,10 +22,10 @@ export class MatchesApiService {
 
 
     this.socket = io.connect(this.url,connection);
-    
-    // this.socket.on("response", (data) => {
-    //   console.log('TodoAdded: '+JSON.stringify(data));
-    // });
+    console.log("socket",this.socket);
+    this.socket.on("response", (data) => {
+      console.log('TodoAdded: '+JSON.stringify(data));
+    });
    }
    
    public getMessages = () => {
