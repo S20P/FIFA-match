@@ -105,7 +105,11 @@ text-align: right;
 .hide-responsive-list{
  display: none;
 }
-
+select#select option {
+    background: #ffffff;
+    color: #333;
+    font-size: 16px;
+}
 @media (min-width: 992px) and (max-width: 1300px) {
     .top-bar {height:auto;}
     .match-page-section{

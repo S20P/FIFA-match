@@ -34,7 +34,7 @@ export class MatchesDashboardComponent implements OnInit {
   datepicker_afterview;
   alldaymatch_list = [];
   lastHeightPosted = null;
-
+  loading;
    match_dropdown_title = [
      "TODAY'S MATCHES",
      "All Matches",
@@ -54,8 +54,8 @@ export class MatchesDashboardComponent implements OnInit {
  
 
   ngOnInit() {
-
-   
+    this.loading = "none";
+     
    this.GetAllCompetitions();
    this.dateSchedule_ini();
   
@@ -143,6 +143,43 @@ dateSchedule_ini(){
      var result = data['data'];
      if (result !== undefined) {
         for(let item of result){
+
+          var flag__loal ="https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/"+item.localteam_id+".png";
+          var flag_visit ="https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/"+item.visitorteam_id+".png";
+       
+           
+             var localteam_image;
+             var visitorteam_image;
+            
+           var Image_team1 =  isUrlExists(flag__loal);
+             
+            if(Image_team1==false){
+              console.log('Image does not exist');
+              localteam_image = "assets/img/avt_flag.jpg"
+            }
+            else{
+              console.log('Image Exists');
+              localteam_image = flag__loal;
+            }
+
+
+            var Image_team2 =  isUrlExists(flag_visit);
+             
+            if(Image_team2==false){
+              console.log('Image does not exist');
+              visitorteam_image = "assets/img/avt_flag.jpg"
+            }
+            else{
+              console.log('Image Exists');
+              visitorteam_image = flag_visit;
+            }
+
+    console.log("-----------------------------");
+    console.log("localteam_image",localteam_image);
+    console.log("visitorteam_image",visitorteam_image);
+
+
+
         this.match_ground_details.push({
                       "comp_id": item.comp_id,
                       "et_score": item.et_score,
@@ -152,6 +189,7 @@ dateSchedule_ini(){
                       "localteam_id": item.localteam_id,
                       "localteam_name": item.localteam_name,
                       "localteam_score": item.localteam_score,
+                      "localteam_image":localteam_image,
                       "penalty_local": item.penalty_local,
                       "penalty_visitor": item.penalty_visitor,
                       "season": item.season,
@@ -163,6 +201,7 @@ dateSchedule_ini(){
                       "visitorteam_id": item.visitorteam_id,
                       "visitorteam_name": item.visitorteam_name,
                       "visitorteam_score": item.visitorteam_score,
+                      "visitorteam_image":visitorteam_image,
                       "week": item.week,
                       "_id": item._id,
                       "id": item.id,
@@ -170,7 +209,24 @@ dateSchedule_ini(){
             }
           }
    });
-  
+
+   function isUrlExists(image_url) {
+    var Image_Exists = false;
+    $.ajax(  
+      {   async: false,
+          url:image_url,  
+          success: function(data)  
+          {  
+              Image_Exists = true;
+          },  
+          error: function(data)  
+          {  
+              Image_Exists = false; 
+          }  
+      });  
+
+        return Image_Exists;
+    }
     //result = [];
    console.log("filter-date_data",this.match_ground_details);
      //this.match_ground_details = [];
@@ -219,6 +275,7 @@ dateSchedule_ini(){
  loadjquery() {
         setTimeout(function () {
                 $( "#datepicker" ).datepicker("refresh");
+              
         }, 1);
     }
   
