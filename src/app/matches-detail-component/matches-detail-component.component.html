@@ -1,4 +1,4 @@
-<div id="loading" [style.display]="loading">
+<div id="loading" *ngIf='showloader'>
     <div class="loader loader-1">
         <div class="loader-outter"></div>
         <div class="loader-inner"></div>
@@ -19,7 +19,7 @@
                                 <img src="{{match.localteam_image}}">
                             </div>
                             <!-- <p>Barcelona</p> -->
-                            <h3>{{match.localteam_name}}</h3>
+                            <h4>{{match.localteam_name}}</h4>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -47,7 +47,7 @@
 
                             </div>
                             <!-- <p>Real Sociedad</p> -->
-                            <h3>{{match.visitorteam_name}}</h3>
+                            <h4>{{match.visitorteam_name}}</h4>
                         </div>
                     </div>
                 </div>
@@ -81,6 +81,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div cl></div>
                             <div class="col-md-8">
                                 <!-- tabs body  -->
                                 <div class="panel-body">
@@ -428,7 +429,7 @@
 
                                             <div class="theme-body-color Commentary-box">
                                                 <div class="card">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12 header">
                                                         <h4><b>COMMENTARY</b></h4>
                                                     </div>
                                                     <p class="slogen cheadlines ">FULL TIME {{match.localteam_name}} {{match.localteam_score}} , {{match.visitorteam_name}} {{match.visitorteam_score}}</p>

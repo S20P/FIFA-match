@@ -1,8 +1,12 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatchService } from '../service/match.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
+
 @Component(
     {
         selector: 'app-matches-detail-component',
@@ -27,24 +31,27 @@ export class MatchesDetailComponentComponent implements OnInit {
     ic_event_own_goal;
     ic_event_goal;
     loading;
+
+    public showloader: boolean = false;      
+    private subscription: Subscription;
+    private timer: Observable<any>;
+
+
+
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private matchService: MatchService,
     ) {
-
-       
-
-
+      
         this.ic_event_penalty_scored = false;
         this.ic_event_own_goal = false;
         this.ic_event_goal = false;
     }
 
     ngOnInit() {
-        this.loading = "block";
-        this.loading = "none";
-
+        this.setTimer();
         
         this.route.paramMap.subscribe((params: ParamMap) => {
             let id = parseInt(params.get("id"));
@@ -58,7 +65,17 @@ export class MatchesDetailComponentComponent implements OnInit {
     
          
     }
+    public setTimer(){
 
+        // set showloader to true to show loading div on view
+        this.showloader   = true;
+    
+        this.timer        = Observable.timer(3000); // 5000 millisecond means 5 seconds
+        this.subscription = this.timer.subscribe(() => {
+            // set showloader to false to hide loading div from view after 5 seconds
+            this.showloader = false;
+        });
+      }
     GetMatchesByCompetition_ById() {
       
 
