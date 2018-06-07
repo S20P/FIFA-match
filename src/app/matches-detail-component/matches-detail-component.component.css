@@ -6,7 +6,7 @@
 .team-detail-header {
     text-align: center;
     background-color: #1F324A;
-    /* background-image: url("assets/img/score_bg.jpg"); */
+    background-image: url("assets/img/score_bg.jpg");
     background-position: center;
     color: #FFF;
     padding: 20px 10px 10px;
@@ -19,7 +19,7 @@
 
 .local-team h3,
 .visited-team h3 {
-    margin-top: 0px;
+    margin-top: 5px;
 }
 
 .visited-team,

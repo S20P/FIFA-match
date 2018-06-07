@@ -1,3 +1,10 @@
+<div id="loading" [style.display]="loading">
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+
 <div class="container">
     <div class="match-detail-section">
 
@@ -231,7 +238,7 @@
 
                                                         </div>
 
-                                                        <div>
+                                                        <div *ngIf="events_collection.length > 0">
                                                             <div class="keyevnt-detail kick_off">
                                                                 <div class="row">
                                                                     <div class="col-md-12 left-keyevnt">
@@ -247,6 +254,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div *ngIf="events_collection.length <= 0">
+                                                            <p>No Events </p>
+                                                        </div>
+
                                                     </div>
                                                     <!-- key Events end -->
                                                 </div>
@@ -298,6 +309,9 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+                                                            <div class="card-body" *ngIf="localteam_player_lineup.length <= 0">
+                                                                <p>No LocalTeam Lineups </p>
+                                                            </div>
 
 
 
@@ -326,7 +340,9 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="card-body" *ngIf="localteam_player_subs.length <= 0">
+                                                                <p>No LocalTeam Substitutes </p>
+                                                            </div>
 
 
 
@@ -364,7 +380,9 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="card-body" *ngIf="visitorteam_player_lineup.length <= 0">
+                                                                <p>No VisitorTeam Lineups </p>
+                                                            </div>
 
                                                         </div>
                                                         <div class="card">
@@ -390,7 +408,9 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="card-body" *ngIf="visitorteam_player_subs.length <= 0">
+                                                                <p>No VisitorTeam Substitutes </p>
+                                                            </div>
 
                                                         </div>
 
@@ -435,6 +455,11 @@
                                                                     </div>
                                                                 </ng-template>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" *ngIf="Commentary_collection.length <= 0">
+                                                        <div class="commentary-content">
+                                                            <p class="text-center">No Commentary found</p>
                                                         </div>
                                                     </div>
 

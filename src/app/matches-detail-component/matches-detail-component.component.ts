@@ -26,17 +26,26 @@ export class MatchesDetailComponentComponent implements OnInit {
     ic_event_penalty_scored;
     ic_event_own_goal;
     ic_event_goal;
+    loading;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private matchService: MatchService,
     ) {
+
+       
+
+
         this.ic_event_penalty_scored = false;
         this.ic_event_own_goal = false;
         this.ic_event_goal = false;
     }
 
     ngOnInit() {
+        this.loading = "block";
+        this.loading = "none";
+
+        
         this.route.paramMap.subscribe((params: ParamMap) => {
             let id = parseInt(params.get("id"));
             this.id = id;
@@ -45,11 +54,13 @@ export class MatchesDetailComponentComponent implements OnInit {
         });
 
         this.GetMatchesByCompetition_ById();
-
+      //  this.loading = "none";
+    
+         
     }
 
     GetMatchesByCompetition_ById() {
-
+      
 
         this.matchService.GetMatchesByCompetition_ById(this.comp_id).subscribe(data => {
             console.log("GetMatchesByCompetition_ById", data);
@@ -192,12 +203,12 @@ export class MatchesDetailComponentComponent implements OnInit {
         }
         console.log("*********current_detail", this.match_detailcollection);
         console.log("*************current_event", this.events_collection);
-
+       
     }
 
 
     GetCommentariesByMatchId(current_matchId) {
-
+        
         this.localteam_player_lineup = [];
         this.visitorteam_player_lineup = [];
 
@@ -473,13 +484,15 @@ export class MatchesDetailComponentComponent implements OnInit {
 
         
         console.log("Commentary_collection", this.Commentary_collection);
-
+       
 
     }
 
 
 
+   
 
+   
 
     gotomatch() {
         let selectedId = this.id ? this.id : null;
