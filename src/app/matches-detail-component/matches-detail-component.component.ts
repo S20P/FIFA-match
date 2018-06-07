@@ -30,7 +30,7 @@ export class MatchesDetailComponentComponent implements OnInit {
     ic_event_penalty_scored;
     ic_event_own_goal;
     ic_event_goal;
-    loading;
+    
 
     public showloader: boolean = false;      
     private subscription: Subscription;

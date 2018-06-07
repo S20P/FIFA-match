@@ -6,7 +6,7 @@
 .team-detail-header {
     text-align: center;
     background-color: #1F324A;
-    background-image: url("assets/img/score_bg.jpg");
+    background-image: url("/assets/img/score_bg.jpg");
     background-position: center;
     color: #FFF;
     padding: 20px 10px 10px;
@@ -24,9 +24,7 @@
 
 .visited-team h4,
 .local-team h4 {
-    
-        font-size: 20px;
-  
+    font-size: 20px;
 }
 
 h2 {
@@ -128,9 +126,11 @@ h2 {
 
 
 /* commentry */
+
 .Commentary-box .header {
     background: #081f2c;
 }
+
 .Commentary-box .card {
     background: #f4f4f4;
     border-radius: 0;
@@ -141,7 +141,8 @@ h2 {
     padding-bottom: 0px;
 }
 
-.Commentary-box h4, .lineupititle h4 {
+.Commentary-box h4,
+.lineupititle h4 {
     line-height: 2.5;
     margin: 0;
     color: #fff;
@@ -205,7 +206,8 @@ p.border-btm {
     background: #081f2c;
     color: #fff;
 }
-.lineupititle h4{
+
+.lineupititle h4 {
     text-align: left !important;
 }
 
@@ -425,7 +427,6 @@ img.lineup_title_img {
 ul.nav.nav-tabs {
     padding-left: 15px;
 }
-
 
 
 /********************************************************************/

@@ -11,6 +11,7 @@ export class MatchService {
   GetMatchesByCompetitionById_API :string = "http://206.189.161.54:8080/MobileAPI/GetMatchesByCompetitionId";
   GetMatchesByDate_API :string = "http://206.189.161.54:8080/MobileAPI/GetMatchesByDate";
   GetCommentariesByMatchId_API :string = "http://206.189.161.54:8080/MobileAPI/GetCommentariesByMatchId";
+  getStadiumAll_API:string="/assets/data/json/FifaMatchStadiums.json";
 
   constructor(private http: HttpClient) 
    {
@@ -44,5 +45,14 @@ export class MatchService {
     let apiurl = `${this.GetCommentariesByMatchId_API + '?match_id=' + match_id}`;
     return  this.http.get(apiurl);
   }
+
+
+  getStadiumAllFromJson(){
+    let apiurl = `${this.getStadiumAll_API}`;
+    return  this.http.get(apiurl);
+  }
+  
+
+
 
 }
