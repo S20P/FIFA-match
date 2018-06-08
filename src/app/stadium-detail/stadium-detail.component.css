@@ -1,0 +1,66 @@
+.match-page-header {
+    background: #2259c5;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.match-page-header P {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 24px;
+    margin: 0px;
+    padding: 5px 10px 3px;
+    letter-spacing: 1px;
+}
+.card {
+    margin-bottom: 15px;
+    border-radius: 0;
+    box-shadow: unset;
+}
+.view.overlay img {
+    width: 100%;
+}
+.header {
+    color: #ffffff;
+    background: #081f2c;
+    line-height: 2.5;
+    border-bottom: 1px solid #dcdcdc;
+    margin-top: 0px;    
+    letter-spacing: 1px;
+}
+.header h4{
+    font-weight: 600;
+}
+.stadium-detail {
+    border-bottom: 1px solid #efefef;
+}
+.stadium-txt{
+    padding: 8px 0 0;
+}
+.stadium-txt p {
+    color: #a0a0a0;
+    font-weight: 600;
+}i.fa.right-icon {
+    margin-left: 3px;
+    font-size: 18px;
+    font-weight: 600;
+}
+a{
+    color: #2259c5;
+}
+p.text-right {
+    color: #464646 !important;
+}
+
+@media (min-width: 768px){
+    .remove_left_padding {
+        padding-left: 7.5px;
+    }
+    .remove_right_padding{
+        padding-right: 7.5px;
+    }
+    .match-page-section {
+        padding: 40px;
+    }
+}

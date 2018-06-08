@@ -4,7 +4,7 @@ import { MatchesDashboardComponent } from './matches-dashboard/matches-dashboard
 import { MatchesDetailComponentComponent } from './matches-detail-component/matches-detail-component.component';
 import { MatchGroupComponent } from './match-group/match-group.component';
 import { MatchStadiumComponent } from './match-stadium/match-stadium.component';
-
+import { StadiumDetailComponent } from './stadium-detail/stadium-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'matches',pathMatch:'full'},
@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'matches/:id', component: MatchesDetailComponentComponent },
   { path: 'group', component: MatchGroupComponent },  
   { path: 'stadium', component: MatchStadiumComponent },  
+  { path: 'stadium/:id', component: StadiumDetailComponent },  
+  { path: 'stadium-details', component: StadiumDetailComponent },  
 ];
 
 
@@ -20,4 +22,4 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [MatchesDashboardComponent,MatchesDetailComponentComponent,MatchGroupComponent,MatchStadiumComponent];
+export const routingComponents = [MatchesDashboardComponent,MatchesDetailComponentComponent,MatchGroupComponent,MatchStadiumComponent,StadiumDetailComponent];

@@ -1,0 +1,134 @@
+<div id="loading" *ngIf='showloader'>
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div *ngFor="let stadiumItem of stadiumDetail_collecction;let i = index">
+
+        <div class="match-page-section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="match-page-header">
+                        <p>{{stadiumItem.city_arena}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
+                    <div class="">
+                        <div class="card">
+                            <div class="view overlay">
+                                <img class="card-img-top" src="{{stadiumItem.stadium_image}}" alt="Card image cap">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="col-md-12 header">
+                                <h4>Stadium</h4>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Name :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_arena}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Inaugurated In :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.stadium_built}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Capacity :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.capacity}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Home Team :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.club}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="stadium-txt">
+                                    <p class="text-right">
+                                        <a href="{{stadiumItem.city_about}}" target="_blank"> More
+                                              <i class="fa right-icon">&#xf105;</i>
+                                         </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="col-md-12 header">
+                                <h4>City</h4>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Name :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_name}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Founded In :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_founded}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Total Population :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_population}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Time Zone :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_timezone}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 stadium-detail">
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p>Average temperature :</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 stadium-txt">
+                                    <p class="text-right">{{stadiumItem.city_temp}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- sidebar -->
+                <div class="col-sm-12 col-md-4 col-lg-4 remove_left_padding">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>sidebar</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- sidebar end -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,7 +14,9 @@ import { MatchesApiService } from '../service/live_match/matches-api.service';
 import { MatchService } from '../service/match.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
 declare var jQuery: any ;
 declare var $: any;
 
@@ -45,7 +47,9 @@ export class MatchesDashboardComponent implements OnInit {
      "For 3rd Place",
      "Final",
    ];
-     
+   public showloader: boolean = false;       
+   private subscription: Subscription;
+   private timer: Observable<any>;
   constructor(private matchesApiService: MatchesApiService,
     private matchService: MatchService,
     private router: Router,
@@ -54,7 +58,8 @@ export class MatchesDashboardComponent implements OnInit {
  
 
   ngOnInit() {
-    this.loading = "none";
+   
+    this.setTimer();
      
    this.GetAllCompetitions();
    this.dateSchedule_ini();
@@ -245,6 +250,11 @@ dateSchedule_ini(){
         }
         );
 
+        this.matchService.GetAllCompetitions_ById(this.AllCompetitions[i].id).subscribe(data => {
+          console.log("GetCompetitionStandingById", data);
+        });
+
+
         this.matchService.GetMatchesByCompetition_ById(this.AllCompetitions[i].id).subscribe(data => {
           console.log("GetMatchesByCompetition_ById", data);
 
@@ -285,5 +295,15 @@ sendMessage() {
     //  console.log("msg sent",msg);
     this.message = '';
   }
+  public setTimer(){
 
+    // set showloader to true to show loading div on view
+    this.showloader   = true;
+
+    this.timer        = Observable.timer(3000); // 5000 millisecond means 5 seconds
+    this.subscription = this.timer.subscribe(() => {
+        // set showloader to false to hide loading div from view after 5 seconds
+        this.showloader = false;
+    });
+  }
 }

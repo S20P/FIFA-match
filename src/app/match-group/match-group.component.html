@@ -1,3 +1,9 @@
+<div id="loading" *ngIf='showloader'>
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
 <div class="container">
     <div class="match-page-section">
         <div class="row">
@@ -9,222 +15,383 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="groupp-list-navbar">
-                    <ul class="groups_list">
-                        <li>Group A</li>
-                        <li>Group B</li>
-                        <li>Group C</li>
-                        <li>Group D</li>
-                        <li>Group E</li>
-                        <li>Group F</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="col-md-12">
-                    <div class="groupp-list-navbar">
-                        <table class=" table grouptable">
-                            <thead>
+                <div class="">
 
-                                <tr>
-                                    <td>
-                                        Pos
-                                    </td>
-                                    <td>
-                                        Team
-                                    </td>
-                                    <td>
-                                        P
-                                    </td>
-                                    <td>
-                                        W
-                                    </td>
-                                    <td>
-                                        D
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +/-
-                                    </td>
-                                    <td>
-                                        PTS
-                                    </td>
+                    <div class="groupp-list-navbar with-nav-tabs panel-default">
+                        <!-- tabs menu  -->
+                        <div class="">
+                            <ul class="nav nav-tabs groups_list">
+                                <li class="active">
+                                    <a href="#tab1default" data-toggle="tab">Group A</a>
+                                </li>
+                                <li>
+                                    <a href="#tab2default" data-toggle="tab">Group B</a>
+                                </li>
+                                <li>
+                                    <a href="#tab3default" data-toggle="tab">Group C</a>
+                                </li>
+                                <li>
+                                    <a href="#tab4default" data-toggle="tab">Group D</a>
+                                </li>
+                                <li>
+                                    <a href="#tab5default" data-toggle="tab">Group E</a>
+                                </li>
+                                <li>
+                                    <a href="#tab6default" data-toggle="tab">Group F</a>
+                                </li>
+                                <li>
+                                    <a href="#tab7default" data-toggle="tab">Group G</a>
+                                </li>
+                                <li>
+                                    <a href="#tab8default" data-toggle="tab">Group H</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <!-- group tab -->
+                            <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
+                                <div class="">
+                                    <div class="tab-content">
+                                        <!--******** DETAILS ************-->
+                                        <div class="tab-pane fade in active" id="tab1default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group A</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dsdsdsdgfhgfh
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dsdsdsdgfhgfh
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                                            <tr *ngFor="let itemA of GroupA_collection">
+                                                                <td>{{itemA.position}}</td>
+                                                                <td>{{itemA.team_name}}</td>
+                                                                <td>{{itemA.overall_gp}}</td>
+                                                                <td>{{itemA.overall_w}}</td>
+                                                                <td>{{itemA.overall_d}}</td>
+                                                                <td>{{itemA.overall_l}}</td>
+                                                                <td>{{itemA.gd}}</td>
+                                                                <td>{{itemA.points}}</td>
+                                                            </tr>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dsd
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dffds
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                            <div class="card list_item">
+                                                <div class="col-md-12 matchheader">
+                                                    <h4> Group A Matches </h4>
+                                                </div>
+                                                <div class="match-list">
+                                                    <div class="col-md-3 col-sm-2 col-xs-2">
+                                                        <div class="match_time_box">
+                                                            <p>15:00</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-4 col-xs-4">
+                                                        <div class="">
+                                                            <p>Russia</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-2 col-xs-2">
+                                                        <div class="">
+                                                            <p>-</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-4 col-xs-4">
+                                                        <div class="">
+                                                            <p>Saudi Arabia</p>
+                                                        </div>
+                                                    </div>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dsdsddfsdfsdfdsfdsfds
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab2default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group B</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        dsds
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        L
-                                    </td>
-                                    <td>
-                                        +5
-                                    </td>
-                                    <td>
-                                        12
-                                    </td>
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
-                                </tr>
-                            </tbody>
-                        </table>
+                                                            <tr *ngFor="let itemB of GroupB_collection">
+                                                                <td>{{itemB.position}}</td>
+                                                                <td>{{itemB.team_name}}</td>
+                                                                <td>{{itemB.overall_gp}}</td>
+                                                                <td>{{itemB.overall_w}}</td>
+                                                                <td>{{itemB.overall_d}}</td>
+                                                                <td>{{itemB.overall_l}}</td>
+                                                                <td>{{itemB.gd}}</td>
+                                                                <td>{{itemB.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab3default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group C</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemC of GroupC_collection">
+                                                                <td>{{itemC.position}}</td>
+                                                                <td>{{itemC.team_name}}</td>
+                                                                <td>{{itemC.overall_gp}}</td>
+                                                                <td>{{itemC.overall_w}}</td>
+                                                                <td>{{itemC.overall_d}}</td>
+                                                                <td>{{itemC.overall_l}}</td>
+                                                                <td>{{itemC.gd}}</td>
+                                                                <td>{{itemC.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab4default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group D</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemD of GroupD_collection">
+                                                                <td>{{itemD.position}}</td>
+                                                                <td>{{itemD.team_name}}</td>
+                                                                <td>{{itemD.overall_gp}}</td>
+                                                                <td>{{itemD.overall_w}}</td>
+                                                                <td>{{itemD.overall_d}}</td>
+                                                                <td>{{itemD.overall_l}}</td>
+                                                                <td>{{itemD.gd}}</td>
+                                                                <td>{{itemD.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab5default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group E</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemE of GroupE_collection">
+                                                                <td>{{itemE.position}}</td>
+                                                                <td>{{itemE.team_name}}</td>
+                                                                <td>{{itemE.overall_gp}}</td>
+                                                                <td>{{itemE.overall_w}}</td>
+                                                                <td>{{itemE.overall_d}}</td>
+                                                                <td>{{itemE.overall_l}}</td>
+                                                                <td>{{itemE.gd}}</td>
+                                                                <td>{{itemE.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab6default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group F</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemF of GroupF_collection">
+                                                                <td>{{itemF.position}}</td>
+                                                                <td>{{itemF.team_name}}</td>
+                                                                <td>{{itemF.overall_gp}}</td>
+                                                                <td>{{itemF.overall_w}}</td>
+                                                                <td>{{itemF.overall_d}}</td>
+                                                                <td>{{itemF.overall_l}}</td>
+                                                                <td>{{itemF.gd}}</td>
+                                                                <td>{{itemF.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab7default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group G</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemG of GroupG_collection">
+                                                                <td>{{itemG.position}}</td>
+                                                                <td>{{itemG.team_name}}</td>
+                                                                <td>{{itemG.overall_gp}}</td>
+                                                                <td>{{itemG.overall_w}}</td>
+                                                                <td>{{itemG.overall_d}}</td>
+                                                                <td>{{itemG.overall_l}}</td>
+                                                                <td>{{itemG.gd}}</td>
+                                                                <td>{{itemG.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab8default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group H</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemH of GroupH_collection">
+                                                                <td>{{itemH.position}}</td>
+                                                                <td>{{itemH.team_name}}</td>
+                                                                <td>{{itemH.overall_gp}}</td>
+                                                                <td>{{itemH.overall_w}}</td>
+                                                                <td>{{itemH.overall_d}}</td>
+                                                                <td>{{itemH.overall_l}}</td>
+                                                                <td>{{itemH.gd}}</td>
+                                                                <td>{{itemH.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end group tab -->
+                            <!-- sidebar -->
+                            <div class="col-sm-12 col-md-4 col-lg-4 remove_left_padding">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1>sidebar</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end sidebar -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>

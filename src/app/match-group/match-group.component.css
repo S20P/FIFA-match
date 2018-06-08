@@ -13,22 +13,79 @@
     letter-spacing: 1px;
 }
 
-.match-page-section {
-    padding: 40px;
-}
+
 
 ul.groups_list {
     list-style: none;
-    margin-top: 7px;
+    margin-top: 10px;
     border-bottom: 3px solid #001c54;
     border-top: 3px solid #001c54;
+    margin-bottom: 10px;
 }
 
 .groups_list li {
     display: inline-block;
-    padding: 10px 15px;
-    padding: 10px 15px;
     font-size: 19px;
     font-weight: bold;
     color: #8e8e8e;
+    margin-bottom: 0;
+}
+
+
+
+.grouptable thead, .teamgroupname  {
+    background: #001C54;
+    color: #fff;
+    
+}
+.teamgroupname {
+    margin-bottom: 0;
+    padding: 13px 20px 2px;
+    font-weight: 600;
+    margin-top: 0;
+}
+table.table.grouptable {
+    background: #fff;
+    margin-bottom: 15px;
+}
+table.table.grouptable tr td {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 5px;
+}
+td:first-child {
+    padding-left: 20px !important;
+}
+.matchheader {
+    background: #001c54;
+    color: #fff;
+}
+.matchheader h4 {
+    color: #ffffff;
+    padding: 12px 0;
+    margin: 0px;
+}
+@media (min-width: 992px){
+    .remove_left_padding {
+        padding-left: 7.5px;
+    }
+    .remove_right_padding{
+        padding-right: 7.5px;
+    }
+    .match-page-section {
+        padding: 40px;
+    }
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #2259c5;
+    background-color: unset;
+    border: 0;
+}
+.nav-tabs>li>a {
+    color: #808080;
+    margin-right: 0;
+    line-height: 1.42857143;
+    border: 0;
+    border-radius: 0;
 }

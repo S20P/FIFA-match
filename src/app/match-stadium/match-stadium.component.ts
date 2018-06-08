@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatchService } from '../service/match.service';
@@ -20,9 +19,14 @@ export class MatchStadiumComponent implements OnInit {
   private subscription: Subscription;
   private timer: Observable<any>;
 
-   
-  StadiumAll_collecction = [];
+  public name;
+  stadiumall_collecction = [];
 
+  test = [
+    {
+      "A":"A"
+    }
+  ];
 
 
   constructor(
@@ -32,6 +36,7 @@ export class MatchStadiumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.name = "satish";
     this.setTimer();
     this.getStadiumAll();
   }
@@ -39,38 +44,35 @@ export class MatchStadiumComponent implements OnInit {
 
    public getStadiumAll(){
         console.log("get Stadium record from json");
-        this.StadiumAll_collecction = [];
+        this.stadiumall_collecction = [];
         this.matchService.getStadiumAllFromJson().subscribe(data => {
           console.log("Stadium Record for json ", data['Places']);
-          
           var result = data['Places'];
-
           if (result !== undefined) {
           for(let place of result){
-            this.StadiumAll_collecction.push(place); 
+            this.stadiumall_collecction.push(place); 
           }
         }
-
          });
-       console.log("Stadium_Places",this.StadiumAll_collecction);
+       console.log("Stadium_Places",this.stadiumall_collecction.length);
+       console.log("");
    }
-
-
-
-
-
-
-
-
-
-
 
   public setTimer(){
     this.showloader   = true;
+    $('#dd').refresh;
     this.timer        = Observable.timer(3000); 
     this.subscription = this.timer.subscribe(() => {
     this.showloader = false;
     });
   }
+
+
+  //Go to Stadium Details Page, using Stadium ID
+  StadiumDetails(stadium_id){
+   console.log("view Stadium Details for this Id",stadium_id);
+    this.router.navigate([stadium_id], { relativeTo: this.route });
+  }
+
 
 }
