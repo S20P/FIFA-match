@@ -116,6 +116,79 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="card list_item">
+                            <div class="col-md-12 header">
+                                <h4>Matches play on this Stadium </h4>
+                            </div>
+
+                            <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                <div *ngFor="let item_details of match_ground_details;let j = index">
+                                    <div *ngIf="match_ground_details.length > 0;else nomatchcomp">
+                                        <div (click)="matchdetails(item_details.id,item_details.comp_id)">
+                                            <div class="row match-list show-responsive-list">
+                                                <div class="list-line">
+
+                                                    <div *ngIf="item_details.status==='FT'; else time">
+                                                        <div class="col-md-3 col-sm-3 col-xs-2">
+                                                            <div class="match_status_box">
+                                                                <p>{{item_details.status}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <ng-template #time>
+                                                        <div class="col-md-3 col-sm-3 col-xs-2">
+                                                            <div class="match_time_box">
+                                                                <p>{{item_details.time}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+
+                                                    <div class="col-md-3 col-sm-3 col-xs-4">
+                                                        <div class="">
+                                                            <p>{{item_details.localteam_name}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div *ngIf="item_details.status==='FT'; else noscore">
+                                                        <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                            <p>{{item_details.localteam_score}}</p>
+                                                        </div>
+
+                                                        <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                            <p>{{item_details.visitorteam_score}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <ng-template #noscore>
+                                                        <div class="col-md-3 col-sm-3 col-xs-2">
+                                                            <div class="">
+                                                                <p>-</p>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                    <div class="col-md-3 col-sm-3 col-xs-4">
+                                                        <div class="">
+                                                            <p>{{item_details.visitorteam_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #nomatchcomp>
+                                        <div *ngIf="j==0" class="list-line row match-list show-responsive-list">
+                                            <p>No matches scheduled in this Stadium</p>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
                     </div>
                 </div>
 

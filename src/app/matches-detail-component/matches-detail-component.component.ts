@@ -99,7 +99,6 @@ export class MatchesDetailComponentComponent implements OnInit {
                         var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + result[k].localteam_id + ".png";
                         var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + result[k].visitorteam_id + ".png";
 
-
                         var localteam_image;
                         var visitorteam_image;
 

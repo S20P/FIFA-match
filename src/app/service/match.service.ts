@@ -12,7 +12,9 @@ export class MatchService {
   GetMatchesByDate_API :string = "http://206.189.161.54:8080/MobileAPI/GetMatchesByDate";
   GetCommentariesByMatchId_API :string = "http://206.189.161.54:8080/MobileAPI/GetCommentariesByMatchId";
   getStadiumAll_API:string="/assets/data/json/FifaMatchStadiums.json";
+  GetTeamById_API:string="http://206.189.161.54:8080/MobileAPI/GetTeamById";
 
+  
   constructor(private http: HttpClient) 
    {
            
@@ -46,6 +48,10 @@ export class MatchService {
     return  this.http.get(apiurl);
   }
 
+  GetTeamById(team_id){
+    let apiurl = `${this.GetTeamById_API + '?team_id=' + team_id}`;
+    return  this.http.get(apiurl);
+  }
 
   getStadiumAllFromJson(){
     let apiurl = `${this.getStadiumAll_API}`;

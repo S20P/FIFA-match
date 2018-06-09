@@ -22,11 +22,6 @@ export class MatchStadiumComponent implements OnInit {
   public name;
   stadiumall_collecction = [];
 
-  test = [
-    {
-      "A":"A"
-    }
-  ];
 
 
   constructor(
@@ -36,7 +31,6 @@ export class MatchStadiumComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.name = "satish";
     this.setTimer();
     this.getStadiumAll();
   }

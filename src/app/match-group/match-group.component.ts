@@ -21,7 +21,7 @@ export class MatchGroupComponent implements OnInit {
   private timer: Observable<any>;
 
   AllCompetitions = [];
-  AllCompetitions_match = [];
+
 
   GroupA_collection = [];
   GroupB_collection = [];
@@ -61,10 +61,6 @@ export class MatchGroupComponent implements OnInit {
       //console.log("GetAllCompetitions",data);
       this.AllCompetitions = data['data'];
       for (var i = 0; i < this.AllCompetitions.length; i++) {
-        this.AllCompetitions_match.push({
-          "id": this.AllCompetitions[i].id, "name": this.AllCompetitions[i].name,
-        }
-        );
 
         //filter group for FIFA 1056 only
         if(this.AllCompetitions[i].id==1056){
@@ -127,7 +123,9 @@ export class MatchGroupComponent implements OnInit {
 
 
   }
-
+  teamdetails(team_id) {
+    this.router.navigate(['/team',team_id]);
+  }
   public setTimer() {
 
     // set showloader to true to show loading div on view

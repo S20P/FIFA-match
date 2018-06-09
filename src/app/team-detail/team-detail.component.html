@@ -1,0 +1,223 @@
+<div id="loading" *ngIf='showloader'>
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="match-detail-section">
+        <div *ngFor="let team of teams_collection;let i=index">
+            <!-- team-detail-header -->
+            <div class="team-detail-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="visited-team">
+                            <div class="visited-team-flag">
+                                <img src="{{team.team_flag}}">
+                            </div>
+                            <!-- <p>Real Sociedad</p> -->
+                            <h4 class="team_title">{{team.team_name}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- team-detail-header end -->
+            <!-- match-name -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel with-nav-tabs panel-default">
+                        <!-- tabs menu  -->
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab1default" data-toggle="tab">Fixtures</a>
+                                </li>
+                                <li>
+                                    <a href="#tab2default" data-toggle="tab">Squads</a>
+                                </li>
+                                <li>
+                                    <a href="#tab3default" data-toggle="tab">Competiton</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end tabs menu  -->
+
+
+                        <div class="row">
+                            <!-- group tab -->
+                            <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
+                                <div class="">
+                                    <div class="tab-content">
+                                        <!--******** DETAILS ************-->
+                                        <div class="tab-pane fade in active" id="tab1default">
+                                            <div class="card list_item">
+                                                <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                                    <div *ngFor="let item_details of team_matchs;let j = index">
+                                                        <div *ngIf="team_matchs.length > 0;else nomatchcomp">
+                                                            <div (click)="matchdetails(item_details.id,item_details.comp_id)">
+                                                                <div class="row match-list show-responsive-list">
+                                                                    <div class="list-line">
+
+                                                                        <div *ngIf="item_details.status==='FT'; else time">
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="match_status_box">
+                                                                                    <p>{{item_details.status}}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ng-template #time>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="match_time_box">
+                                                                                    <p>{{item_details.time}}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-template>
+
+                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
+                                                                            <div class="">
+                                                                                <p>{{item_details.localteam_name}}</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div *ngIf="item_details.status==='FT'; else noscore">
+                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                                                <p>{{item_details.localteam_score}}</p>
+                                                                            </div>
+
+                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                                                <p>{{item_details.visitorteam_score}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ng-template #noscore>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="">
+                                                                                    <p>-</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-template>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
+                                                                            <div class="">
+                                                                                <p>{{item_details.visitorteam_name}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <ng-template #nomatchcomp>
+                                                            <div *ngIf="j==0" class="list-line row match-list show-responsive-list">
+                                                                <p>No matches found</p>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="tab-pane" id="tab2default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group B</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemB of GroupB_collection">
+                                                                <td>{{itemB.position}}</td>
+                                                                <td>{{itemB.team_name}}</td>
+                                                                <td>{{itemB.overall_gp}}</td>
+                                                                <td>{{itemB.overall_w}}</td>
+                                                                <td>{{itemB.overall_d}}</td>
+                                                                <td>{{itemB.overall_l}}</td>
+                                                                <td>{{itemB.gd}}</td>
+                                                                <td>{{itemB.points}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab3default">
+                                            <div id="group1">
+                                                <div class="groupp-list-navbar">
+                                                    <h4 class="col-sm-12 teamgroupname">Group C</h4>
+                                                    <table class=" table grouptable">
+                                                        <thead>
+
+                                                            <tr>
+                                                                <td class="first">Pos</td>
+                                                                <td> Team </td>
+                                                                <td> P </td>
+                                                                <td> W </td>
+                                                                <td> D </td>
+                                                                <td> L </td>
+                                                                <td> +/- </td>
+                                                                <td class="last">PTS</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr *ngFor="let itemC of GroupC_collection">
+
+                                                                <td>{{itemC.position}}</td>
+                                                                <td>{{itemC.team_name}}</td>
+                                                                <td>{{itemC.overall_gp}}</td>
+                                                                <td>{{itemC.overall_w}}</td>
+                                                                <td>{{itemC.overall_d}}</td>
+                                                                <td>{{itemC.overall_l}}</td>
+                                                                <td>{{itemC.gd}}</td>
+                                                                <td>{{itemC.points}}</td>
+
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end group tab -->
+                            <!-- sidebar -->
+                            <div class="col-sm-12 col-md-4 col-lg-4 remove_left_padding">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h1>sidebar</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end sidebar -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<!--container -->

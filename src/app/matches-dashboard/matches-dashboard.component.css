@@ -1,4 +1,4 @@
-.list_match_compitaton{
+.list_match_compitaton {
     cursor: pointer;
     text-align: center;
     padding: 40px;
@@ -6,24 +6,28 @@
     font-size: 16px;
 }
 
-.lt{
-text-align: right;
+.lt {
+    text-align: right;
 }
-.vt{
-text-align: left
+
+.vt {
+    text-align: left
 }
-.score{
+
+.score {
     border: 1px solid #f3f3f3;
     border-radius: 50%;
     padding: 15px 0;
     margin-top: -15px;
 }
+
 .match-page-header {
-  background:#2259c5; 
-  padding: 10px;
-  color: #fff;
+    background: #2259c5;
+    padding: 10px;
+    color: #fff;
 }
-.match-page-header h1{
+
+.match-page-header h1 {
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
@@ -32,44 +36,50 @@ text-align: left
     letter-spacing: 1px;
 }
 
-.slogen{
+.slogen {
     padding: 10px 0px 0px 0px;
     color: #838f95;
     font-size: 14px;
 }
-.match-list-card{
-    
-}
-.match-list-card-header{
+
+.match-list-card {}
+
+.match-list-card-header {
     background: #001c54;
 }
-.match-list-card-header h4{
+
+.match-list-card-header h4 {
     color: #ffffff;
     padding: 12px;
     font-weight: 500;
     font-size: 16px;
     margin: 0px;
 }
-.match-list-card-body{
+
+.match-list-card-body {
     background: #ffffff;
 }
-.match-list{
+
+.match-list {
     border-bottom: 1px solid #eee;
-    padding:15px 10px 5px 10px;
+    padding: 15px 10px 5px 10px;
     text-align: center;
     cursor: pointer;
 }
-.text-right{
-text-align: right;
+
+.text-right {
+    text-align: right;
 }
-.text-left{
+
+.text-left {
     text-align: left;
 }
 
-.list_item{
+.list_item {
     margin-bottom: 20px;
 }
-.match_time_box p{
+
+.match_time_box p {
     border: 1px solid transparent;
     /* background: #00AC77; */
     line-height: 30px;
@@ -79,7 +89,8 @@ text-align: right;
     width: 50px;
     margin-top: -5px;
 }
-.match_status_box p{
+
+.match_status_box p {
     border: 1px solid transparent;
     /* background: #081F2C; */
     line-height: 30px;
@@ -89,79 +100,87 @@ text-align: right;
     width: 40px;
     margin-top: -5px;
 }
+
 .score_r p {
     font-weight: 600;
 }
-.match-page-section{
+
+.match-page-section {
     padding: 40px;
 }
-.status_box_responsive{
+
+.status_box_responsive {
     padding: 12px;
 }
-.score_responsive{
+
+.score_responsive {
     margin-right: 10px;
 }
 
-.hide-responsive-list{
- display: none;
+.hide-responsive-list {
+    display: none;
 }
+
 select#select option {
     background: #ffffff;
     color: #333;
     font-size: 16px;
 }
+
 @media (min-width: 992px) and (max-width: 1300px) {
-    .top-bar {height:auto;}
-    .match-page-section{
+    .top-bar {
+        height: auto;
+    }
+    .match-page-section {
         padding: 40px;
     }
-    }
-    
-@media (min-width: 992px) and (max-width: 1199px) {
-
 }
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
 @media (min-width: 768px) and (max-width: 991px) {}
+
 @media (max-width: 992px) {
-    .match-page-section{
+    .match-page-section {
         padding: 0px;
     }
 }
+
 @media (max-width: 767px) {
-     .show-responsive-list{
+    .show-responsive-list {
         display: none;
-       }
-       .hide-responsive-list{
+    }
+    .hide-responsive-list {
         display: block;
-       }
-      .top-header {
-    padding: 7px;
-    background: #2259c5d9;
-      } 
+    }
+    .top-header {
+        padding: 7px;
+        background: #2259c5d9;
+    }
 }
+
 @media (max-width: 600px) {}
-@media (max-width: 480px) {
 
-}
-@media (max-width: 415px) {
+@media (max-width: 480px) {}
 
-}
+@media (max-width: 415px) {}
 
 @media (max-width: 367px) {
-    .row.match-list.hide-responsive-list{
+    .row.match-list.hide-responsive-list {
         font-size: 12px;
         text-align: center!important;
         width: 100%;
     }
-    .row.match-list.hide-responsive-list .col-xs-3{
+    .row.match-list.hide-responsive-list .col-xs-3 {
         width: 100%;
     }
-    .text-left{
+    .text-left {
         text-align: center !important;
         width: 100%;
     }
 }
 
-.status_offon{
+.status_offon {
     color: green;
     font-size: 14px;
     margin: 10px 0px 0px 10px;
@@ -185,16 +204,17 @@ select#select option {
     transition: all .3s;
     margin: 0px!important;
     padding: 0px !important;
-    }
-    
-    .md-form{
-      color: #fff;
-      margin: 0px;
-    }
-  
-    .md-select option{
-      background: #001c54;
-    }
-    .md-select option:hover{
-      background: #001c54;
-    }
+}
+
+.md-form {
+    color: #fff;
+    margin: 0px;
+}
+
+.md-select option {
+    background: #001c54;
+}
+
+.md-select option:hover {
+    background: #001c54;
+}

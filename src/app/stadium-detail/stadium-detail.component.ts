@@ -21,6 +21,10 @@ export class StadiumDetailComponent implements OnInit {
     stadium_id;
     stadiumDetail_collecction;
 
+    AllCompetitions = [];
+   
+    match_ground_details = [];
+
 
   constructor(
      private route: ActivatedRoute,
@@ -37,7 +41,7 @@ export class StadiumDetailComponent implements OnInit {
    });
 
    this.getStadiumAll();
-
+   this.GetAllCompetitions();
   }
 
 
@@ -65,7 +69,60 @@ export class StadiumDetailComponent implements OnInit {
 
 
 
+GetAllCompetitions() {
+    this.match_ground_details = [];
+     
+  this.matchService.GetAllCompetitions().subscribe(data => {
+    //console.log("GetAllCompetitions",data);
+    this.AllCompetitions = data['data'];
+    for (var i = 0; i < this.AllCompetitions.length; i++) {
+    
+      this.matchService.GetMatchesByCompetition_ById(this.AllCompetitions[i].id).subscribe(data => {
+        console.log("GetMatchesByCompetition_ById", data);
 
+        var result = data['data'];
+
+        if (result !== undefined) {
+          for(let item of result){
+            if(item.venue_id==this.stadium_id){
+ 
+          this.match_ground_details.push({
+                        "comp_id": item.comp_id,
+                        "et_score": item.et_score,
+                        "formatted_date": item.formatted_date,
+                        "ft_score": item.ft_score,
+                        "ht_score": item.ht_score,
+                        "localteam_id": item.localteam_id,
+                        "localteam_name": item.localteam_name,
+                        "localteam_score": item.localteam_score,
+                        "penalty_local": item.penalty_local,
+                        "penalty_visitor": item.penalty_visitor,
+                        "season": item.season,
+                        "status": item.status,
+                        "time": item.time,
+                        "venue": item.venue,
+                        "venue_city": item.venue_city,
+                        "venue_id": item.venue_id,
+                        "visitorteam_id": item.visitorteam_id,
+                        "visitorteam_name": item.visitorteam_name,
+                        "visitorteam_score": item.visitorteam_score,
+                        "week": item.week,
+                        "_id": item._id,
+                        "id": item.id,
+                      });
+              }
+            }
+        }
+      });
+   }
+  });
+
+  console.log('Match for this Stadium', this.match_ground_details);
+ }
+
+ matchdetails(id, comp_id) {
+  this.router.navigate(['/matches',id, { "comp_id": comp_id }]);
+}
 
   public setTimer(){
 

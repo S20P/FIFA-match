@@ -63,6 +63,7 @@
 
                                                             <tr>
                                                                 <td class="first">Pos</td>
+                                                                tbody
                                                                 <td> Team </td>
                                                                 <td> P </td>
                                                                 <td> W </td>
@@ -72,9 +73,8 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-
-                                                            <tr *ngFor="let itemA of GroupA_collection">
+                                                        <tbody *ngFor="let itemA of GroupA_collection">
+                                                            <tr (click)="teamdetails(itemA.team_id)">
                                                                 <td>{{itemA.position}}</td>
                                                                 <td>{{itemA.team_name}}</td>
                                                                 <td>{{itemA.overall_gp}}</td>
@@ -84,40 +84,12 @@
                                                                 <td>{{itemA.gd}}</td>
                                                                 <td>{{itemA.points}}</td>
                                                             </tr>
-
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
 
-                                            <div class="card list_item">
-                                                <div class="col-md-12 matchheader">
-                                                    <h4> Group A Matches </h4>
-                                                </div>
-                                                <div class="match-list">
-                                                    <div class="col-md-3 col-sm-2 col-xs-2">
-                                                        <div class="match_time_box">
-                                                            <p>15:00</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4 col-xs-4">
-                                                        <div class="">
-                                                            <p>Russia</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 col-xs-2">
-                                                        <div class="">
-                                                            <p>-</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-4 col-xs-4">
-                                                        <div class="">
-                                                            <p>Saudi Arabia</p>
-                                                        </div>
-                                                    </div>
 
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="tab-pane" id="tab2default">
                                             <div id="group1">
@@ -137,9 +109,8 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-
-                                                            <tr *ngFor="let itemB of GroupB_collection">
+                                                        <tbody *ngFor="let itemB of GroupB_collection">
+                                                            <tr (click)="teamdetails(itemB.team_id)">
                                                                 <td>{{itemB.position}}</td>
                                                                 <td>{{itemB.team_name}}</td>
                                                                 <td>{{itemB.overall_gp}}</td>
@@ -173,9 +144,9 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let itemC of GroupC_collection">
 
-                                                            <tr *ngFor="let itemC of GroupC_collection">
+                                                            <tr (click)="teamdetails(itemC.team_id)">
                                                                 <td>{{itemC.position}}</td>
                                                                 <td>{{itemC.team_name}}</td>
                                                                 <td>{{itemC.overall_gp}}</td>
@@ -210,9 +181,9 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let itemD of GroupD_collection">
 
-                                                            <tr *ngFor="let itemD of GroupD_collection">
+                                                            <tr (click)="teamdetails(itemD.team_id)">
                                                                 <td>{{itemD.position}}</td>
                                                                 <td>{{itemD.team_name}}</td>
                                                                 <td>{{itemD.overall_gp}}</td>
@@ -246,9 +217,9 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let itemE of GroupE_collection">
 
-                                                            <tr *ngFor="let itemE of GroupE_collection">
+                                                            <tr (click)="teamdetails(itemE.team_id)">
                                                                 <td>{{itemE.position}}</td>
                                                                 <td>{{itemE.team_name}}</td>
                                                                 <td>{{itemE.overall_gp}}</td>
@@ -282,9 +253,9 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let itemF of GroupF_collection">
 
-                                                            <tr *ngFor="let itemF of GroupF_collection">
+                                                            <tr (click)="teamdetails(itemF.team_id)">
                                                                 <td>{{itemF.position}}</td>
                                                                 <td>{{itemF.team_name}}</td>
                                                                 <td>{{itemF.overall_gp}}</td>
@@ -318,9 +289,9 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let itemG of GroupG_collection">
 
-                                                            <tr *ngFor="let itemG of GroupG_collection">
+                                                            <tr (click)="teamdetails(itemG.team_id)">
                                                                 <td>{{itemG.position}}</td>
                                                                 <td>{{itemG.team_name}}</td>
                                                                 <td>{{itemG.overall_gp}}</td>
@@ -354,9 +325,8 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-
-                                                            <tr *ngFor="let itemH of GroupH_collection">
+                                                        <tbody *ngFor="let itemH of GroupH_collection">
+                                                            <tr (click)="teamdetails(itemH.team_id)">
                                                                 <td>{{itemH.position}}</td>
                                                                 <td>{{itemH.team_name}}</td>
                                                                 <td>{{itemH.overall_gp}}</td>

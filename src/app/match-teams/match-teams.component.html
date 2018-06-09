@@ -1,0 +1,65 @@
+<div id="loading" *ngIf='showloader'>
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="match-page-section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="match-page-header">
+                    <p>Teams</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
+                <div class="card list_item">
+                    <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                        <div *ngFor="let item of teams_collection;let t = index">
+                            <div *ngIf="teams_collection.length > 0;else noteams">
+                                <div (click)="teamdetails(item.team_id)">
+                                    <div class="row match-list show-responsive-list">
+                                        <div class="list-line">
+                                            <div class="col-md-2 col-sm-3 col-xs-3">
+                                                <div class="team_flag">
+                                                    <img src="{{item.team_flag}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-10 col-sm-9 col-xs-9">
+                                                <div class="">
+                                                    <p>{{item.team_name}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ng-template #noteams>
+                                <div class="list-line row match-list show-responsive-list">
+                                    <p>No any Team</p>
+                                </div>
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- sidebar -->
+            <div class="col-sm-12 col-md-4 col-lg-4 remove_left_padding">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>sidebar</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar end -->
+        </div>
+    </div>
+
+</div>

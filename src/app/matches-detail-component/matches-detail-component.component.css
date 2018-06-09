@@ -69,7 +69,7 @@ h2 {
 .event h4,
 .status h4 {
     color: #ffffff;
-    background: #081f2c;
+    background: #001c54;
     line-height: 2.5;
     border-bottom: 1px solid #dcdcdc;
     text-transform: uppercase;
@@ -128,7 +128,7 @@ h2 {
 /* commentry */
 
 .Commentary-box .header {
-    background: #081f2c;
+    background: #001c54;
 }
 
 .Commentary-box .card {
@@ -203,7 +203,7 @@ p.border-btm {
 /* lineup css */
 
 .lineupititle {
-    background: #081f2c;
+    background: #001c54;
     color: #fff;
 }
 
