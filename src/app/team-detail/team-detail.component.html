@@ -114,8 +114,6 @@
 
                                                 </div>
                                             </div>
-
-
                                         </div>
                                         <div class="tab-pane" id="tab2default">
                                             <div id="group1">
@@ -124,149 +122,185 @@
                                                     <table class=" table grouptable">
                                                         <thead>
                                                             <tr>
-                                                                <td class="first">No.</td>
+                                                                <td class="no">No.</td>
                                                                 <td class="player_img"> Player </td>
-                                                                <td> Pos </td>
-                                                                <td> Age </td>
-                                                                <td> Apps </td>
-                                                                <td> Goals </td>
+                                                                <td class="pos"> Pos </td>
+                                                                <td class="age"> Age </td>
+                                                                <td class="apps"> Apps </td>
+                                                                <td class="goals"> Goals </td>
                                                             </tr>
                                                         </thead>
                                                     </table>
+                                                    <!-- Attacker -->
+                                                    <div *ngIf="team_squad_A.length > 0">
+                                                        <div class="team_player">
+                                                            <h4>Attacker</h4>
+                                                        </div>
+                                                        <table class="table grouptable">
+                                                            <tbody>
+                                                                <tr class="table-panel" *ngFor="let item of team_squad_A;let a = index">
+                                                                    <td class="no">{{a+1}}</td>
+                                                                    <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
+                                                                    <td class="pos">{{item.position}}</td>
+                                                                    <td class="age">{{item.age}}</td>
+                                                                    <td class="apps">{{item.appearences}}</td>
+                                                                    <td class="goals">{{item.goals}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--end Attacker -->
 
-                                                    <h4>Goalkeeper</h4>
-                                                    <table class=" table grouptable">
-                                                        <tbody>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
+                                                    <!-- Defender -->
+                                                    <div *ngIf="team_squad_D.length > 0">
+                                                        <div class="team_player">
+                                                            <h4>Defender</h4>
+                                                        </div>
+                                                        <table class=" table grouptable">
+                                                            <tbody>
+                                                                <tr class="table-panel" *ngFor="let item of team_squad_D;let d = index">
+                                                                    <td class="no">{{d+1}}</td>
+                                                                    <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
+                                                                    <td class="pos">{{item.position}}</td>
+                                                                    <td class="age">{{item.age}}</td>
+                                                                    <td class="apps">{{item.appearences}}</td>
+                                                                    <td class="goals">{{item.goals}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--end Defender -->
 
-                                                        </tbody>
-                                                    </table>
-                                                    <h4>Goalkeeper</h4>
-                                                    <table class=" table grouptable">
-                                                        <tbody>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
-                                                            <tr class="table-panel">
-                                                                <td class="first">-</td>
-                                                                <td class="player_img"> <img src="/assets/img/avt_player.png">Sherif Ekramy</td>
-                                                                <td>G</td>
-                                                                <td>34</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                            </tr>
 
-                                                        </tbody>
+                                                    <!-- Forward -->
+                                                    <div *ngIf="team_squad_F.length > 0">
+                                                        <div class="team_player">
+                                                            <h4>Forward</h4>
+                                                        </div>
+                                                        <table class=" table grouptable">
+                                                            <tbody>
+                                                                <tr class="table-panel" *ngFor="let item of team_squad_F;let f = index">
+                                                                    <td class="no">{{f+1}}</td>
+                                                                    <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
+                                                                    <td class="pos">{{item.position}}</td>
+                                                                    <td class="age">{{item.age}}</td>
+                                                                    <td class="apps">{{item.appearences}}</td>
+                                                                    <td class="goals">{{item.goals}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--end Forward -->
 
-                                                    </table>
+
+                                                    <!-- Goalkeeper -->
+                                                    <div *ngIf="team_squad_G.length > 0">
+                                                        <div class="team_player">
+                                                            <h4>Goalkeeper</h4>
+                                                        </div>
+                                                        <table class=" table grouptable">
+                                                            <tbody>
+                                                                <tr class="table-panel" *ngFor="let item of team_squad_G;let g = index">
+                                                                    <td class="no">{{g+1}}</td>
+                                                                    <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
+                                                                    <td class="pos">{{item.position}}</td>
+                                                                    <td class="age">{{item.age}}</td>
+                                                                    <td class="apps">{{item.appearences}}</td>
+                                                                    <td class="goals">{{item.goals}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--end Goalkeeper -->
+
+                                                    <!-- Midfielder -->
+                                                    <div *ngIf="team_squad_M.length > 0">
+                                                        <div class="team_player">
+                                                            <h4>Midfielder</h4>
+                                                        </div>
+                                                        <table class=" table grouptable">
+                                                            <tbody>
+                                                                <tr class="table-panel" *ngFor="let item of team_squad_M;let m = index">
+                                                                    <td class="no">{{m+1}}</td>
+                                                                    <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
+                                                                    <td class="pos">{{item.position}}</td>
+                                                                    <td class="age">{{item.age}}</td>
+                                                                    <td class="apps">{{item.appearences}}</td>
+                                                                    <td class="goals">{{item.goals}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--end Midfielder -->
+
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="tab3default">
-                                            <div id="group1">
-                                                <div class="groupp-list-navbar">
-                                                    <h4 class="col-sm-12 teamgroupname">Group C</h4>
-                                                    <table class=" table grouptable">
-                                                        <thead>
 
-                                                            <tr>
-                                                                <td class="first">Pos</td>
-                                                                <td> Team </td>
-                                                                <td> P </td>
-                                                                <td> W </td>
-                                                                <td> D </td>
-                                                                <td> L </td>
-                                                                <td> +/- </td>
-                                                                <td class="last">PTS</td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+                                            <div class="card list_item">
+                                                <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                                    <div *ngFor="let item_details of team_matchs;let j = index">
+                                                        <div *ngIf="team_matchs.length > 0;else nomatchcomp">
+                                                            <div (click)="matchdetails(item_details.id,item_details.comp_id)">
+                                                                <div class="row match-list show-responsive-list">
+                                                                    <div class="list-line">
 
-                                                            <tr *ngFor="let itemC of GroupC_collection">
+                                                                        <div *ngIf="item_details.status==='FT'; else time">
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="match_status_box">
+                                                                                    <p>{{item_details.status}}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ng-template #time>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="match_time_box">
+                                                                                    <p>{{item_details.time}}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-template>
 
-                                                                <td>{{itemC.position}}</td>
-                                                                <td>{{itemC.team_name}}</td>
-                                                                <td>{{itemC.overall_gp}}</td>
-                                                                <td>{{itemC.overall_w}}</td>
-                                                                <td>{{itemC.overall_d}}</td>
-                                                                <td>{{itemC.overall_l}}</td>
-                                                                <td>{{itemC.gd}}</td>
-                                                                <td>{{itemC.points}}</td>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
+                                                                            <div class="">
+                                                                                <p>{{item_details.localteam_name}}</p>
+                                                                            </div>
+                                                                        </div>
 
-                                                            </tr>
+                                                                        <div *ngIf="item_details.status==='FT'; else noscore">
+                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                                                <p>{{item_details.localteam_score}}</p>
+                                                                            </div>
 
-                                                        </tbody>
-                                                    </table>
+                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
+                                                                                <p>{{item_details.visitorteam_score}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ng-template #noscore>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
+                                                                                <div class="">
+                                                                                    <p>-</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-template>
+                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
+                                                                            <div class="">
+                                                                                <p>{{item_details.visitorteam_name}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <ng-template #nomatchcomp>
+                                                            <div *ngIf="j==0" class="list-line row match-list show-responsive-list">
+                                                                <p>No matches found</p>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+
                                                 </div>
-
                                             </div>
                                         </div>
 

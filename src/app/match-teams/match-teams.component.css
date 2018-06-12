@@ -106,3 +106,12 @@
 .match-list p {
     margin-top: 8px;
 }
+
+.team_name p {
+    font-weight: 600;
+}
+
+p.rigth_arrow {
+    text-align: center;
+    color: #7a7a7bd1;
+}
