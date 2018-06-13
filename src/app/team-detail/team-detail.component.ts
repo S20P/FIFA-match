@@ -107,12 +107,10 @@ export class TeamDetailComponent implements OnInit {
                 let year = arr[2];
                 var fulldate = year + "-" + month + "-" + day;
 
-                let dateTime = fulldate + " " + teams['time'];
-                console.log("dayUTC", dateTime);
-                var TimeUTC = new Date(dateTime);
-                let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
-                console.log("IST(local tiem is)", TimeIST);
-
+                  //Change UTC timezone to IST(Local)
+              let timezone = fulldate + " " + teams['time'];
+              let match_time = calcTime(timezone, '+11');
+              console.log("time ", match_time);
 
               //store Team_matches
               this.team_matchs.push({
@@ -121,7 +119,7 @@ export class TeamDetailComponent implements OnInit {
                 "localteam_name": teams['localteam_name'],
                 "localteam_score": teams['localteam_score'],
                 "status": teams['status'],
-                "time": TimeIST,
+                "time": match_time,
                 "visitorteam_id": teams['visitorteam_id'],
                 "visitorteam_name": teams['visitorteam_name'],
                 "visitorteam_score": teams['visitorteam_score'],
@@ -299,6 +297,13 @@ export class TeamDetailComponent implements OnInit {
 
       return Image_Exists;
     }
+    function calcTime(dateto, offset) {
+      // create Date object for current location
+      let d = new Date(dateto);
+      let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      let nd = new Date(utc + (3600000 * offset));
+      return nd.toLocaleString();
+  }
     console.log("Team_matches", this.team_matchs);
     console.log("Team_squad_A", this.team_squad_A);
     console.log("Team_squad_D", this.team_squad_D);

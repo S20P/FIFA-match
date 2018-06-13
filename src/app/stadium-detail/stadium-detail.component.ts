@@ -96,12 +96,11 @@ GetAllCompetitions() {
               let year = arr[2];
               var fulldate = year + "-" + month + "-" + day;
 
-              let dateTime = fulldate + " " + item['time'];
-              console.log("dayUTC", dateTime);
-              var TimeUTC = new Date(dateTime);
-              let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
-              console.log("IST(local tiem is)", TimeIST);
-
+           
+              //Change UTC timezone to IST(Local)
+              let timezone = fulldate + " " + item['time'];
+              let match_time = calcTime(timezone, '+11');
+              console.log("time ", match_time);
 
           this.match_ground_details.push({
                         "comp_id": item.comp_id,
@@ -116,7 +115,7 @@ GetAllCompetitions() {
                         "penalty_visitor": item.penalty_visitor,
                         "season": item.season,
                         "status": item.status,
-                        "time": TimeIST,
+                        "time": match_time,
                         "venue": item.venue,
                         "venue_city": item.venue_city,
                         "venue_id": item.venue_id,
@@ -133,7 +132,13 @@ GetAllCompetitions() {
       });
    }
   });
-
+  function calcTime(dateto, offset) {
+    // create Date object for current location
+    let d = new Date(dateto);
+    let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    let nd = new Date(utc + (3600000 * offset));
+    return nd.toLocaleString();
+}
   console.log('Match for this Stadium', this.match_ground_details);
  }
 

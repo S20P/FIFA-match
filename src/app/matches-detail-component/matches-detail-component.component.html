@@ -36,9 +36,14 @@
                                 <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
                             </div>
                             <ng-template #time1>
-                                <h2>{{match.time}}</h2>
+                                <div class="team-status">
+                                    <p class="big">{{match.time| date: 'dd MMM yyyy'}}</p>
+                                    <div class="border"></div>
+                                </div>
+                                <h2>{{match.time| date: 'hh:mm a'}}</h2>
                             </ng-template>
                         </div>
+
                     </div>
                     <div class="col-md-4">
                         <div class="visited-team">
@@ -51,6 +56,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="venue_name">
+                            <p>{{match.venue}}</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- team-detail-header end -->
 

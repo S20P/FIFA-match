@@ -20,6 +20,10 @@ import 'rxjs/add/observable/timer';
 declare var jQuery: any ;
 declare var $: any;
 import { DatePipe } from '@angular/common';
+
+import * as moment from 'moment';
+
+
 @Component({
   selector: 'app-matches-dashboard',
   templateUrl: './matches-dashboard.component.html',
@@ -61,9 +65,10 @@ export class MatchesDashboardComponent implements OnInit {
 
   ngOnInit() {
 
+    // moment.js utc local timezone UTC
+  
 
-    
-    
+   
 
     this.setTimer();
      
@@ -190,15 +195,11 @@ dateSchedule_ini(){
     console.log("visitorteam_image",visitorteam_image);
 
     //Change UTC timezone to IST(Local)
-    let day = selected +" "+ item.time;
-    console.log("day",day);
-    var TimeUTC =new Date(day);
-    let TimeIST =this.datepipe.transform(TimeUTC, 'hh:mm');
-    console.log("TimeIST",TimeIST);
-  
-  
+    let timezone = selected +" "+ item.time;
 
-
+    let match_time = calcTime(timezone,'+11');
+       console.log("time ",match_time);
+      
 
         this.match_ground_details.push({
                       "comp_id": item.comp_id,
@@ -214,7 +215,7 @@ dateSchedule_ini(){
                       "penalty_visitor": item.penalty_visitor,
                       "season": item.season,
                       "status": item.status,
-                      "time":TimeIST,
+                      "time":match_time,
                       "venue": item.venue,
                       "venue_city": item.venue_city,
                       "venue_id": item.venue_id,
@@ -247,6 +248,13 @@ dateSchedule_ini(){
 
         return Image_Exists;
     }
+    function calcTime(dateto,offset) {
+      // create Date object for current location
+     let d = new Date(dateto);
+     let  utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+     let nd = new Date(utc + (3600000*offset));
+      return  nd.toLocaleString();
+  }
     //result = [];
    console.log("filter-date_data",this.match_ground_details);
      //this.match_ground_details = [];

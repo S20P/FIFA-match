@@ -103,13 +103,11 @@ export class MatchesDetailComponentComponent implements OnInit {
                         let month = arr[1];
                         let year = arr[2];
                         var fulldate = year + "-" + month + "-" + day;
-
-                        let dateTime = fulldate + " " + result[k].time;
-                        console.log("dayUTC", dateTime);
-                        var TimeUTC = new Date(dateTime);
-                        let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
-                        console.log("IST(local tiem is)", TimeIST);
-
+ 
+                        //Change UTC timezone to IST(Local)
+                        let timezone = fulldate + " " + result[k].time;
+                        let match_time = calcTime(timezone, '+11');
+                        console.log("time ", match_time);
 
 
                         let current_matchId = result[0].id;
@@ -146,7 +144,6 @@ export class MatchesDetailComponentComponent implements OnInit {
 
 
 
-
                         this.match_detailcollection
                             .push({
                                 "comp_id": result[k].comp_id,
@@ -162,7 +159,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                                 "penalty_visitor": result[k].penalty_visitor,
                                 "season": result[k].season,
                                 "status": result[k].status,
-                                "time": TimeIST,
+                                "time": match_time,
                                 "venue": result[k].venue,
                                 "venue_city": result[k].venue_city,
                                 "venue_id": result[k].venue_id,
@@ -238,6 +235,13 @@ export class MatchesDetailComponentComponent implements OnInit {
                 });
 
             return Image_Exists;
+        }
+        function calcTime(dateto, offset) {
+            // create Date object for current location
+            let d = new Date(dateto);
+            let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            let nd = new Date(utc + (3600000 * offset));
+            return nd.toLocaleString();
         }
         console.log("*********current_detail", this.match_detailcollection);
         console.log("*************current_event", this.events_collection);

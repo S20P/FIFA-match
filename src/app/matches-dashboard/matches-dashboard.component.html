@@ -93,7 +93,7 @@
                                                             <ng-template #time>
                                                                 <div class="col-md-2 col-sm-2 col-xs-2">
                                                                     <div class="match_time_box">
-                                                                        <p>{{item_details.time}}</p>
+                                                                        <p>{{item_details.time | date: 'hh:mm a'}}</p>
                                                                     </div>
                                                                 </div>
                                                             </ng-template>
@@ -138,7 +138,7 @@
                                                                     </div>
                                                                     <ng-template #time1>
                                                                         <div class="match_time_box">
-                                                                            <p>{{item_details.time}}</p>
+                                                                            <p>{{item_details.time| date: 'hh:mm a'}}</p>
                                                                         </div>
                                                                     </ng-template>
                                                                 </div>
