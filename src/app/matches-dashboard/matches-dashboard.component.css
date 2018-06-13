@@ -106,7 +106,7 @@
 }
 
 .match-page-section {
-    padding: 40px;
+    padding: 40px 0px;
 }
 
 .status_box_responsive {
@@ -132,7 +132,7 @@ select#select option {
         height: auto;
     }
     .match-page-section {
-        padding: 40px;
+        padding: 40px 0px;
     }
 }
 

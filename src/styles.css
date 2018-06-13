@@ -108,8 +108,6 @@ p {
     max-height: unset;
 }
 
-ul.nav.navbar-nav {}
-
 .navbar-default .navbar-nav>li>a:focus,
 .navbar-default .navbar-nav>li>a:hover {
     color: #fff;
@@ -118,6 +116,7 @@ ul.nav.navbar-nav {}
 
 .navbar-default .navbar-brand {
     color: #fff;
+    margin-left: 0px !important;
 }
 
 .navbar-default .navbar-brand:focus,
@@ -132,7 +131,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 }
 
 .top-header {
-    padding: 7px;
+    padding: 7px 0px;
     /* background: #081f2c; */
 }
 
@@ -269,8 +268,8 @@ div#ui-datepicker-div {
 /* header css start------------------------------------------------------------- */
 
 .navbar-brand {
-    padding: 0px;
-    width: 80%;
+    padding: 4px 0px;
+    width: 100%;
 }
 
 ul.nav.navbar-nav.navbar-right li a {
@@ -329,12 +328,24 @@ h4.footertext {
     padding: 15px;
 }
 
+ul.nav.navbar-nav {
+    float: right;
+}
+
 
 /* footer css end------------------------------------------------------------- */
 
 @media (min-width: 1240px) {
     .header_logo IMG {
-        PADDING: 5PX 0;
+        PADDING: 0px 35px 0px 0px;
+    }
+    /* ul.nav.navbar-nav {
+        float: right;
+        margin-right: 0px;
+    } */
+    ul.nav.navbar-nav {
+        float: right;
+        margin-right: -15px;
     }
 }
 
@@ -350,6 +361,11 @@ h4.footertext {
     }
     .top-header {
         padding: 0px;
+    }
+    .navbar-default .navbar-nav>li>a {
+        color: #fff;
+        font-size: 18px;
+        padding: 20px 10px;
     }
 }
 

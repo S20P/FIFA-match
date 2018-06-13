@@ -241,7 +241,7 @@
 
                                             <div class="card list_item">
                                                 <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                                                    <div *ngFor="let item_details of team_matchs;let j = index">
+                                                    <!-- <div *ngFor="let item_details of team_matchs;let j = index">
                                                         <div *ngIf="team_matchs.length > 0;else nomatchcomp">
                                                             <div (click)="matchdetails(item_details.id,item_details.comp_id)">
                                                                 <div class="row match-list show-responsive-list">
@@ -298,8 +298,12 @@
                                                                 <p>No matches found</p>
                                                             </div>
                                                         </ng-template>
+                                                    </div> -->
+                                                    <div class="row match-list show-responsive-list">
+                                                        <div class="list-line col-md-12">
+                                                            <p>No matches found</p>
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
