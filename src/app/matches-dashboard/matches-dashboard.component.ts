@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 declare var jQuery: any ;
 declare var $: any;
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-matches-dashboard',
   templateUrl: './matches-dashboard.component.html',
@@ -50,15 +50,21 @@ export class MatchesDashboardComponent implements OnInit {
    public showloader: boolean = false;       
    private subscription: Subscription;
    private timer: Observable<any>;
+   date;
   constructor(private matchesApiService: MatchesApiService,
     private matchService: MatchService,
     private router: Router,
     private route: ActivatedRoute,
+    public datepipe: DatePipe
   ) {  }
  
 
   ngOnInit() {
-   
+
+
+    
+    
+
     this.setTimer();
      
    this.GetAllCompetitions();
@@ -183,6 +189,15 @@ dateSchedule_ini(){
     console.log("localteam_image",localteam_image);
     console.log("visitorteam_image",visitorteam_image);
 
+    //Change UTC timezone to IST(Local)
+    let day = selected +" "+ item.time;
+    console.log("day",day);
+    var TimeUTC =new Date(day);
+    let TimeIST =this.datepipe.transform(TimeUTC, 'hh:mm');
+    console.log("TimeIST",TimeIST);
+  
+  
+
 
 
         this.match_ground_details.push({
@@ -199,7 +214,7 @@ dateSchedule_ini(){
                       "penalty_visitor": item.penalty_visitor,
                       "season": item.season,
                       "status": item.status,
-                      "time": item.time,
+                      "time":TimeIST,
                       "venue": item.venue,
                       "venue_city": item.venue_city,
                       "venue_id": item.venue_id,

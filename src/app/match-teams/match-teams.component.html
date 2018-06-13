@@ -24,18 +24,17 @@
                                 <div (click)="teamdetails(item.team_id)">
                                     <div class="row match-list show-responsive-list">
                                         <div class="list-line">
-                                            <div class="col-md-2 col-sm-2 col-xs-3">
+
+                                            <div class="col-md-10 col-sm-10 col-xs-10">
                                                 <div class="team_flag">
-                                                    <img src="{{item.team_flag}}">
+                                                    <div class="team_name">
+                                                        <p> <img src="{{item.team_flag}}"> <span>{{item.team_name}}</span></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-6">
-                                                <div class="team_name">
-                                                    <p>{{item.team_name}}</p>
-                                                </div>
+
                                             </div>
                                             <div class="col-md-2 col-sm-2 col-xs-2">
-                                                <div class="">
+                                                <div class="team_arrow">
                                                     <p class="rigth_arrow"> <i class="fa fa-chevron-right " aria-hidden="true"></i>
                                                     </p>
                                                 </div>

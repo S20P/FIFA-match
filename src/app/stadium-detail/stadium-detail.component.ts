@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -29,7 +30,9 @@ export class StadiumDetailComponent implements OnInit {
   constructor(
      private route: ActivatedRoute,
      private router: Router,
-     private matchService: MatchService,) { }
+     private matchService: MatchService,
+     public datepipe: DatePipe  
+    ) { }
 
   ngOnInit() {
     this.setTimer();
@@ -86,6 +89,20 @@ GetAllCompetitions() {
           for(let item of result){
             if(item.venue_id==this.stadium_id){
  
+              var myString = item['formatted_date'];
+              var arr = myString.split('.');
+              let day = arr[0];
+              let month = arr[1];
+              let year = arr[2];
+              var fulldate = year + "-" + month + "-" + day;
+
+              let dateTime = fulldate + " " + item['time'];
+              console.log("dayUTC", dateTime);
+              var TimeUTC = new Date(dateTime);
+              let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
+              console.log("IST(local tiem is)", TimeIST);
+
+
           this.match_ground_details.push({
                         "comp_id": item.comp_id,
                         "et_score": item.et_score,
@@ -99,7 +116,7 @@ GetAllCompetitions() {
                         "penalty_visitor": item.penalty_visitor,
                         "season": item.season,
                         "status": item.status,
-                        "time": item.time,
+                        "time": TimeIST,
                         "venue": item.venue,
                         "venue_city": item.venue_city,
                         "venue_id": item.venue_id,

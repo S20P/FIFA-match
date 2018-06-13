@@ -7,6 +7,7 @@ import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
 
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-team-detail',
@@ -32,7 +33,10 @@ export class TeamDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private matchService: MatchService, ) {
+    private matchService: MatchService,
+    public datepipe: DatePipe
+  
+  ) {
 
   }
 
@@ -94,8 +98,36 @@ export class TeamDetailComponent implements OnInit {
 
           if (TeamMatch !== undefined) {
             for (let teams of TeamMatch) {
+
+                //Change UTC timezone to IST(Local)
+                var myString = teams['formatted_date'];
+                var arr = myString.split('.');
+                let day = arr[0];
+                let month = arr[1];
+                let year = arr[2];
+                var fulldate = year + "-" + month + "-" + day;
+
+                let dateTime = fulldate + " " + teams['time'];
+                console.log("dayUTC", dateTime);
+                var TimeUTC = new Date(dateTime);
+                let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
+                console.log("IST(local tiem is)", TimeIST);
+
+
               //store Team_matches
-              this.team_matchs.push(teams);
+              this.team_matchs.push({
+                "comp_id": teams['comp_id'],
+                "localteam_id": teams['localteam_id'],
+                "localteam_name": teams['localteam_name'],
+                "localteam_score": teams['localteam_score'],
+                "status": teams['status'],
+                "time": TimeIST,
+                "visitorteam_id": teams['visitorteam_id'],
+                "visitorteam_name": teams['visitorteam_name'],
+                "visitorteam_score": teams['visitorteam_score'],
+                "_id": teams['_id'],
+                "id": teams['id']
+              });
             }
           }
 

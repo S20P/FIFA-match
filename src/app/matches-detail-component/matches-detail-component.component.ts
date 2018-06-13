@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
+import { DatePipe } from '@angular/common';
 
 @Component(
     {
@@ -30,9 +31,9 @@ export class MatchesDetailComponentComponent implements OnInit {
     ic_event_penalty_scored;
     ic_event_own_goal;
     ic_event_goal;
-    
 
-    public showloader: boolean = false;      
+
+    public showloader: boolean = false;
     private subscription: Subscription;
     private timer: Observable<any>;
 
@@ -43,8 +44,10 @@ export class MatchesDetailComponentComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private matchService: MatchService,
+        public datepipe: DatePipe
+
     ) {
-      
+
         this.ic_event_penalty_scored = false;
         this.ic_event_own_goal = false;
         this.ic_event_goal = false;
@@ -52,7 +55,7 @@ export class MatchesDetailComponentComponent implements OnInit {
 
     ngOnInit() {
         this.setTimer();
-        
+
         this.route.paramMap.subscribe((params: ParamMap) => {
             let id = parseInt(params.get("id"));
             this.id = id;
@@ -61,23 +64,23 @@ export class MatchesDetailComponentComponent implements OnInit {
         });
 
         this.GetMatchesByCompetition_ById();
-      //  this.loading = "none";
-    
-         
+        //  this.loading = "none";
+
+
     }
-    public setTimer(){
+    public setTimer() {
 
         // set showloader to true to show loading div on view
-        this.showloader   = true;
-    
-        this.timer        = Observable.timer(3000); // 5000 millisecond means 5 seconds
+        this.showloader = true;
+
+        this.timer = Observable.timer(3000); // 5000 millisecond means 5 seconds
         this.subscription = this.timer.subscribe(() => {
             // set showloader to false to hide loading div from view after 5 seconds
             this.showloader = false;
         });
-      }
+    }
     GetMatchesByCompetition_ById() {
-      
+
 
         this.matchService.GetMatchesByCompetition_ById(this.comp_id).subscribe(data => {
             console.log("GetMatchesByCompetition_ById", data);
@@ -92,6 +95,22 @@ export class MatchesDetailComponentComponent implements OnInit {
                     if (result[k].id == this.id) {
                         let date_formatted = result[k].formatted_date.replace('.', '/');
                         let date = date_formatted.replace('.', '/');
+
+                        //Change UTC timezone to IST(Local)
+                        var myString = result[k].formatted_date;
+                        var arr = myString.split('.');
+                        let day = arr[0];
+                        let month = arr[1];
+                        let year = arr[2];
+                        var fulldate = year + "-" + month + "-" + day;
+
+                        let dateTime = fulldate + " " + result[k].time;
+                        console.log("dayUTC", dateTime);
+                        var TimeUTC = new Date(dateTime);
+                        let TimeIST = this.datepipe.transform(TimeUTC, 'hh:mm');
+                        console.log("IST(local tiem is)", TimeIST);
+
+
 
                         let current_matchId = result[0].id;
                         this.GetCommentariesByMatchId(current_matchId);
@@ -125,6 +144,9 @@ export class MatchesDetailComponentComponent implements OnInit {
                             visitorteam_image = flag_visit;
                         }
 
+
+
+
                         this.match_detailcollection
                             .push({
                                 "comp_id": result[k].comp_id,
@@ -140,7 +162,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                                 "penalty_visitor": result[k].penalty_visitor,
                                 "season": result[k].season,
                                 "status": result[k].status,
-                                "time": result[k].time,
+                                "time": TimeIST,
                                 "venue": result[k].venue,
                                 "venue_city": result[k].venue_city,
                                 "venue_id": result[k].venue_id,
@@ -219,12 +241,12 @@ export class MatchesDetailComponentComponent implements OnInit {
         }
         console.log("*********current_detail", this.match_detailcollection);
         console.log("*************current_event", this.events_collection);
-       
+
     }
 
 
     GetCommentariesByMatchId(current_matchId) {
-        
+
         this.localteam_player_lineup = [];
         this.visitorteam_player_lineup = [];
 
@@ -408,7 +430,7 @@ export class MatchesDetailComponentComponent implements OnInit {
 
                                 isSubstitution = true;
                                 comment_icon = "assets/img/ic_sub_on_off_both2.png";
-                                
+
 
                                 console.log("Substitution is found.");
 
@@ -449,17 +471,17 @@ export class MatchesDetailComponentComponent implements OnInit {
 
 
                         this.Commentary_collection.push({
-                            "GoalType" : GoalType,
-                            "isAssist" : isAssist,
-                            "isSubstitution" :isSubstitution,
-                            "downSubstitution" : downSubstitution,
-                            "yellowcard" : yellowcard,
-                            "redcard" : redcard,
-                            "upName" : UpName,
-                            "downName" : DownName,
-                            "comment" : comment,
-                            "minute" : minute,
-                            "icon":comment_icon
+                            "GoalType": GoalType,
+                            "isAssist": isAssist,
+                            "isSubstitution": isSubstitution,
+                            "downSubstitution": downSubstitution,
+                            "yellowcard": yellowcard,
+                            "redcard": redcard,
+                            "upName": UpName,
+                            "downName": DownName,
+                            "comment": comment,
+                            "minute": minute,
+                            "icon": comment_icon
                         });
 
 
@@ -498,17 +520,17 @@ export class MatchesDetailComponentComponent implements OnInit {
         console.log("localteam_player_subs", this.localteam_player_subs);
         console.log("visitorteam_player_subs", this.visitorteam_player_subs);
 
-        
+
         console.log("Commentary_collection", this.Commentary_collection);
-       
+
 
     }
 
 
 
-   
 
-   
+
+
 
     gotomatch() {
         let selectedId = this.id ? this.id : null;

@@ -1,5 +1,5 @@
 .match-detail-section {
-    padding: 40px;
+    padding: 40px 0px;
     /* text-transform: uppercase; */
 }
 
@@ -33,7 +33,7 @@ h2 {
 
 @media (min-width: 992px) and (max-width: 1300px) {
     .match-detail-section {
-        padding: 40px;
+        padding: 40px 0px;
     }
 }
 

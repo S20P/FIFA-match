@@ -28,7 +28,7 @@
         padding-right: 7.5px;
     }
     .match-page-section {
-        padding: 40px;
+        padding: 40px 0px;
     }
 }
 
@@ -47,7 +47,7 @@
 
 .match-list {
     border-bottom: 1px solid #eee;
-    padding: 5px 10px 5px 19px;
+    padding: 7px 10px 2px 19px;
     text-align: left;
     cursor: pointer;
 }
@@ -57,7 +57,7 @@
 }
 
 .match-page-section {
-    padding: 40px;
+    padding: 40px 0px;
 }
 
 @media (min-width: 992px) and (max-width: 1300px) {
@@ -65,7 +65,7 @@
         height: auto;
     }
     .match-page-section {
-        padding: 40px;
+        padding: 40px 0px;
     }
 }
 
@@ -101,17 +101,21 @@
 
 .team_flag img {
     width: 40px;
-}
-
-.match-list p {
-    margin-top: 8px;
+    margin-right: 10px;
+    margin-top: -3px;
 }
 
 .team_name p {
     font-weight: 600;
+    margin-bottom: 0px;
 }
 
 p.rigth_arrow {
-    text-align: center;
+    text-align: right;
     color: #7a7a7bd1;
+    margin-right: 8px;
+}
+
+.team_arrow {
+    margin-top: 7px;
 }
