@@ -323,6 +323,9 @@ export class TeamDetailComponent implements OnInit {
     this.router.navigate(['/matches', id, { "comp_id": comp_id }]);
   }
 
+  Playerdetails(player_id){
+    this.router.navigate(['/player', player_id]);
+  }
 
 
 

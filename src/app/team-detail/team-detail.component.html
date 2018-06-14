@@ -137,8 +137,9 @@
                                                             <h4>Attacker</h4>
                                                         </div>
                                                         <table class="table grouptable">
-                                                            <tbody>
-                                                                <tr class="table-panel" *ngFor="let item of team_squad_A;let a = index">
+                                                            <tbody class="table-panel" *ngFor="let item of team_squad_A;let a = index">
+                                                                <tr (click)="Playerdetails(item.id)">
+
                                                                     <td class="no">{{a+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -157,8 +158,8 @@
                                                             <h4>Defender</h4>
                                                         </div>
                                                         <table class=" table grouptable">
-                                                            <tbody>
-                                                                <tr class="table-panel" *ngFor="let item of team_squad_D;let d = index">
+                                                            <tbody class="table-panel" *ngFor="let item of team_squad_D;let d = index">
+                                                                <tr (click)="Playerdetails(item.id)">
                                                                     <td class="no">{{d+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -178,8 +179,8 @@
                                                             <h4>Forward</h4>
                                                         </div>
                                                         <table class=" table grouptable">
-                                                            <tbody>
-                                                                <tr class="table-panel" *ngFor="let item of team_squad_F;let f = index">
+                                                            <tbody class="table-panel" *ngFor="let item of team_squad_F;let f = index">
+                                                                <tr (click)="Playerdetails(item.id)">
                                                                     <td class="no">{{f+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -199,8 +200,8 @@
                                                             <h4>Goalkeeper</h4>
                                                         </div>
                                                         <table class=" table grouptable">
-                                                            <tbody>
-                                                                <tr class="table-panel" *ngFor="let item of team_squad_G;let g = index">
+                                                            <tbody class="table-panel" *ngFor="let item of team_squad_G;let g = index">
+                                                                <tr (click)="Playerdetails(item.id)">
                                                                     <td class="no">{{g+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -219,8 +220,8 @@
                                                             <h4>Midfielder</h4>
                                                         </div>
                                                         <table class=" table grouptable">
-                                                            <tbody>
-                                                                <tr class="table-panel" *ngFor="let item of team_squad_M;let m = index">
+                                                            <tbody class="table-panel" *ngFor="let item of team_squad_M;let m = index">
+                                                                <tr (click)="Playerdetails(item.id)">
                                                                     <td class="no">{{m+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
