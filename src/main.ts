@@ -10,3 +10,9 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
+ 
+  console.log("env is",environment);
+
+  if (environment.production==true) {
+    window.console.log = function(){};
+   }

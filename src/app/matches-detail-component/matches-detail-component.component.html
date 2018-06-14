@@ -309,18 +309,18 @@
 
 
                                                             <div class="card-body" *ngFor="let player of localteam_player_lineup;let i=index">
-                                                                <div class="lineup_data">
-                                                                    <a href="">
-                                                                        <div class="col-xs-2 lineup_img">
-                                                                            <img src="{{player.picture}}">
-                                                                        </div>
-                                                                        <div class="col-xs-2 lineup_number">
-                                                                            <p>{{player.number}}</p>
-                                                                        </div>
-                                                                        <div class="col-xs-8 lineup_name">
-                                                                            <p>{{player.name}}</p>
-                                                                        </div>
-                                                                    </a>
+                                                                <div class="lineup_data" (click)="Playerdetails(player.id)">
+
+                                                                    <div class="col-xs-2 lineup_img">
+                                                                        <img src="{{player.picture}}">
+                                                                    </div>
+                                                                    <div class="col-xs-2 lineup_number">
+                                                                        <p>{{player.number}}</p>
+                                                                    </div>
+                                                                    <div class="col-xs-8 lineup_name">
+                                                                        <p>{{player.name}}</p>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="card-body" *ngIf="localteam_player_lineup.length <= 0">
@@ -340,18 +340,18 @@
                                                             </div>
 
                                                             <div class="card-body" *ngFor="let player of localteam_player_subs;let i=index">
-                                                                <div class="lineup_data">
-                                                                    <a href="">
-                                                                        <div class="col-xs-2 lineup_img">
-                                                                            <img src="{{player.picture}}">
-                                                                        </div>
-                                                                        <div class="col-xs-2 lineup_number">
-                                                                            <p>{{player.number}}</p>
-                                                                        </div>
-                                                                        <div class="col-xs-8 lineup_name">
-                                                                            <p>{{player.name}}</p>
-                                                                        </div>
-                                                                    </a>
+                                                                <div class="lineup_data" (click)="Playerdetails(player.id)">
+
+                                                                    <div class="col-xs-2 lineup_img">
+                                                                        <img src="{{player.picture}}">
+                                                                    </div>
+                                                                    <div class="col-xs-2 lineup_number">
+                                                                        <p>{{player.number}}</p>
+                                                                    </div>
+                                                                    <div class="col-xs-8 lineup_name">
+                                                                        <p>{{player.name}}</p>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="card-body" *ngIf="localteam_player_subs.length <= 0">
@@ -380,18 +380,18 @@
                                                             </div>
 
                                                             <div class="card-body" *ngFor="let player of visitorteam_player_lineup;let i=index">
-                                                                <div class="lineup_data">
-                                                                    <a href="">
-                                                                        <div class="col-xs-2 lineup_img">
-                                                                            <img src="{{player.picture}}">
-                                                                        </div>
-                                                                        <div class="col-xs-2 lineup_number">
-                                                                            <p>{{player.number}}</p>
-                                                                        </div>
-                                                                        <div class="col-xs-8 lineup_name">
-                                                                            <p>{{player.name}}</p>
-                                                                        </div>
-                                                                    </a>
+                                                                <div class="lineup_data" (click)="Playerdetails(player.id)">
+
+                                                                    <div class="col-xs-2 lineup_img">
+                                                                        <img src="{{player.picture}}">
+                                                                    </div>
+                                                                    <div class="col-xs-2 lineup_number">
+                                                                        <p>{{player.number}}</p>
+                                                                    </div>
+                                                                    <div class="col-xs-8 lineup_name">
+                                                                        <p>{{player.name}}</p>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="card-body" *ngIf="visitorteam_player_lineup.length <= 0">
@@ -408,18 +408,18 @@
                                                             </div>
 
                                                             <div class="card-body" *ngFor="let player of visitorteam_player_subs;let i=index">
-                                                                <div class="lineup_data">
-                                                                    <a href="">
-                                                                        <div class="col-xs-2 lineup_img">
-                                                                            <img src="{{player.picture}}">
-                                                                        </div>
-                                                                        <div class="col-xs-2 lineup_number">
-                                                                            <p>{{player.number}}</p>
-                                                                        </div>
-                                                                        <div class="col-xs-8 lineup_name">
-                                                                            <p>{{player.name}}</p>
-                                                                        </div>
-                                                                    </a>
+                                                                <div class="lineup_data" (click)="Playerdetails(player.id)">
+
+                                                                    <div class="col-xs-2 lineup_img">
+                                                                        <img src="{{player.picture}}">
+                                                                    </div>
+                                                                    <div class="col-xs-2 lineup_number">
+                                                                        <p>{{player.number}}</p>
+                                                                    </div>
+                                                                    <div class="col-xs-8 lineup_name">
+                                                                        <p>{{player.name}}</p>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="card-body" *ngIf="visitorteam_player_subs.length <= 0">

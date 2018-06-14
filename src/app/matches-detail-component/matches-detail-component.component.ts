@@ -533,7 +533,9 @@ export class MatchesDetailComponentComponent implements OnInit {
 
 
 
-
+    Playerdetails(player_id){
+        this.router.navigate(['/player', player_id]);
+      }
 
 
     gotomatch() {
