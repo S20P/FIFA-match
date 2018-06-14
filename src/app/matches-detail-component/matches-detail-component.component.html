@@ -281,9 +281,185 @@
                                                         <h4>
                                                             <b>STATS</b>
                                                         </h4>
+                                                        <!-- Total Attempts -->
+                                                        <div class="stats_list" *ngFor="let stats of match_stats_collection">
+                                                            <!-- POSSESSION -->
+                                                            <div class="row">
+                                                                <p>Possession</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_possesiontime}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
 
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_shots_total + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_shots_total + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_possesiontime}}</p>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="row">
+                                                                <p>Total Attempts</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_shots_total}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_shots_total + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_shots_total + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_shots_total}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Corners -->
+                                                            <div class="row">
+                                                                <p>Corners</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_corners}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_corners + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_corners + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_corners}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Shot on Target -->
+                                                            <div class="row">
+                                                                <p>Shot on Target</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_shots_ongoal}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_shots_ongoal + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_shots_ongoal + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_shots_ongoal}}</p>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!-- Shot off Target -->
+                                                            <div class="row">
+                                                                <p>Shot off Target</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_offsides}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_offsides + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_offsides + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_offsides}}</p>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!-- Offsides -->
+                                                            <div class="row">
+                                                                <p>Offsides</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_offsides}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_offsides + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_offsides + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_offsides}}</p>
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                            <!-- Fouls -->
+                                                            <div class="row">
+                                                                <p>Fouls</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_fouls}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_fouls + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_fouls + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_fouls}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Saves -->
+                                                            <div class="row">
+                                                                <p>Saves</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_saves}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_saves + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_saves + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_saves}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Discipline-Yellow Card -->
+                                                            <div class="row">
+                                                                <p>Discipline-Yellow Cards</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_yellowcards}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_yellowcards + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_yellowcards + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_yellowcards}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Discipline-Red Card -->
+                                                            <div class="row">
+                                                                <p>Discipline-Red Cards</p>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.lt_redcards}}</p>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                                                    <div class="status-progress">
+                                                                        <div class="status-progress-bar" role="progressbar" [style.width]="stats.lt_redcards + '%'" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        <div class="status-progress-bar bg-vist-progress" role="progressbar" [style.width]="stats.vt_redcards + '%'" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                                                    <p>{{stats.vt_redcards}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- status end -->
                                                     </div>
-                                                    <!-- status end -->
                                                 </div>
                                             </div>
 

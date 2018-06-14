@@ -32,12 +32,13 @@ export class MatchesDetailComponentComponent implements OnInit {
     ic_event_own_goal;
     ic_event_goal;
 
+    match_stats_collection = [];
 
     public showloader: boolean = false;
     private subscription: Subscription;
     private timer: Observable<any>;
 
-
+    statsA_min;
 
 
     constructor(
@@ -54,6 +55,12 @@ export class MatchesDetailComponentComponent implements OnInit {
     }
 
     ngOnInit() {
+
+
+        
+
+        this.statsA_min = '20';
+
         this.setTimer();
 
         this.route.paramMap.subscribe((params: ParamMap) => {
@@ -103,7 +110,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                         let month = arr[1];
                         let year = arr[2];
                         var fulldate = year + "-" + month + "-" + day;
- 
+
                         //Change UTC timezone to IST(Local)
                         let timezone = fulldate + " " + result[k].time;
                         let match_time = calcTime(timezone, '+11');
@@ -257,6 +264,10 @@ export class MatchesDetailComponentComponent implements OnInit {
         this.localteam_player_subs = [];
         this.visitorteam_player_subs = [];
 
+
+        this.match_stats_collection = [];
+
+
         //this.match_detailcollection;
         console.log("match_id", current_matchId);
         this.matchService.GetCommentariesByMatchId(current_matchId).subscribe(data => {
@@ -270,6 +281,9 @@ export class MatchesDetailComponentComponent implements OnInit {
                     let lineup = result[l].lineup;
                     let subs = result[l].subs;
                     let comments = result[l].comments;
+
+
+
                     //    localteam_lineup------------------------------------------------------------------------------------
                     let localteam_lineup = lineup['localteam'];
 
@@ -390,6 +404,11 @@ export class MatchesDetailComponentComponent implements OnInit {
                     //  end visitorteam_subs------------------------------------------------------------------------------------
 
 
+
+
+
+
+
                     //  comments---------------------------------------------------------------------------------------
 
                     for (var c = 0; c < comments.length; c++) {
@@ -496,6 +515,50 @@ export class MatchesDetailComponentComponent implements OnInit {
                     //  end comments------------------------------------------------------------------------------------
 
 
+
+                    //    match_stats------------------------------------------------------------------------------------
+                                let match_stats = result[l].match_stats;
+
+                                let localteam_match_stats = match_stats['localteam'];
+                                let visitorteam_match_stats = match_stats['visitorteam'];
+                               
+                                //   lt for localteam && vt for visitorteam
+
+                                for (var st = 0; st < localteam_match_stats.length; st++) {
+                                    this.match_stats_collection.push({
+                                        "lt_corners":localteam_match_stats[st].corners,
+                                        "lt_fouls":localteam_match_stats[st].fouls,
+                                        "lt_offsides":localteam_match_stats[st].offsides,
+                                        "lt_possesiontime":localteam_match_stats[st].possesiontime,
+                                        "lt_redcards":localteam_match_stats[st].redcards,
+                                        "lt_saves":localteam_match_stats[st].saves,
+                                        "lt_shots_ongoal":localteam_match_stats[st].shots_ongoal,
+                                        "lt_shots_total":localteam_match_stats[st].shots_total,
+                                        "lt_yellowcards":localteam_match_stats[st].yellowcards,
+                                        "vt_corners":visitorteam_match_stats[st].corners,
+                                        "vt_fouls":visitorteam_match_stats[st].fouls,
+                                        "vt_offsides":visitorteam_match_stats[st].offsides,
+                                        "vt_possesiontime":visitorteam_match_stats[st].possesiontime,
+                                        "vt_redcards":visitorteam_match_stats[st].redcards,
+                                        "vt_saves":visitorteam_match_stats[st].saves,
+                                        "vt_shots_ongoal":visitorteam_match_stats[st].shots_ongoal,
+                                        "vt_shots_total":visitorteam_match_stats[st].shots_total,
+                                        "vt_yellowcards":visitorteam_match_stats[st].yellowcards
+                                    });
+
+                                }
+                    //  end  match_stats------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
                 }
             }
         });
@@ -533,9 +596,9 @@ export class MatchesDetailComponentComponent implements OnInit {
 
 
 
-    Playerdetails(player_id){
+    Playerdetails(player_id) {
         this.router.navigate(['/player', player_id]);
-      }
+    }
 
 
     gotomatch() {
