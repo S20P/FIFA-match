@@ -25,7 +25,6 @@
     </div>
 </div>
 
-
 <div class="container">
     <div class="match-page-section">
         <div class="row">
@@ -35,9 +34,12 @@
                         <div class="col-md-4">
 
                             <div class="md-form">
-                                <select name="options" id="select" class="browser-default md-select form-control match-droupdown">
-                    <option  *ngFor="let title of match_dropdown_title;let i=index" value="{{title}}" [selected]="i==0">{{title}}</option>
-                    </select>
+
+                                <select name="options" id="select" class="browser-default md-select form-control match-droupdown" (change)="filterMatches($event.target.value)">
+                                    <option *ngFor="let title of match_dropdown_title;let i=index" value="{{title}}" [selected]="i==0">
+                                       {{title}}
+                                   </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -78,6 +80,7 @@
                                     </div>
                                     <div class="match-list-card-body collapse in" id="collapse{{i}}" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
                                         <div *ngFor="let item_details of match_ground_details;let j = index">
+
                                             <div *ngIf="item_details.comp_id==item.id;else nomatchcomp">
                                                 <div (click)="matchdetails(item_details.id,item_details.comp_id)">
                                                     <div class="row match-list show-responsive-list">

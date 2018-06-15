@@ -191,7 +191,6 @@ select#select option {
     border-bottom: 0px solid #bdbdbd;
     border-radius: 0;
     outline: 0;
-    /* height: 2.1rem; */
     width: 100%;
     color: #ffffff;
     font-size: 20px;
@@ -212,8 +211,31 @@ select#select option {
 
 .md-select option {
     background: #001c54;
+    padding: 0 4px;
 }
 
 .md-select option:hover {
     background: #001c54;
+}
+
+
+/*the container must be positioned relative:*/
+
+.md-select {
+    position: relative;
+    font-family: Arial;
+}
+
+.md-select select {
+    display: none;
+    /*hide original SELECT element:*/
+}
+
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+.custom-select-option {
+    padding-left: 2em;
+    padding: 0.5em;
 }

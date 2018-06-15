@@ -491,3 +491,19 @@ ul.nav.nav-tabs {
     font-size: 14px;
     font-weight: bold;
 }
+
+@media (min-width: 992px) {
+    .remove_left_padding {
+        padding-left: 7.5px;
+    }
+    .remove_right_padding {
+        padding-right: 7.5px;
+    }
+    .match-page-section {
+        padding: 40px 0px;
+    }
+}
+
+.sidebar {
+    padding: 15px 15px 0 0px;
+}

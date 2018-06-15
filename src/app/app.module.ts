@@ -11,6 +11,7 @@ import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     HttpModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [MatchesApiService, MatchService, DatePipe],
