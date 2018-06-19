@@ -12,11 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { ArrayShort } from './short-array.pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { SidebarComponent } from './sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    ArrayShort //Pipe
+    ArrayShort,
+    SidebarComponent //Pipe
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class MatchService {
   getStadiumAll_API:string="/assets/data/json/FifaMatchStadiums.json";
   GetTeamById_API:string="http://206.189.161.54:8080/MobileAPI/GetTeamById";
   GetPlayerById_API :string = "http://206.189.161.54:8080/MobileAPI/GetPlayerProfileById";
-
+  GetAllKnockout_API : string = "http://206.189.161.54:8080/MobileAPI/GetAllKnockout";
   StaticMatch_API:string="/assets/data/json/FifaMatchSchedule.json";
   
   constructor(private http: HttpClient) 
@@ -70,6 +70,14 @@ export class MatchService {
     let apiurl = `${this.StaticMatch_API}`;
     return  this.http.get(apiurl);
   }
+
+  GetAllKnockout(){
+    let apiurl = `${this.GetAllKnockout_API}`;
+    return  this.http.get(apiurl);
+  }
+
+
+
 
 
 }

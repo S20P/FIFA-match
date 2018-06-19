@@ -129,7 +129,7 @@ export class MatchGroupComponent implements OnInit {
     // set showloader to true to show loading div on view
     this.showloader = true;
 
-    this.timer = Observable.timer(3000); // 5000 millisecond means 5 seconds
+    this.timer = Observable.timer(2000); // 5000 millisecond means 5 seconds
     this.subscription = this.timer.subscribe(() => {
       // set showloader to false to hide loading div from view after 5 seconds
       this.showloader = false;

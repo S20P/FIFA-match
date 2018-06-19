@@ -117,6 +117,7 @@ export class MatchesDashboardComponent implements OnInit {
 
 
     var dateofday = Date();
+    
     var currentdaydate = formatDate(dateofday);
     function formatDate(date) {
       var d = new Date(date),
@@ -152,7 +153,33 @@ export class MatchesDashboardComponent implements OnInit {
     //      //console.log("msg-data",data);
     //      this.messages.push(data['data']);
     //    });
+
+   // this.GetAllKnockout();
+
+   var date1 = new Date('2018/06/19 01:30:00 PM');
+   // Sun Dec 17 1995 03:24:00 GMT...
+    
+   var date2 = new Date();
+   // Sun Dec 17 1995 03:24:00 GMT...
+   
+     if(date1 <= date2){
+           console.log("date is up");
+     }
+     else{
+       console.log("date is less");
+     }
+
   }
+
+  // GetAllKnockout(){
+  //   this.matchService.GetAllKnockout().subscribe(data => {
+  //     console.log("GetAllKnockout", data);
+  //   });
+  // }
+     
+
+
+
 
 
   get_title(title) {
@@ -211,26 +238,22 @@ export class MatchesDashboardComponent implements OnInit {
 
       console.log("Matches is Live", data);
       if (result.events !== undefined) {
-
          
           this.live_matches= true;
           var result_events = data['data'].events;
-          
        
           let current_matchId = result_events['id'];
           // this.GetCommentariesByMatchId(current_matchId);
-
        
                   this.live_matches_id = result_events['id'];
                   this.l_timer = result_events['timer'];
                   this.l_visitorteam_score = result_events['visitorteam_score'];
                   this.l_localteam_score = result_events['localteam_score'];
-
-
       }
-    })
+    });
   }
 
+    
 
 
 
@@ -435,7 +458,7 @@ export class MatchesDashboardComponent implements OnInit {
     // set showloader to true to show loading div on view
     this.showloader = true;
 
-    this.timer = Observable.timer(3000); // 5000 millisecond means 5 seconds
+    this.timer = Observable.timer(2000); // 5000 millisecond means 5 seconds
     this.subscription = this.timer.subscribe(() => {
       // set showloader to false to hide loading div from view after 5 seconds
       this.showloader = false;

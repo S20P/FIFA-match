@@ -118,7 +118,6 @@
 
                                         <ng-template #noscore>
 
-
                                             <div *ngIf="live_matches; else noscoreoff">
                                                 <div *ngIf="item_details.id==live_matches_id">
                                                     <div class="col-sm-2 col-xs-2 flag-width">
@@ -163,8 +162,8 @@
                                         </ng-template>
 
 
-                                        <div class="col-sm-1 col-xs-1" *ngIf="status_offon">
-                                            <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                        <div class="col-sm-1 col-xs-1">
+                                            <span class="status_offon" *ngIf="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
                                         </div>
                                     </div>
 
@@ -185,8 +184,8 @@
                                             <p><img class="flag-width" src="{{item_details.localteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score">{{item_details.localteam_score}}</span> {{item_details.localteam_name}}</p>
                                             <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt=""><span *ngIf="item_details.status==='FT'" class="score"> {{item_details.localteam_score}} </span>{{item_details.visitorteam_name}}</p>
                                         </div>
-                                        <div class="col-md-1 col-sm-1 col-xs-1 circle" *ngIf="status_offon">
-                                            <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                        <div class="col-md-1 col-sm-1 col-xs-1 circle">
+                                            <span class="status_offon" *ngIf="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
                                         </div>
                                     </div>
 

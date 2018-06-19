@@ -385,7 +385,7 @@ export class TeamDetailComponent implements OnInit {
   public setTimer() {
     this.showloader = true;
     $('#dd').refresh;
-    this.timer = Observable.timer(3000);
+    this.timer = Observable.timer(2000);
     this.subscription = this.timer.subscribe(() => {
       this.showloader = false;
     });

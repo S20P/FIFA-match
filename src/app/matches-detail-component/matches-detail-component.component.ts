@@ -4,13 +4,13 @@ import { MatchService } from '../service/match.service';
 
 import { MatchesApiService } from '../service/live_match/matches-api.service';
 
-
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
 import { DatePipe } from '@angular/common';
+
 
 @Component(
     {
@@ -55,7 +55,8 @@ export class MatchesDetailComponentComponent implements OnInit {
         private router: Router,
         private matchService: MatchService,
         public datepipe: DatePipe,
-        private liveMatchesApiService: MatchesApiService
+        private liveMatchesApiService: MatchesApiService,
+    
     ) {
 
         this.ic_event_penalty_scored = false;
@@ -99,7 +100,7 @@ export class MatchesDetailComponentComponent implements OnInit {
         // set showloader to true to show loading div on view
         this.showloader = true;
 
-        this.timer = Observable.timer(3000); // 5000 millisecond means 5 seconds
+        this.timer = Observable.timer(2000); // 5000 millisecond means 5 seconds
         this.subscription = this.timer.subscribe(() => {
             // set showloader to false to hide loading div from view after 5 seconds
             this.showloader = false;
@@ -123,11 +124,15 @@ export class MatchesDetailComponentComponent implements OnInit {
             console.log("Matches is Live", data);
             if (result.events !== undefined) {
 
-                this.match_detailcollection =[];
-                this.events_collection =[];
-                this.live_matches= true;
+               
                 var result_events = data['data'].events;
                 console.log("date is ", result_events.formatted_date);
+              
+                
+                if(this.id==result_events['id'] && this.comp_id==result_events['comp_id']){
+                    this.match_detailcollection =[];
+                    this.events_collection =[];
+                    this.live_matches= true;
 
                 let date_formatted = result_events.formatted_date.replace('.', '/');
                 let date = date_formatted.replace('.', '/');
@@ -256,6 +261,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                         });
                 }
            }
+        }
         });
 
         function isUrlExists(image_url) {
@@ -794,21 +800,23 @@ export class MatchesDetailComponentComponent implements OnInit {
        
                this.liveMatchesApiService.liveMatches().subscribe(data => {
 
-            console.log("Live-Matches-data", data);
-
+                console.log("Live-Matches-data", data);
           
-            var result = data['data'];
-
-
+                var result = data['data'];
+            
             console.log("Matches is Live comments", data);
             if (result.commentaries !== undefined) {
-                this.localteam_player_lineup = [];
-                this.visitorteam_player_lineup = [];
-                this.localteam_player_subs = [];
-                this.visitorteam_player_subs = [];
-                this.match_stats_collection = [];
-                this.Commentary_collection = [];
+              
                 var result_comments = data['data'].commentaries;
+
+                if(this.id==result_comments['match_id']){
+                    this.localteam_player_lineup = [];
+                    this.visitorteam_player_lineup = [];
+                    this.localteam_player_subs = [];
+                    this.visitorteam_player_subs = [];
+                    this.match_stats_collection = [];
+                    this.Commentary_collection = [];
+                                
 
                 let lineup = result_comments['lineup'];
                 let subs = result_comments['subs'];
@@ -1074,7 +1082,7 @@ export class MatchesDetailComponentComponent implements OnInit {
 
                 }
                 //  end  match_stats------------------------------------------------------------------------------------
-
+            }
 
             }
 

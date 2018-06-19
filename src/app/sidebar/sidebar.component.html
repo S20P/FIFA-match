@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body sidebar-card-body" *ngFor="let item_details of match_ground_details;let j = index">
+        <div class="list-cursor" *ngIf="match_ground_details.length>0;else nomatchcomp" (click)="matchdetails(item_details.id,item_details.comp_id)">
+            <div *ngIf="j==0" class="header">
+                <p>{{item_details.time|date:short}}</p>
+            </div>
+            <div class="r-dashbord-team">
+                <div class="col-md-5 col-sm-5 col-xs-5  match-team-group">
+                    <p class="upertxt">{{item_details.match_number}}</p>
+                    <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+                    <p class="btm-txt">{{item_details.match_type}}</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 r-flag-team">
+                    <p>
+                        <img class="flag-width" src="{{item_details.localteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score">{{item_details.localteam_score}}</span> {{item_details.localteam_name}}</p>
+                    <p>
+                        <img class="flag-width" src="{{item_details.visitorteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score"> {{item_details.localteam_score}} </span>{{item_details.visitorteam_name}}</p>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 circle">
+                    <span class="status_offon" *ngIf="status_offon">
+                  <i class="fa fa-circle" aria-hidden="true"></i>
+              </span>
+                </div>
+            </div>
+        </div>
+        <ng-template #nomatchcomp>
+            <div *ngIf="j==0" class="list-line row match-list">
+                <p>No matches scheduled for today</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

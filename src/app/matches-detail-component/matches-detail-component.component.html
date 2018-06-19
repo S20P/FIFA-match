@@ -1,7 +1,7 @@
 <div id="loading" *ngIf='showloader'>
     <div class="loader">Loading...</div>
 </div>
-<h1>{{status}}</h1>
+
 <div class="container">
     <div class="match-detail-section">
 
@@ -105,15 +105,15 @@
                             <div cl></div>
                             <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
                                 <!-- tabs body  -->
-                                <div class="panel-body">
+                                <div class="">
                                     <div class="tab-content">
                                         <!--******** DETAILS ************-->
                                         <div class="tab-pane fade in active" id="tab1default">
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 remove_right_padding">
                                                     <!-- key Events -->
-                                                    <div class="event theme-body-color">
+                                                    <div class="event ">
                                                         <h4>
                                                             <b>Key Events</b>
                                                         </h4>
@@ -276,16 +276,16 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div *ngIf="events_collection.length <= 0">
+                                                        <div class="card-body" *ngIf="events_collection.length <= 0">
                                                             <p>No Events </p>
                                                         </div>
 
                                                     </div>
                                                     <!-- key Events end -->
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 remove_left_padding">
                                                     <!-- status -->
-                                                    <div class="status theme-body-color">
+                                                    <div class="status">
                                                         <h4>
                                                             <b>STATS</b>
                                                         </h4>
@@ -548,6 +548,10 @@
 
                                                         </div>
                                                         <!-- status end -->
+                                                        <div class="card-body" *ngIf="match_stats_collection.length <= 0">
+                                                            <p>No Status </p>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -560,10 +564,10 @@
                                         <div class="tab-pane" id="tab2default">
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 remove_right_padding">
                                                     <!-- LINEUPS localteam Title -->
 
-                                                    <div class="lineup_one theme-body-color">
+                                                    <div class="lineup_one ">
                                                         <div class="card">
                                                             <div class="col-md-12 lineupititle">
                                                                 <h4>
@@ -573,7 +577,7 @@
                                                             </div>
 
 
-                                                            <div class="card-body theme-hover" *ngFor="let player of localteam_player_lineup;let i=index">
+                                                            <div class="card-body theme-hover" *ngFor="let player of localteam_player_lineup|orderBy:'number';let i=index">
                                                                 <div class="lineup_data" (click)="Playerdetails(player.id)">
 
                                                                     <div class="col-xs-2 lineup_img">
@@ -604,7 +608,7 @@
                                                                 </h4>
                                                             </div>
 
-                                                            <div class="card-body  theme-hover" *ngFor="let player of localteam_player_subs;let i=index">
+                                                            <div class="card-body  theme-hover" *ngFor="let player of localteam_player_subs|orderBy:'number';let i=index">
                                                                 <div class="lineup_data" (click)="Playerdetails(player.id)">
 
                                                                     <div class="col-xs-2 lineup_img">
@@ -632,10 +636,10 @@
                                                 </div>
 
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 remove_left_padding">
                                                     <!-- LINEUPS visitorteam Title -->
 
-                                                    <div class="lineup_one theme-body-color lineup_margin">
+                                                    <div class="lineup_one  lineup_margin">
                                                         <div class="card">
                                                             <div class="col-md-12 lineupititle">
                                                                 <h4>
@@ -644,7 +648,7 @@
                                                                 </h4>
                                                             </div>
 
-                                                            <div class="card-body  theme-hover" *ngFor="let player of visitorteam_player_lineup;let i=index">
+                                                            <div class="card-body  theme-hover" *ngFor="let player of visitorteam_player_lineup|orderBy:'number';let i=index">
                                                                 <div class="lineup_data" (click)="Playerdetails(player.id)">
 
                                                                     <div class="col-xs-2 lineup_img">
@@ -672,7 +676,7 @@
                                                                 </h4>
                                                             </div>
 
-                                                            <div class="card-body  theme-hover" *ngFor="let player of visitorteam_player_subs;let i=index">
+                                                            <div class="card-body  theme-hover" *ngFor="let player of visitorteam_player_subs|orderBy:'number';let i=index">
                                                                 <div class="lineup_data" (click)="Playerdetails(player.id)">
 
                                                                     <div class="col-xs-2 lineup_img">
@@ -705,7 +709,7 @@
                                         <!--******** Commentry ************-->
                                         <div class="tab-pane" id="tab3default">
 
-                                            <div class="theme-body-color Commentary-box">
+                                            <div class=" Commentary-box">
                                                 <div class="card">
                                                     <div class="col-md-12 header">
                                                         <h4><b>COMMENTARY</b></h4>
@@ -754,23 +758,24 @@
                                 <!--end tabs body  -->
                             </div>
                             <!--side bar  -->
-                            <div class="col-md-4 col-sm-8 col-lg-4 remove_left_padding">
+                            <div class="col-md-4 col-sm-12 col-lg-4 remove_left_padding">
                                 <!-- primier -->
-                                <div class="sidebar">
-                                    <div class="status theme-body-color">
 
+
+                                <app-sidebar></app-sidebar>
+
+
+
+                                <!-- <div class="sidebar">
+                                    <div class="status ">
                                         <h4>
                                             <b>Sidebar</b>
                                         </h4>
-                                        <!-- Total Attempts -->
-                                        <!-- POSSESSION -->
                                         <div class="row">
                                             <p>No Matches</p>
                                         </div>
-
                                     </div>
-                                    <!-- primier end -->
-                                </div>
+                                </div> -->
                             </div>
                             <!--end side bar  -->
                         </div>

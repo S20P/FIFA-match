@@ -106,3 +106,9 @@ td:first-child {
     text-align: center;
     cursor: pointer;
 }
+
+@media (max-width:360px) {
+    table.table.grouptable tr td {
+        font-size: 12px !important;
+    }
+}

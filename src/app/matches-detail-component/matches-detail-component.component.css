@@ -125,9 +125,10 @@
     font-weight: bold;
 }
 
-.event {
+
+/* .event {
     padding-bottom: 15px;
-}
+} */
 
 
 /* commentry */
@@ -137,7 +138,7 @@
 }
 
 .Commentary-box .card {
-    background: #f4f4f4;
+    background: #ffffff;
     border-radius: 0;
     box-shadow: unset;
 }
@@ -360,6 +361,12 @@ img.lineup_title_img {
 
 .panel.with-nav-tabs.panel-default {
     border-radius: 0;
+    background: #eeeeee;
+    margin-bottom: 20px;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
 }
 
 
@@ -489,4 +496,27 @@ ul.nav.nav-tabs {
 
 .vt-progress {
     background-color: #337ab7;
+}
+
+.sidebar .card {
+    background: #f4f4f4!important;
+}
+
+.lineup_one .card {
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.lineup_one {
+    background-color: #eeeeee;
+}
+
+.event,
+.status,
+.lineup_one {
+    margin-bottom: 15px;
+}
+
+.lineup_one .card-body p {
+    margin: 0px;
 }
