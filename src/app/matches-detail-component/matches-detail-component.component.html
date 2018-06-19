@@ -30,27 +30,31 @@
                         <div class="team-score">
                             <!-- <h2>1 - 0</h2> -->
 
-                            <div *ngIf="match.status=='FT'; else time1">
-                                <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
-                            </div>
-
-                            <ng-template #time1>
+                            <div *ngIf="live_matches;else offstatus">
                                 <div class="team-status">
                                     <p class="big">{{match.time| date: 'dd MMM yyyy'}}</p>
                                     <div class="border"></div>
-                                    <h2>{{match.time|date:'hh:mm a'}}</h2>
-                                </div>
-                            </ng-template>
-
-                            <div *ngIf="live_matches">
-                                <div class="team-status">
-                                    <h2 class="big">{{match.status}}</h2>
+                                    <div *ngIf="match.status!=='FT'">
+                                        <h2 class="big">{{match.status}}</h2>
+                                    </div>
                                 </div>
                                 <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
                             </div>
 
+                            <ng-template #offstatus>
 
+                                <div *ngIf="match.status=='FT'; else time1">
+                                    <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
+                                </div>
 
+                                <ng-template #time1>
+                                    <div class="team-status">
+                                        <p class="big">{{match.time| date: 'dd MMM yyyy'}}</p>
+                                        <div class="border"></div>
+                                        <h2>{{match.time|date:'hh:mm a'}}</h2>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -759,23 +763,7 @@
                             </div>
                             <!--side bar  -->
                             <div class="col-md-4 col-sm-12 col-lg-4 remove_left_padding">
-                                <!-- primier -->
-
-
                                 <app-sidebar></app-sidebar>
-
-
-
-                                <!-- <div class="sidebar">
-                                    <div class="status ">
-                                        <h4>
-                                            <b>Sidebar</b>
-                                        </h4>
-                                        <div class="row">
-                                            <p>No Matches</p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                             <!--end side bar  -->
                         </div>

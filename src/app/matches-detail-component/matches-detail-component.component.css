@@ -520,3 +520,11 @@ ul.nav.nav-tabs {
 .lineup_one .card-body p {
     margin: 0px;
 }
+
+.lineup_number {
+    margin-top: 8px;
+}
+
+.lineup_name {
+    margin-top: 8px;
+}

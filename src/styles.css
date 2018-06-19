@@ -479,9 +479,7 @@ min-width: 350px;
         -webkit-transform: rotate(-360deg);
         transform: rotate(-360deg);
     }
-}
-
-#loading {
+} {
     width: 100%;
     height: 100%;
     top: -20px;
@@ -492,9 +490,7 @@ min-width: 350px;
     background-color: #fff;
     z-index: 99;
     text-align: center;
-}
-
-#loading-image {
+}-image {
     width: 80px;
     position: absolute;
     top: 50%;
@@ -507,11 +503,6 @@ min-width: 350px;
     height: 100%;
     top: -20px;
     left: 0px;
-    position: fixed;
-    display: block;
-    opacity: 0.7;
-    background-color: #fff;
-    z-index: 99;
     text-align: center;
 }
 
@@ -528,7 +519,7 @@ min-width: 350px;
 }
 
 .loader {
-    color: #2258c3;
+    /* color: #2258c3;
     font-size: 10px;
     margin: 80px auto;
     position: relative;
@@ -542,7 +533,24 @@ min-width: 350px;
     margin: auto;
     display: block;
     vertical-align: middle;
-    top: 50%;
+      top: 18%;
+    left: 50%;
+    z-index: 100; */
+    color: #2258c3;
+    font-size: 10px;
+    margin: 80px auto;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+    position: absolute;
+    margin: auto;
+    display: block;
+    vertical-align: middle;
+    /* top: 50%; */
+    margin-top: -30px;
     left: 50%;
     z-index: 100;
 }
@@ -693,7 +701,7 @@ p.btm-txt {
 .match_time {
     font-weight: bold;
     margin-top: 20px;
-    padding-right: 0px;
+    /* padding-right: 0px; */
 }
 
 .match_time p {
@@ -820,6 +828,10 @@ i.fa.fa-circle {
     .top-header {
         padding: 6px 0px;
         /* background: #081f2c; */
+    }
+    .loader {
+        font-size: 4px;
+        margin-top: -25px;
     }
 }
 

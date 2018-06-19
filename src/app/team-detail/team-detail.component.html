@@ -77,23 +77,29 @@
                                                                     </div> -->
 
                                                                 <div *ngIf="item_details.status==='FT'; else noscore">
-                                                                    <div class="col-sm-2 col-xs-2 flag-width">
+                                                                    <div class="col-sm-3 col-xs-3 flag-width">
                                                                         <img src="{{item_details.localteam_image}}" alt="">
                                                                         <p>{{item_details.localteam_name}}</p>
                                                                     </div>
-                                                                    <div class="col-sm-1 col-xs-1 match_time">
-                                                                        <p>{{item_details.localteam_score}}</p>
-                                                                    </div>
+
 
                                                                     <div class="col-sm-3 col-xs-3 match-team-group">
-                                                                        <p class="upertxt">{{item_details.match_number}}</p>
-                                                                        <p class="btm-txt">{{item_details.match_type}}</p>
-                                                                    </div>
-                                                                    <div class="col-sm-1 col-xs-1 match_time">
-                                                                        <p>{{item_details.visitorteam_score}}</p>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-2 match_time">
+                                                                                <p>{{item_details.localteam_score}}</p>
+                                                                            </div>
+                                                                            <div class="col-xs-8">
+                                                                                <p class="upertxt ">{{item_details.match_number}}</p>
+                                                                                <p class="btm-txt ">{{item_details.match_type}}</p>
+                                                                            </div>
+                                                                            <div class="col-xs-2 match_time">
+                                                                                <p>{{item_details.visitorteam_score}}</p>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
 
-                                                                    <div class="col-sm-2 col-xs-2 flag-width">
+
+                                                                    <div class="col-sm-3 col-xs-3 flag-width">
                                                                         <img src="{{item_details.visitorteam_image}}" alt="">
                                                                         <p>{{item_details.visitorteam_name}}</p>
                                                                     </div>

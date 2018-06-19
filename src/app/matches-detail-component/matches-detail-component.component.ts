@@ -375,12 +375,6 @@ export class MatchesDetailComponentComponent implements OnInit {
                                 console.log("time is less");
                               }
 
-                            if(match_time){
-                                
-                            }
-
-
-
                             this.match_detailcollection
                                 .push({
                                     "comp_id": result[k].comp_id,
@@ -834,7 +828,6 @@ export class MatchesDetailComponentComponent implements OnInit {
                     this.visitorteam_player_subs = [];
                     this.match_stats_collection = [];
                     this.Commentary_collection = [];
-                                
 
                 let lineup = result_comments['lineup'];
                 let subs = result_comments['subs'];

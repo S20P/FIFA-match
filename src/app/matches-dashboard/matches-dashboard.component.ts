@@ -71,7 +71,7 @@ export class MatchesDashboardComponent implements OnInit {
   live_matches_id;
   
   todays_Matches_title;
-
+  l_status;
 
   constructor(private matchesApiService: MatchesApiService,
     private matchService: MatchService,
@@ -227,7 +227,6 @@ export class MatchesDashboardComponent implements OnInit {
 
 
   GetMatchesByCompetition_ById_live(){
-
             
     this.liveMatchesApiService.liveMatches().subscribe(data => {
          
@@ -247,6 +246,7 @@ export class MatchesDashboardComponent implements OnInit {
           // this.GetCommentariesByMatchId(current_matchId);
        
                   this.live_matches_id = result_events['id'];
+                  this.l_status =  result_events['status'];
                   this.l_timer = result_events['timer'];
                   this.l_visitorteam_score = result_events['visitorteam_score'];
                   this.l_localteam_score = result_events['localteam_score'];
@@ -257,14 +257,8 @@ export class MatchesDashboardComponent implements OnInit {
     
 
 
-
-
-
-
-
-
   GetMatchesByDate(selected) {
-
+    this.todays_Matches_title = selected;
     console.log("selected date is...", selected);
 
     let result = [];
@@ -324,6 +318,20 @@ export class MatchesDashboardComponent implements OnInit {
                   console.log('Image Exists');
                   visitorteam_image = flag_visit;
                 }
+                var date1 = new Date(match_time);
+                // Sun Dec 17 1995 03:24:00 GMT...
+                 
+                var date2 = new Date();
+                // Sun Dec 17 1995 03:24:00 GMT...
+               
+                  if(date1 >= date2){
+                        console.log("time is up");
+                        this.status_offon = true;
+                  }
+                  else{
+                    console.log("time is less");
+                    this.status_offon = false;
+                  }
 
 
                 console.log("Matches type ang g1", data[i]);
@@ -353,7 +361,8 @@ export class MatchesDashboardComponent implements OnInit {
                   "_id": item._id,
                   "id": item.id,
                   "match_number": data[i].match_number,
-                  "match_type": data[i].match_type
+                  "match_type": data[i].match_type,
+                 
                 });
 
               }
@@ -462,7 +471,7 @@ export class MatchesDashboardComponent implements OnInit {
     this.timer = Observable.timer(2000); // 5000 millisecond means 5 seconds
     this.subscription = this.timer.subscribe(() => {
       // set showloader to false to hide loading div from view after 5 seconds
-      this.showloader = false;
+     this.showloader = false;
     });
   }
 

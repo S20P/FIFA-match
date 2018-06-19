@@ -32,15 +32,37 @@ import * as moment from 'moment';
 })
 export class SidebarComponent implements OnInit {
   match_ground_details = [];
+
+  slive_matches:boolean;
+
+  sstatus_offon:boolean;
+  sl_timer;
+  sl_visitorteam_score;
+  sl_localteam_score;
+  slive_matches_id;
+  sl_status;
+
   constructor(private matchesApiService: MatchesApiService,
     private matchService: MatchService,
     private router: Router,
     private route: ActivatedRoute,
     public datepipe: DatePipe,
-    private liveMatchesApiService: MatchesApiService) { }
+    private liveMatchesApiService: MatchesApiService) {
+      this.liveMatchesApiService.liveMatches().subscribe(data => {
+        console.log("Live-Matches-data", data);
+        console.log("live data1", data['data']['events']);
+        var result = data['data'];
+        var events = result.events;
+        console.log("live events", events);
+        this.sstatus_offon = true;
+        this.GetMatchesByCompetition_ById_live();
+        this.slive_matches= true;
+    });
+  
+     }
 
   ngOnInit() {
-   
+    this.sstatus_offon = false;
     var dateofday = Date();
     
     var currentdaydate = formatDate(dateofday);
@@ -57,10 +79,35 @@ export class SidebarComponent implements OnInit {
      console.log("today side bar",currentdaydate);
 
      this.GetMatchesByDate(currentdaydate);
-
-
+    
   }
+  GetMatchesByCompetition_ById_live(){
+            
+    this.liveMatchesApiService.liveMatches().subscribe(data => {
+         
+      console.log("Live-Matches-data", data);
+     
+      var result = data['data'];
 
+      console.log("live data", data['data']['events']);
+
+      console.log("Matches is Live", data);
+      if (result.events !== undefined) {
+         
+          this.slive_matches= true;
+          var result_events = data['data'].events;
+       
+          let current_matchId = result_events['id'];
+          // this.GetCommentariesByMatchId(current_matchId);
+       
+                  this.slive_matches_id = result_events['id'];
+                  this.sl_status =  result_events['status'];
+                  this.sl_timer = result_events['timer'];
+                  this.sl_visitorteam_score = result_events['visitorteam_score'];
+                  this.sl_localteam_score = result_events['localteam_score'];
+      }
+    });
+  }
   GetMatchesByDate(selected) {
 
     console.log("selected date is...", selected);
@@ -122,7 +169,20 @@ export class SidebarComponent implements OnInit {
                   console.log('Image Exists');
                   visitorteam_image = flag_visit;
                 }
-
+                var date1 = new Date(match_time);
+                // Sun Dec 17 1995 03:24:00 GMT...
+                 
+                var date2 = new Date();
+                // Sun Dec 17 1995 03:24:00 GMT...
+               
+                  if(date1 >= date2){
+                        console.log("time is up");
+                        this.sstatus_offon = true;
+                  }
+                  else{
+                    console.log("time is less");
+                    this.sstatus_offon = false;
+                  }
 
                 console.log("Matches type ang g1", data[i]);
                 this.match_ground_details.push({

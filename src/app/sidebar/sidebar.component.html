@@ -7,20 +7,64 @@
             <div class="r-dashbord-team">
                 <div class="col-md-5 col-sm-5 col-xs-5  match-team-group">
                     <p class="upertxt">{{item_details.match_number}}</p>
-                    <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+
+                    <div *ngIf="item_details.id==slive_matches_id;else nolivetime1">
+                        <p class="match_time">{{sl_status}}</p>
+                    </div>
+                    <ng-template #nolivetime1>
+                        <div *ngIf="item_details.status==='FT'; else time">
+                            <p class="match_time">{{item_details.status}}</p>
+                        </div>
+                        <ng-template #time>
+                            <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+                        </ng-template>
+
+                    </ng-template>
+
                     <p class="btm-txt">{{item_details.match_type}}</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 r-flag-team">
-                    <p>
-                        <img class="flag-width" src="{{item_details.localteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score">{{item_details.localteam_score}}</span> {{item_details.localteam_name}}</p>
-                    <p>
-                        <img class="flag-width" src="{{item_details.visitorteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score"> {{item_details.localteam_score}} </span>{{item_details.visitorteam_name}}</p>
+                    <div *ngIf="item_details.id==slive_matches_id;else noscoreoff">
+                        <p><img class="flag-width" src="{{item_details.localteam_image}}" alt="">
+
+                            <span class="score">
+                                        {{sl_localteam_score}}
+                                    </span> {{item_details.localteam_name}}
+                        </p>
+                        <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt="">
+                            <span class="score">
+                                         {{sl_visitorteam_score}} 
+                                        </span> {{item_details.visitorteam_name}}
+                        </p>
+                    </div>
+                    <ng-template #noscoreoff>
+                        <p><img class="flag-width" src="{{item_details.localteam_image}}" alt="">
+
+                            <span *ngIf="item_details.status==='FT'" class="score">
+                                            {{item_details.localteam_score}}
+                                        </span> {{item_details.localteam_name}}
+                        </p>
+                        <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt="">
+                            <span *ngIf="item_details.status==='FT'" class="score">
+                                             {{item_details.visitorteam_score}} 
+                                            </span> {{item_details.visitorteam_name}}
+                        </p>
+                    </ng-template>
+
+
+
                 </div>
+
+
+
                 <div class="col-md-1 col-sm-1 col-xs-1 circle">
-                    <span class="status_offon" *ngIf="status_offon">
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-              </span>
+                    <div *ngIf="slive_matches_id==item_details.id">
+                        <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
         <ng-template #nomatchcomp>
