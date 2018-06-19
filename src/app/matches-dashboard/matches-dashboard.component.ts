@@ -69,7 +69,8 @@ export class MatchesDashboardComponent implements OnInit {
   private timer: Observable<any>;
   date;
   live_matches_id;
-
+  
+  todays_Matches_title;
 
 
   constructor(private matchesApiService: MatchesApiService,
@@ -82,6 +83,7 @@ export class MatchesDashboardComponent implements OnInit {
   ) { 
     this.status_offon = false;
     this.live_matches = false;
+    
   }
 
 
@@ -114,7 +116,7 @@ export class MatchesDashboardComponent implements OnInit {
     this.paramDate = today;
 
     console.log("today", this.paramDate);
-
+    this.todays_Matches_title = today;
 
     var dateofday = Date();
     
@@ -130,12 +132,7 @@ export class MatchesDashboardComponent implements OnInit {
       return [year, month, day].join('-');
     }
  
-    // if (this.paramDate == currentdaydate) {
-    //   this.status_offon = true;
-
-    // } else {
-    //   this.status_offon = false;
-    // }
+  
 
     this.GetMatchesByDate(this.paramDate);
 
@@ -143,9 +140,13 @@ export class MatchesDashboardComponent implements OnInit {
     $("#datepicker").on("change", function () {
       var selected = $(this).val();
     console.log("date is one",selected);
+    this.paramDate = selected;
+    this.todays_Matches_title = selected;
     console.log("date is currentdaydate",currentdaydate);
       self.GetMatchesByDate(selected);
     });
+
+
 
     //  this.matchesApiService
     //    .getMessages()
@@ -156,17 +157,17 @@ export class MatchesDashboardComponent implements OnInit {
 
    // this.GetAllKnockout();
 
-   var date1 = new Date('2018/06/19 01:30:00 PM');
+   var date1 = new Date('2018/06/19 03:20:00 PM');
    // Sun Dec 17 1995 03:24:00 GMT...
     
    var date2 = new Date();
    // Sun Dec 17 1995 03:24:00 GMT...
    
-     if(date1 <= date2){
-           console.log("date is up");
+     if(date1 >= date2){
+           console.log("time is up");
      }
      else{
-       console.log("date is less");
+       console.log("time is less");
      }
 
   }

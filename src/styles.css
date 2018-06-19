@@ -588,13 +588,15 @@ min-width: 350px;
 
 .theme-hover:hover {
     /* background: linear-gradient(-225deg, rgb(93, 125, 187) 0%, rgb(122, 154, 216) 48%, rgb(195, 205, 224) 100%) */
-    background-color: #3e7fff;
-    color: #ffffff;
+    /* background-color: #3e7fff; */
+    background-color: #d8d8d8 !important;
+    cursor: pointer;
 }
 
-.theme-hover:hover p {
+
+/* .theme-hover:hover p {
     color: #fff !important;
-}
+} */
 
 .matches_date {
     padding: 0px;

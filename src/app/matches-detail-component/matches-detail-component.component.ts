@@ -361,6 +361,24 @@ export class MatchesDetailComponentComponent implements OnInit {
                                 visitorteam_image = flag_visit;
                             }
 
+                            console.log(":Matches tiem:",match_time);
+                            var date1 = new Date(match_time);
+                            // Sun Dec 17 1995 03:24:00 GMT...
+                             
+                            var date2 = new Date();
+                            // Sun Dec 17 1995 03:24:00 GMT...
+                            
+                              if(date1 >= date2){
+                                    console.log("time is up");
+                              }
+                              else{
+                                console.log("time is less");
+                              }
+
+                            if(match_time){
+                                
+                            }
+
 
 
                             this.match_detailcollection
