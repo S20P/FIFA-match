@@ -1,8 +1,5 @@
 <div id="loading" *ngIf='showloader'>
-    <div class="loader loader-1">
-        <div class="loader-outter"></div>
-        <div class="loader-inner"></div>
-    </div>
+    <div class="loader">Loading...</div>
 </div>
 
 <div class="container">
@@ -53,65 +50,110 @@
                                         <div class="tab-pane fade in active" id="tab1default">
                                             <div class="card list_item">
                                                 <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                                                    <div *ngFor="let item_details of team_matchs;let j = index">
-                                                        <div *ngIf="team_matchs.length > 0;else nomatchcomp">
-                                                            <div (click)="matchdetails(item_details.id,item_details.comp_id)">
-                                                                <div class="row match-list show-responsive-list">
-                                                                    <div class="list-line">
 
-                                                                        <div *ngIf="item_details.status==='FT'; else time">
-                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
-                                                                                <div class="match_status_box">
-                                                                                    <p>{{item_details.status}}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <ng-template #time>
-                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
-                                                                                <div class="match_time_box">
-                                                                                    <p>{{item_details.time| date: 'hh:mm a'}}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </ng-template>
+                                                    <div *ngFor="let item_details of match_ground_details;let j = index">
+                                                        <div class="row match-detail" *ngIf="match_ground_details.length > 0;else nomatchcomp" (click)="matchdetails(item_details.id,item_details.comp_id)">
 
-                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
-                                                                            <div class="">
-                                                                                <p>{{item_details.localteam_name}}</p>
-                                                                            </div>
-                                                                        </div>
+                                                            <div class="matches_date">
+                                                                <p>{{item_details.time|date:short}}</p>
+                                                            </div>
 
-                                                                        <div *ngIf="item_details.status==='FT'; else noscore">
-                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
-                                                                                <p>{{item_details.localteam_score}}</p>
-                                                                            </div>
+                                                            <div class="show-responsive-list">
 
-                                                                            <div class="col-md-1 col-sm-1 col-xs-1 score_r">
-                                                                                <p>{{item_details.visitorteam_score}}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <ng-template #noscore>
-                                                                            <div class="col-md-3 col-sm-3 col-xs-2">
-                                                                                <div class="">
-                                                                                    <p>-</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </ng-template>
-                                                                        <div class="col-md-3 col-sm-3 col-xs-4">
-                                                                            <div class="">
-                                                                                <p>{{item_details.visitorteam_name}}</p>
-                                                                            </div>
-                                                                        </div>
+                                                                <div *ngIf="item_details.status==='FT'; else time1">
+                                                                    <div class="col-sm-2 col-xs-2 match_time">
+                                                                        <p>{{item_details.status}}</p>
                                                                     </div>
                                                                 </div>
+                                                                <ng-template #time1>
+                                                                    <div class="col-sm-2 col-xs-2 match_time">
+                                                                        <p>{{item_details.time | date: 'hh:mm a'}}</p>
+                                                                    </div>
+                                                                </ng-template>
+
+                                                                <!-- <div class="col-sm-3 col-xs-3 flag-width">
+                                                                        <img src="{{item_details.localteam_image}}" alt="">
+                                                                        <p>{{item_details.localteam_name}}</p>
+                                                                    </div> -->
+
+                                                                <div *ngIf="item_details.status==='FT'; else noscore">
+                                                                    <div class="col-sm-2 col-xs-2 flag-width">
+                                                                        <img src="{{item_details.localteam_image}}" alt="">
+                                                                        <p>{{item_details.localteam_name}}</p>
+                                                                    </div>
+                                                                    <div class="col-sm-1 col-xs-1 match_time">
+                                                                        <p>{{item_details.localteam_score}}</p>
+                                                                    </div>
+
+                                                                    <div class="col-sm-3 col-xs-3 match-team-group">
+                                                                        <p class="upertxt">{{item_details.match_number}}</p>
+                                                                        <p class="btm-txt">{{item_details.match_type}}</p>
+                                                                    </div>
+                                                                    <div class="col-sm-1 col-xs-1 match_time">
+                                                                        <p>{{item_details.visitorteam_score}}</p>
+                                                                    </div>
+
+                                                                    <div class="col-sm-2 col-xs-2 flag-width">
+                                                                        <img src="{{item_details.visitorteam_image}}" alt="">
+                                                                        <p>{{item_details.visitorteam_name}}</p>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <ng-template #noscore>
+                                                                    <div class="col-sm-3 col-xs-3 flag-width">
+                                                                        <img src="{{item_details.localteam_image}}" alt="">
+                                                                        <p>{{item_details.localteam_name}}</p>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-xs-3 match-team-group">
+                                                                        <p class="upertxt">{{item_details.match_number}}</p>
+                                                                        <p class="btm-txt">{{item_details.match_type}}</p>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-xs-3 flag-width">
+                                                                        <img src="{{item_details.visitorteam_image}}" alt="">
+                                                                        <p>{{item_details.visitorteam_name}}</p>
+                                                                    </div>
+                                                                </ng-template>
+
+
+                                                                <div class="col-sm-1 col-xs-1" *ngIf="status_offon">
+                                                                    <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                                </div>
                                                             </div>
+
+                                                            <div class="hide-responsive-list r-dashbord-team">
+
+                                                                <div class="col-md-5 col-sm-5 col-xs-5  match-team-group">
+
+                                                                    <p class="upertxt">{{item_details.match_number}}</p>
+
+                                                                    <div *ngIf="item_details.status==='FT'; else time">
+                                                                        <p class="match_time">{{item_details.status}}</p>
+                                                                    </div>
+                                                                    <ng-template #time>
+                                                                        <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+                                                                    </ng-template>
+                                                                    <p class="btm-txt">{{item_details.match_type}}</p>
+                                                                </div>
+                                                                <div class="col-md-6 col-sm-6 col-xs-6 r-flag-team">
+                                                                    <p><img class="flag-width" src="{{item_details.localteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score">{{item_details.localteam_score}}</span> {{item_details.localteam_name}}</p>
+                                                                    <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt=""><span *ngIf="item_details.status==='FT'" class="score"> {{item_details.localteam_score}} </span>{{item_details.visitorteam_name}}</p>
+                                                                </div>
+                                                                <div class="col-md-1 col-sm-1 col-xs-1 circle" *ngIf="status_offon">
+                                                                    <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
+
+
+
                                                         <ng-template #nomatchcomp>
-                                                            <div *ngIf="j==0" class="list-line row match-list show-responsive-list">
-                                                                <p>No matches found</p>
+                                                            <div *ngIf="j==0" class="list-line row match-list">
+                                                                <p>No matches scheduled in this competition</p>
                                                             </div>
                                                         </ng-template>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +180,7 @@
                                                         </div>
                                                         <table class="table grouptable">
                                                             <tbody class="table-panel" *ngFor="let item of team_squad_A;let a = index">
-                                                                <tr (click)="Playerdetails(item.id)">
+                                                                <tr (click)="Playerdetails(item.id)" class="theme-hover">
 
                                                                     <td class="no">{{a+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
@@ -159,7 +201,7 @@
                                                         </div>
                                                         <table class=" table grouptable">
                                                             <tbody class="table-panel" *ngFor="let item of team_squad_D;let d = index">
-                                                                <tr (click)="Playerdetails(item.id)">
+                                                                <tr (click)="Playerdetails(item.id)" class="theme-hover">
                                                                     <td class="no">{{d+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -180,7 +222,7 @@
                                                         </div>
                                                         <table class=" table grouptable">
                                                             <tbody class="table-panel" *ngFor="let item of team_squad_F;let f = index">
-                                                                <tr (click)="Playerdetails(item.id)">
+                                                                <tr (click)="Playerdetails(item.id)" class="theme-hover">
                                                                     <td class="no">{{f+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -201,7 +243,7 @@
                                                         </div>
                                                         <table class=" table grouptable">
                                                             <tbody class="table-panel" *ngFor="let item of team_squad_G;let g = index">
-                                                                <tr (click)="Playerdetails(item.id)">
+                                                                <tr (click)="Playerdetails(item.id)" class="theme-hover">
                                                                     <td class="no">{{g+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -221,7 +263,7 @@
                                                         </div>
                                                         <table class=" table grouptable">
                                                             <tbody class="table-panel" *ngFor="let item of team_squad_M;let m = index">
-                                                                <tr (click)="Playerdetails(item.id)">
+                                                                <tr (click)="Playerdetails(item.id)" class="theme-hover">
                                                                     <td class="no">{{m+1}}</td>
                                                                     <td class="player_img"> <img src="{{item.picture}}">{{item.name}}</td>
                                                                     <td class="pos">{{item.position}}</td>
@@ -242,8 +284,8 @@
 
                                             <div class="card list_item">
                                                 <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                                                    <!-- <div *ngFor="let item_details of team_matchs;let j = index">
-                                                        <div *ngIf="team_matchs.length > 0;else nomatchcomp">
+                                                    <!-- <div *ngFor="let item_details of match_ground_details;let j = index">
+                                                        <div *ngIf="match_ground_details.length > 0;else nomatchcomp">
                                                             <div (click)="matchdetails(item_details.id,item_details.comp_id)">
                                                                 <div class="row match-list show-responsive-list">
                                                                     <div class="list-line">

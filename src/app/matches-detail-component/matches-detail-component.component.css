@@ -442,46 +442,6 @@ ul.nav.nav-tabs {
     line-height: 16px;
 }
 
-.progress-bar {
-    position: relative;
-    float: none;
-    display: inline-block;
-    margin: auto;
-}
-
-.status-progress-bar {
-    right: -2px;
-    position: relative;
-    float: none;
-    display: inline-block;
-    margin: auto;
-    height: 100%;
-    font-size: 12px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    background-color: #337ab7;
-    /* -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15); */
-    -webkit-transition: width .6s ease;
-    transition: width .6s ease;
-}
-
-.status-progress {
-    height: 20px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    background-color: #ffffff;
-    border-radius: 4px;
-    /* -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1); */
-}
-
-.bg-vist-progress {
-    background-color: #001c54!important;
-    left: -2px;
-}
-
 .stats_list .row {
     padding: 0px 15px;
 }
@@ -506,4 +466,27 @@ ul.nav.nav-tabs {
 
 .sidebar {
     padding: 15px 15px 0 0px;
+}
+
+
+/* custome progress bar css */
+
+.no-padding {
+    padding: 0px;
+}
+
+.status-progress {
+    height: 18px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #dfdfdf;
+}
+
+.lt-progress {
+    background-color: #001c54!important;
+    float: right;
+}
+
+.vt-progress {
+    background-color: #337ab7;
 }

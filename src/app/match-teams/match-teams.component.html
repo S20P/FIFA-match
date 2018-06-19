@@ -1,8 +1,5 @@
 <div id="loading" *ngIf='showloader'>
-    <div class="loader loader-1">
-        <div class="loader-outter"></div>
-        <div class="loader-inner"></div>
-    </div>
+    <div class="loader">Loading...</div>
 </div>
 
 <div class="container">
@@ -22,7 +19,7 @@
                         <div *ngFor="let item of teams_collection;let t = index">
                             <div *ngIf="teams_collection.length > 0;else noteams">
                                 <div (click)="teamdetails(item.team_id)">
-                                    <div class="row match-list show-responsive-list">
+                                    <div class="row match-list theme-hover show-responsive-list">
                                         <div class="list-line">
 
                                             <div class="col-md-10 col-sm-10 col-xs-10">
@@ -34,7 +31,7 @@
 
                                             </div>
                                             <div class="col-md-2 col-sm-2 col-xs-2">
-                                                <div class="team_arrow">
+                                                <div class="team_arrow theme-hover">
                                                     <p class="rigth_arrow"> <i class="fa fa-chevron-right " aria-hidden="true"></i>
                                                     </p>
                                                 </div>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
-
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-match-group',
@@ -32,13 +32,11 @@ export class MatchGroupComponent implements OnInit {
   GroupG_collection = [];
   GroupH_collection = [];
 
-
-
-
-  constructor(
+    constructor(
     private route: ActivatedRoute,
     private router: Router,
     private matchService: MatchService,
+    private orderPipe: OrderPipe
   ) { }
 
   ngOnInit() {

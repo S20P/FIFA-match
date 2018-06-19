@@ -21,7 +21,7 @@ export class TeamDetailComponent implements OnInit {
   private timer: Observable<any>;
   team_id;
   teams_collection = [];
-  team_matchs = [];
+  match_ground_details = [];
   team_squad_A = [];  //Attacker
   team_squad_D = [];  //Defender
   team_squad_G = [];  //Goalkeeper
@@ -35,7 +35,7 @@ export class TeamDetailComponent implements OnInit {
     private router: Router,
     private matchService: MatchService,
     public datepipe: DatePipe
-  
+
   ) {
 
   }
@@ -57,7 +57,7 @@ export class TeamDetailComponent implements OnInit {
   TeamDetails() {
 
     this.teams_collection = [];
-    this.team_matchs = [];
+    this.match_ground_details = [];
     this.team_squad_A = [];  //Attacker
     this.team_squad_D = [];  //Defender
     this.team_squad_G = [];  //Goalkeeper
@@ -99,35 +99,85 @@ export class TeamDetailComponent implements OnInit {
           if (TeamMatch !== undefined) {
             for (let teams of TeamMatch) {
 
-                //Change UTC timezone to IST(Local)
-                var myString = teams['formatted_date'];
-                var arr = myString.split('.');
-                let day = arr[0];
-                let month = arr[1];
-                let year = arr[2];
-                var fulldate = year + "-" + month + "-" + day;
+              //Change UTC timezone to IST(Local)
+              var myString = teams['formatted_date'];
+              var arr = myString.split('.');
+              let day = arr[0];
+              let month = arr[1];
+              let year = arr[2];
+              var fulldate = year + "-" + month + "-" + day;
 
-                  //Change UTC timezone to IST(Local)
+              //Change UTC timezone to IST(Local)
               let timezone = fulldate + " " + teams['time'];
               let match_time = calcTime(timezone, '+11');
               console.log("time ", match_time);
 
+
+               this.matchService.GetStaticMatches().subscribe(data => {
+         
+              //   console.log("Matches type ang g", data);
+                for(let i=0;i<data['length'];i++){
+                  
+                   if(data[i].id== teams['id']&&data[i].comp_id== teams['comp_id']){
+    
+
+              var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['localteam_id'] + ".png";
+              var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['visitorteam_id'] + ".png";
+
+
+              var localteam_image;
+              var visitorteam_image;
+
+              var Image_team1 = isUrlExists(flag__loal);
+
+              if (Image_team1 == false) {
+                console.log('Image does not exist');
+                localteam_image = "assets/img/avt_flag.jpg"
+              }
+              else {
+                console.log('Image Exists');
+                localteam_image = flag__loal;
+              }
+
+
+              var Image_team2 = isUrlExists(flag_visit);
+
+              if (Image_team2 == false) {
+                console.log('Image does not exist');
+                visitorteam_image = "assets/img/avt_flag.jpg"
+              }
+              else {
+                console.log('Image Exists');
+                visitorteam_image = flag_visit;
+              }
               //store Team_matches
-              this.team_matchs.push({
+              this.match_ground_details.push({
                 "comp_id": teams['comp_id'],
                 "localteam_id": teams['localteam_id'],
                 "localteam_name": teams['localteam_name'],
                 "localteam_score": teams['localteam_score'],
+                "localteam_image": localteam_image,
                 "status": teams['status'],
                 "time": match_time,
                 "visitorteam_id": teams['visitorteam_id'],
                 "visitorteam_name": teams['visitorteam_name'],
                 "visitorteam_score": teams['visitorteam_score'],
+                "visitorteam_image": visitorteam_image,
                 "_id": teams['_id'],
-                "id": teams['id']
+                "id": teams['id'],
+                "match_number":data[i].match_number,
+                "match_type":data[i].match_type
               });
+          
             }
           }
+            });
+
+
+            }
+          }
+
+
 
           var TeamSquad = teams['squad'];
 
@@ -274,12 +324,15 @@ export class TeamDetailComponent implements OnInit {
           }
 
 
+       // });
+    
+  }
+}
 
-        }
-      }
 
+   
     });
-
+  
 
     function isUrlExists(image_url) {
       var Image_Exists = false;
@@ -303,8 +356,8 @@ export class TeamDetailComponent implements OnInit {
       let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
       let nd = new Date(utc + (3600000 * offset));
       return nd.toLocaleString();
-  }
-    console.log("Team_matches", this.team_matchs);
+    }
+    console.log("Team_matches", this.match_ground_details);
     console.log("Team_squad_A", this.team_squad_A);
     console.log("Team_squad_D", this.team_squad_D);
     console.log("Team_squad_F", this.team_squad_F);
@@ -323,7 +376,7 @@ export class TeamDetailComponent implements OnInit {
     this.router.navigate(['/matches', id, { "comp_id": comp_id }]);
   }
 
-  Playerdetails(player_id){
+  Playerdetails(player_id) {
     this.router.navigate(['/player', player_id]);
   }
 

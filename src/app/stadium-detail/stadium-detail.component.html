@@ -1,8 +1,5 @@
 <div id="loading" *ngIf='showloader'>
-    <div class="loader loader-1">
-        <div class="loader-outter"></div>
-        <div class="loader-inner"></div>
-    </div>
+    <div class="loader">Loading...</div>
 </div>
 
 <div class="container">
@@ -118,8 +115,122 @@
                         </div>
 
 
-                        <div class="card list_item">
-                            <div class="col-md-12 header">
+                        <div class="list_item">
+                            <div class="card">
+                                <div class="col-md-12 header">
+                                    <h4>Matches to play on this Stadium</h4>
+                                </div>
+
+                                <!-- Hide Section for responshive -->
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div *ngFor="let item_details of match_ground_details;let j = index">
+                                            <div class="row match-detail" (click)="matchdetails(item_details.id,item_details.comp_id)">
+
+                                                <div class="matches_date">
+                                                    <p>{{item_details.time|date:short}}</p>
+                                                </div>
+
+                                                <div class="show-responsive-list">
+
+                                                    <div *ngIf="item_details.status==='FT'; else time1">
+                                                        <div class="col-sm-2 col-xs-2 match_time">
+                                                            <p>{{item_details.status}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <ng-template #time1>
+                                                        <div class="col-sm-2 col-xs-2 match_time">
+                                                            <p>{{item_details.time | date: 'hh:mm a'}}</p>
+                                                        </div>
+                                                    </ng-template>
+
+                                                    <!-- <div class="col-sm-3 col-xs-3 flag-width">
+                                                                <img src="{{item_details.localteam_image}}" alt="">
+                                                                <p>{{item_details.localteam_name}}</p>
+                                                            </div> -->
+
+                                                    <div *ngIf="item_details.status==='FT'; else noscore">
+                                                        <div class="col-sm-2 col-xs-2 flag-width">
+                                                            <img src="{{item_details.localteam_image}}" alt="">
+                                                            <p>{{item_details.localteam_name}}</p>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-1 match_time">
+                                                            <p>{{item_details.localteam_score}}</p>
+                                                        </div>
+
+                                                        <div class="col-sm-3 col-xs-3 match-team-group">
+                                                            <p class="upertxt">{{item_details.match_number}}</p>
+                                                            <p class="btm-txt">{{item_details.match_type}}</p>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-1 match_time">
+                                                            <p>{{item_details.visitorteam_score}}</p>
+                                                        </div>
+
+                                                        <div class="col-sm-2 col-xs-2 flag-width">
+                                                            <img src="{{item_details.visitorteam_image}}" alt="">
+                                                            <p>{{item_details.visitorteam_name}}</p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <ng-template #noscore>
+                                                        <div class="col-sm-3 col-xs-3 flag-width">
+                                                            <img src="{{item_details.localteam_image}}" alt="">
+                                                            <p>{{item_details.localteam_name}}</p>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-3 match-team-group">
+                                                            <p class="upertxt">{{item_details.match_number}}</p>
+                                                            <p class="btm-txt">{{item_details.match_type}}</p>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-3 flag-width">
+                                                            <img src="{{item_details.visitorteam_image}}" alt="">
+                                                            <p>{{item_details.visitorteam_name}}</p>
+                                                        </div>
+                                                    </ng-template>
+
+
+                                                    <div class="col-sm-1 col-xs-1" *ngIf="status_offon">
+                                                        <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="hide-responsive-list r-dashbord-team">
+
+                                                    <div class="col-md-5 col-sm-5 col-xs-5  match-team-group">
+                                                        <p class="upertxt">{{item_details.match_number}}</p>
+
+                                                        <div *ngIf="item_details.status==='FT'; else time">
+                                                            <p class="match_time">{{item_details.status}}</p>
+                                                        </div>
+                                                        <ng-template #time>
+                                                            <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+                                                        </ng-template>
+                                                        <p class="btm-txt">{{item_details.match_type}}</p>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6 r-flag-team">
+                                                        <p><img class="flag-width" src="{{item_details.localteam_image}}" alt=""> <span *ngIf="item_details.status==='FT'" class="score">{{item_details.localteam_score}}</span> {{item_details.localteam_name}}</p>
+                                                        <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt=""><span *ngIf="item_details.status==='FT'" class="score"> {{item_details.localteam_score}} </span>{{item_details.visitorteam_name}}</p>
+                                                    </div>
+                                                    <div class="col-md-1 col-sm-1 col-xs-1 circle" *ngIf="status_offon">
+                                                        <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="match_ground_details.length <= 0" class="row match-list">
+                                    <div class="list-line">
+                                        <p>No matches scheduled in this Stadium</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- <div class="col-md-12 header">
                                 <h4>Matches to play on this Stadium </h4>
                             </div>
 
@@ -183,7 +294,7 @@
                                     </ng-template>
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
 
 

@@ -50,6 +50,7 @@
     padding: 7px 10px 2px 19px;
     text-align: left;
     cursor: pointer;
+    margin: 0px;
 }
 
 .list_item {
@@ -118,4 +119,8 @@ p.rigth_arrow {
 
 .team_arrow {
     margin-top: 7px;
+}
+
+.theme-hover:hover .rigth_arrow {
+    color: #fff !important;
 }

@@ -24,7 +24,7 @@ export class MatchesApiService {
     this.socket = io.connect(this.url,connection);
     console.log("socket",this.socket);
     this.socket.on("response", (data) => {
-      console.log('TodoAdded: '+JSON.stringify(data));
+     // console.log('TodoAdded: '+JSON.stringify(data));
     });
    }
    
@@ -40,4 +40,12 @@ export class MatchesApiService {
       return  this.socket.emit('SendSocketData', message);
    }
 
+    public liveMatches(){
+      return Observable.create((observer) => {
+        this.socket.on('response', (data) => {
+            observer.next(data);
+        });
+    });
+    
+    }
 }

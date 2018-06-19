@@ -10,12 +10,13 @@ import { MatchService } from './service/match.service';
 import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-
-
+import { ArrayShort } from './short-array.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    ArrayShort //Pipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { DatePipe } from '@angular/common';
     HttpModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    
+    OrderModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [MatchesApiService, MatchService, DatePipe],

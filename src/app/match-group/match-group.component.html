@@ -1,8 +1,5 @@
 <div id="loading" *ngIf='showloader'>
-    <div class="loader loader-1">
-        <div class="loader-outter"></div>
-        <div class="loader-inner"></div>
-    </div>
+    <div class="loader">Loading...</div>
 </div>
 <div class="container">
     <div class="match-page-section">
@@ -72,7 +69,7 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemA of GroupA_collection">
+                                                        <tbody *ngFor="let itemA of GroupA_collection|orderBy:'position'">
                                                             <tr (click)="teamdetails(itemA.team_id)">
                                                                 <td>{{itemA.position}}</td>
                                                                 <td>{{itemA.team_name}}</td>
@@ -94,7 +91,7 @@
                                             <div id="group1">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group B</h4>
-                                                    <table class=" table grouptable">
+                                                    <table class=" table grouptable ">
                                                         <thead>
 
                                                             <tr>
@@ -105,10 +102,10 @@
                                                                 <td> D </td>
                                                                 <td> L </td>
                                                                 <td> +/- </td>
-                                                                <td class="last">PTS</td>
+                                                                <td class="last ">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemB of GroupB_collection">
+                                                        <tbody *ngFor="let itemB of GroupB_collection|orderBy:'position'">
                                                             <tr (click)="teamdetails(itemB.team_id)">
                                                                 <td>{{itemB.position}}</td>
                                                                 <td>{{itemB.team_name}}</td>
@@ -125,25 +122,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab3default">
-                                            <div id="group1">
+                                        <div class="tab-pane " id="tab3default">
+                                            <div id="group1 ">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group C</h4>
                                                     <table class=" table grouptable">
                                                         <thead>
 
                                                             <tr>
-                                                                <td class="first">Pos</td>
+                                                                <td class="first ">Pos</td>
                                                                 <td> Team </td>
                                                                 <td> P </td>
                                                                 <td> W </td>
                                                                 <td> D </td>
                                                                 <td> L </td>
                                                                 <td> +/- </td>
-                                                                <td class="last">PTS</td>
+                                                                <td class="last ">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemC of GroupC_collection">
+                                                        <tbody *ngFor="let itemC of GroupC_collection|orderBy:'position'">
 
                                                             <tr (click)="teamdetails(itemC.team_id)">
                                                                 <td>{{itemC.position}}</td>
@@ -180,7 +177,7 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemD of GroupD_collection">
+                                                        <tbody *ngFor="let itemD of GroupD_collection|orderBy:'position'">
 
                                                             <tr (click)="teamdetails(itemD.team_id)">
                                                                 <td>{{itemD.position}}</td>
@@ -198,8 +195,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab5default">
-                                            <div id="group1">
+                                        <div class="tab-pane " id="tab5default">
+                                            <div id="group1 ">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group E</h4>
                                                     <table class=" table grouptable">
@@ -213,10 +210,10 @@
                                                                 <td> D </td>
                                                                 <td> L </td>
                                                                 <td> +/- </td>
-                                                                <td class="last">PTS</td>
+                                                                <td class="last ">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemE of GroupE_collection">
+                                                        <tbody *ngFor="let itemE of GroupE_collection|orderBy:'position'">
 
                                                             <tr (click)="teamdetails(itemE.team_id)">
                                                                 <td>{{itemE.position}}</td>
@@ -234,25 +231,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab6default">
-                                            <div id="group1">
+                                        <div class="tab-pane " id="tab6default">
+                                            <div id="group1 ">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group F</h4>
                                                     <table class=" table grouptable">
                                                         <thead>
 
                                                             <tr>
-                                                                <td class="first">Pos</td>
+                                                                <td class="first ">Pos</td>
                                                                 <td> Team </td>
                                                                 <td> P </td>
                                                                 <td> W </td>
                                                                 <td> D </td>
                                                                 <td> L </td>
                                                                 <td> +/- </td>
-                                                                <td class="last">PTS</td>
+                                                                <td class="last ">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemF of GroupF_collection">
+                                                        <tbody *ngFor="let itemF of GroupF_collection|orderBy:'position'">
 
                                                             <tr (click)="teamdetails(itemF.team_id)">
                                                                 <td>{{itemF.position}}</td>
@@ -270,8 +267,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab7default">
-                                            <div id="group1">
+                                        <div class="tab-pane " id="tab7default">
+                                            <div id="group1 ">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group G</h4>
                                                     <table class=" table grouptable">
@@ -288,7 +285,7 @@
                                                                 <td class="last">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemG of GroupG_collection">
+                                                        <tbody *ngFor="let itemG of GroupG_collection|orderBy:'position'">
 
                                                             <tr (click)="teamdetails(itemG.team_id)">
                                                                 <td>{{itemG.position}}</td>
@@ -306,25 +303,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab8default">
-                                            <div id="group1">
+                                        <div class="tab-pane " id="tab8default">
+                                            <div id="group1 ">
                                                 <div class="groupp-list-navbar">
                                                     <h4 class="col-sm-12 teamgroupname">Group H</h4>
                                                     <table class=" table grouptable">
                                                         <thead>
 
                                                             <tr>
-                                                                <td class="first">Pos</td>
+                                                                <td class="first ">Pos</td>
                                                                 <td> Team </td>
                                                                 <td> P </td>
                                                                 <td> W </td>
                                                                 <td> D </td>
                                                                 <td> L </td>
                                                                 <td> +/- </td>
-                                                                <td class="last">PTS</td>
+                                                                <td class="last ">PTS</td>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngFor="let itemH of GroupH_collection">
+                                                        <tbody *ngFor="let itemH of GroupH_collection|orderBy:'position'">
                                                             <tr (click)="teamdetails(itemH.team_id)">
                                                                 <td>{{itemH.position}}</td>
                                                                 <td>{{itemH.team_name}}</td>
@@ -348,8 +345,8 @@
                             <!-- end group tab -->
                             <!-- sidebar -->
                             <div class="col-sm-12 col-md-4 col-lg-4 remove_left_padding">
-                                <div class="card">
-                                    <div class="card-body">
+                                <div class="card ">
+                                    <div class="card-body ">
                                         <h1>sidebar</h1>
                                     </div>
                                 </div>
