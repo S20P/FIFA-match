@@ -47,7 +47,7 @@ export class PlayerDetailComponent implements OnInit {
 
       var result = data['data'];
       this.player_status = data['success'];
-      
+      var goals = data['goal'];
 
       if (result !== undefined) {
         for (let player of result) {
@@ -82,7 +82,8 @@ export class PlayerDetailComponent implements OnInit {
             "weight": player['weight'],
             "height": player['height'],
             "position": player['position'],
-            "picture": player_img
+            "picture": player_img,
+            "goals":goals
           });
 
 

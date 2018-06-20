@@ -601,6 +601,10 @@ min-width: 350px;
     cursor: pointer;
 }
 
+.c-pointer {
+    cursor: pointer!important;
+}
+
 
 /* .theme-hover:hover p {
     color: #fff !important;
@@ -942,7 +946,7 @@ i.fa.fa-circle {
     .match-detail {
         border-bottom: 1px solid #efefef;
         cursor: pointer;
-        padding: 0px 5px 4px 5px;
+        padding: 0px 5px 0px 5px;
     }
     .show-responsive-list {
         display: none;
@@ -1063,4 +1067,61 @@ i.fa.fa-circle {
     .header_logo {
         margin: 5px;
     }
+}
+
+@media (min-width: 992px) and (max-width: 1239px) {
+    .removepadding {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.hide-responsive-list .match-team-group {
+    text-align: left;
+    padding: 0px 0px 0px 25px;
+    padding-bottom: 15px;
+}
+
+.circle-team {
+    font-weight: bold;
+    margin-top: 20px;
+    color: #fff;
+    padding: 0px;
+}
+
+.circle-team span {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.hide-responsive-list .circle-team span {
+    font-size: 12px;
+}
+
+.team_w {
+    padding: 8px 11px;
+    background: #0dbf0d;
+}
+
+.team_l {
+    padding: 7px 12px;
+    background: rgb(216, 42, 42);
+}
+
+.team_d {
+    padding: 8px 12px;
+    background: #837d7de8;
+}
+
+.hide-responsive-list .team_w {
+    padding: 5px 7px 4px;
+}
+
+.hide-responsive-list .team_l {
+    padding: 4px 9px;
+}
+
+.hide-responsive-list .team_d {
+    padding: 4px 8px;
 }

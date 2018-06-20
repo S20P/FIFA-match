@@ -13,6 +13,11 @@ import { DatePipe } from '@angular/common';
 import { ArrayShort } from './short-array.pipe';
 import { OrderModule } from 'ngx-order-pipe';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { PushNotificationService } from './service/push-notification/push-notification.service';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     OrderModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [MatchesApiService, MatchService, DatePipe],
+  providers: [MatchesApiService, MatchService, DatePipe,PushNotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

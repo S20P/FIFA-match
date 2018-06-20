@@ -429,3 +429,7 @@ td.first {
         padding: 40px;
     }
 }
+
+.noborder {
+    border: none;
+}

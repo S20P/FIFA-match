@@ -39,7 +39,15 @@
                             </div>
                             <div class="playerlist">
                                 <div class="col-md-2 col-sm-2 col-xs-4 player-leftcontent">
-                                    <p>Team:</p>
+                                    <p>Country: </p>
+                                </div>
+                                <div class="col-md-10 col-sm-10 col-xs-8 player-content">
+                                    <p>{{player.nationality}}</p>
+                                </div>
+                            </div>
+                            <div class="playerlist">
+                                <div class="col-md-2 col-sm-2 col-xs-4 player-leftcontent">
+                                    <p>Club:</p>
                                 </div>
                                 <div class="col-md-10 col-sm-10 col-xs-8 player-content">
                                     <p>{{player.team}}</p>
@@ -95,12 +103,13 @@
                                     <p>{{player.birthplace}}</p>
                                 </div>
                             </div>
+
                             <div class="playerlist">
                                 <div class="col-md-2 col-sm-2 col-xs-4 player-leftcontent">
-                                    <p>Nationality: </p>
+                                    <p>Goals: </p>
                                 </div>
                                 <div class="col-md-10 col-sm-10 col-xs-8 player-content">
-                                    <p>{{player.nationality}}</p>
+                                    <p>{{player.goals}}</p>
                                 </div>
                             </div>
                         </div>

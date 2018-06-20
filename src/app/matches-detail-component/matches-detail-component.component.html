@@ -11,7 +11,7 @@
             <div class="team-detail-header">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="local-team">
+                        <div class="local-team c-pointer" (click)="teamdetails(match.localteam_id)">
                             <div class="local-team-flag">
                                 <img src="{{match.localteam_image}}">
                             </div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="visited-team">
+                        <div class="visited-team c-pointer" (click)="teamdetails(match.visitorteam_id)">
                             <div class="visited-team-flag">
                                 <img src="{{match.visitorteam_image}}">
 
@@ -77,38 +77,42 @@
                 </div>
 
             </div>
-            <!-- team-detail-header end -->
+        </div>
+        <!-- team-detail-header end -->
 
-            <!-- match-name -->
+        <!-- match-name -->
 
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel with-nav-tabs panel-default">
-                        <!-- tabs menu  -->
-                        <div class="panel-heading">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab1default" data-toggle="tab">Details</a>
-                                </li>
-                                <li>
-                                    <a href="#tab2default" data-toggle="tab">Lineups</a>
-                                </li>
-                                <li>
-                                    <a href="#tab3default" data-toggle="tab">Commentry</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- end tabs menu  -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel with-nav-tabs panel-default">
+                    <!-- tabs menu  -->
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab1default" data-toggle="tab">Details</a>
+                            </li>
+                            <li>
+                                <a href="#tab2default" data-toggle="tab">Lineups</a>
+                            </li>
+                            <li>
+                                <a href="#tab3default" data-toggle="tab">Commentry</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end tabs menu  -->
+                    <div *ngFor="let match of match_detailcollection;let i=index">
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="slogen">{{match.localteam_name}} v {{match.visitorteam_name}} Live Commentary, {{match.formatted_date}}</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div cl></div>
-                            <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
-                                <!-- tabs body  -->
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-md-8 col-lg-8 remove_right_padding">
+                            <!-- tabs body  -->
+                            <div *ngFor="let match of match_detailcollection;let i=index">
                                 <div class="">
                                     <div class="tab-content">
                                         <!--******** DETAILS ************-->
@@ -761,19 +765,20 @@
                                 </div>
                                 <!--end tabs body  -->
                             </div>
-                            <!--side bar  -->
-                            <div class="col-md-4 col-sm-12 col-lg-4 remove_left_padding">
-                                <app-sidebar></app-sidebar>
-                            </div>
-                            <!--end side bar  -->
                         </div>
-
-
-
+                        <!--side bar  -->
+                        <div class="col-md-4 col-sm-12 col-lg-4 remove_left_padding">
+                            <app-sidebar></app-sidebar>
+                        </div>
+                        <!--end side bar  -->
                     </div>
-                </div>
 
+
+
+                </div>
             </div>
+
+            <!-- </div> -->
 
             <!-- match-name end -->
 

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body sidebar-card-body" *ngFor="let item_details of match_ground_details;let j = index">
-        <div class="list-cursor" *ngIf="match_ground_details.length>0;else nomatchcomp" (click)="matchdetails(item_details.id,item_details.comp_id)">
+        <div class="list-cursor" *ngIf="match_ground_details.length>0;else nomatchcomp" (click)="matchdetails_go(item_details.id,item_details.comp_id)">
             <div *ngIf="j==0" class="header">
                 <p>{{item_details.time|date:short}}</p>
             </div>

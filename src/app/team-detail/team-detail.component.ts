@@ -113,65 +113,100 @@ export class TeamDetailComponent implements OnInit {
               console.log("time ", match_time);
 
 
-               this.matchService.GetStaticMatches().subscribe(data => {
-         
-              //   console.log("Matches type ang g", data);
-                for(let i=0;i<data['length'];i++){
-                  
-                   if(data[i].id== teams['id']&&data[i].comp_id== teams['comp_id']){
-    
+              this.matchService.GetStaticMatches().subscribe(data => {
 
-              var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['localteam_id'] + ".png";
-              var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['visitorteam_id'] + ".png";
+                //   console.log("Matches type ang g", data);
+                for (let i = 0; i < data['length']; i++) {
+
+                  if (data[i].id == teams['id'] && data[i].comp_id == teams['comp_id']) {
 
 
-              var localteam_image;
-              var visitorteam_image;
-
-              var Image_team1 = isUrlExists(flag__loal);
-
-              if (Image_team1 == false) {
-                console.log('Image does not exist');
-                localteam_image = "assets/img/avt_flag.jpg"
-              }
-              else {
-                console.log('Image Exists');
-                localteam_image = flag__loal;
-              }
+                    var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['localteam_id'] + ".png";
+                    var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + teams['visitorteam_id'] + ".png";
 
 
-              var Image_team2 = isUrlExists(flag_visit);
+                    var localteam_image;
+                    var visitorteam_image;
 
-              if (Image_team2 == false) {
-                console.log('Image does not exist');
-                visitorteam_image = "assets/img/avt_flag.jpg"
-              }
-              else {
-                console.log('Image Exists');
-                visitorteam_image = flag_visit;
-              }
-              //store Team_matches
-              this.match_ground_details.push({
-                "comp_id": teams['comp_id'],
-                "localteam_id": teams['localteam_id'],
-                "localteam_name": teams['localteam_name'],
-                "localteam_score": teams['localteam_score'],
-                "localteam_image": localteam_image,
-                "status": teams['status'],
-                "time": match_time,
-                "visitorteam_id": teams['visitorteam_id'],
-                "visitorteam_name": teams['visitorteam_name'],
-                "visitorteam_score": teams['visitorteam_score'],
-                "visitorteam_image": visitorteam_image,
-                "_id": teams['_id'],
-                "id": teams['id'],
-                "match_number":data[i].match_number,
-                "match_type":data[i].match_type
+                    var Image_team1 = isUrlExists(flag__loal);
+
+                    if (Image_team1 == false) {
+                      console.log('Image does not exist');
+                      localteam_image = "assets/img/avt_flag.jpg"
+                    }
+                    else {
+                      console.log('Image Exists');
+                      localteam_image = flag__loal;
+                    }
+
+
+                    var Image_team2 = isUrlExists(flag_visit);
+
+                    if (Image_team2 == false) {
+                      console.log('Image does not exist');
+                      visitorteam_image = "assets/img/avt_flag.jpg"
+                    }
+                    else {
+                      console.log('Image Exists');
+                      visitorteam_image = flag_visit;
+                    }
+                    //store Team_matches
+                    var team_w = false;
+                    var team_l = false;
+                    var team_d = false;
+
+
+                    if (team_id == teams['localteam_id']) {
+
+                      if (teams['localteam_score'] > teams['visitorteam_score']) {
+                        team_w = true;
+                      }
+                      if (teams['localteam_score'] < teams['visitorteam_score']) {
+                        team_l = true;
+                      }
+                    }
+
+                    if (team_id == teams['visitorteam_id']) {
+
+                      if (teams['visitorteam_score'] > teams['localteam_score']) {
+                        team_w = true;
+                      }
+                      if (teams['visitorteam_score'] < teams['localteam_score']) {
+                        team_l = true;
+                      }
+
+                    }
+
+                    if (teams['localteam_score'] == teams['visitorteam_score']) {
+                             team_d = true;
+                    }
+                                       
+
+
+                    this.match_ground_details.push({
+                      "comp_id": teams['comp_id'],
+                      "localteam_id": teams['localteam_id'],
+                      "localteam_name": teams['localteam_name'],
+                      "localteam_score": teams['localteam_score'],
+                      "localteam_image": localteam_image,
+                      "status": teams['status'],
+                      "time": match_time,
+                      "visitorteam_id": teams['visitorteam_id'],
+                      "visitorteam_name": teams['visitorteam_name'],
+                      "visitorteam_score": teams['visitorteam_score'],
+                      "visitorteam_image": visitorteam_image,
+                      "_id": teams['_id'],
+                      "id": teams['id'],
+                      "match_number": data[i].match_number,
+                      "match_type": data[i].match_type,
+                      "team_w": team_w,
+                      "team_l": team_l,
+                      "team_d": team_d
+                    });
+
+                  }
+                }
               });
-          
-            }
-          }
-            });
 
 
             }
@@ -324,15 +359,15 @@ export class TeamDetailComponent implements OnInit {
           }
 
 
-       // });
-    
-  }
-}
+          // });
+
+        }
+      }
 
 
-   
+
     });
-  
+
 
     function isUrlExists(image_url) {
       var Image_Exists = false;

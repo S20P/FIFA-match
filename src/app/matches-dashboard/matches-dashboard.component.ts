@@ -410,11 +410,14 @@ export class MatchesDashboardComponent implements OnInit {
       this.AllCompetitions = data['data'];
       for (var i = 0; i < this.AllCompetitions.length; i++) {
 
+        if(this.AllCompetitions[i].id=='1056'){
+
         this.AllCompetitions_match.push({
           "id": this.AllCompetitions[i].id, "name": this.AllCompetitions[i].name,
         }
         );
 
+      
         this.matchService.GetAllCompetitions_ById(this.AllCompetitions[i].id).subscribe(data => {
           console.log("GetCompetitionStandingById", data);
         });
@@ -442,6 +445,7 @@ export class MatchesDashboardComponent implements OnInit {
           }
         });
       }
+    }
     });
     console.log('AllCompetitions_details', this.AllCompetitions_match);
   }

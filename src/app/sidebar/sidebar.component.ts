@@ -253,7 +253,8 @@ export class SidebarComponent implements OnInit {
 
 
   
-  matchdetails(id, comp_id) {
+  matchdetails_go(id, comp_id) {
+    console.log("123",id + "-"  + "-" + comp_id);
     this.router.navigate(['/matches', id, { "comp_id": comp_id }]);
   }
 }

@@ -46,9 +46,9 @@ export class MatchesDetailComponentComponent implements OnInit {
     status;
     live_matches:boolean;
 
-   l_timer;
-   l_visitorteam_score;
-   l_localteam_score;
+    l_timer;
+    l_visitorteam_score;
+    l_localteam_score;
 
     constructor(
         private route: ActivatedRoute,
@@ -63,7 +63,14 @@ export class MatchesDetailComponentComponent implements OnInit {
         this.ic_event_own_goal = false;
         this.ic_event_goal = false;
         this.live_matches = false;
-      
+        this.route.paramMap.subscribe((params: ParamMap) => {
+            let id = parseInt(params.get("id"));
+            this.id = id;
+            let comp_id = parseInt(params.get("comp_id"));
+            this.comp_id = comp_id;
+            this.GetMatchesByCompetition_ById();
+            this.GetCommentariesByMatchId(this.id);
+        });
     }
 
     ngOnInit() {
@@ -82,17 +89,9 @@ export class MatchesDetailComponentComponent implements OnInit {
         this.statsA_min = '20';
 
         this.setTimer();
+    
 
-        this.route.paramMap.subscribe((params: ParamMap) => {
-            let id = parseInt(params.get("id"));
-            this.id = id;
-            let comp_id = parseInt(params.get("comp_id"));
-            this.comp_id = comp_id;
-        });
-
-        this.GetMatchesByCompetition_ById();
-        //  this.loading = "none";
-        this.GetCommentariesByMatchId(this.id);
+        
 
     }
     public setTimer() {
@@ -732,9 +731,7 @@ export class MatchesDetailComponentComponent implements OnInit {
                             });
 
 
-
-
-                        }
+                       }
 
                         //  end comments------------------------------------------------------------------------------------
 
@@ -1127,4 +1124,13 @@ export class MatchesDetailComponentComponent implements OnInit {
         let selectedId = this.id ? this.id : null;
         this.router.navigate(['../', { id: selectedId }], { relativeTo: this.route })
     }
+
+
+    teamdetails(team_id) {
+        this.router.navigate(['/team',team_id]);
+      }
+    
+
+
+
 }
