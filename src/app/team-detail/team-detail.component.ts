@@ -8,6 +8,7 @@ declare var jQuery: any;
 declare var $: any;
 
 import { DatePipe } from '@angular/common';
+import { MatchesApiService } from '../service/live_match/matches-api.service';
 
 @Component({
   selector: 'app-team-detail',
@@ -29,15 +30,40 @@ export class TeamDetailComponent implements OnInit {
   team_squad_M = [];  //Midfielder
 
 
+// live
+l_status;
+live_matches_id;
+l_timer;
+l_visitorteam_score;
+l_localteam_score;
+live_matches:boolean;
+
+
+
+
+
+
+
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private matchService: MatchService,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private liveMatchesApiService: MatchesApiService
+    
 
   ) {
-
+ 
+    this.live_matches = false;
+    this.liveMatchesApiService.liveMatches().subscribe(data => {
+      console.log("Live-Matches-data", data);
+      console.log("live data1", data['data']['events']);
+      var result = data['data'];
+      var events = result.events;
+      console.log("live events", events);
+      this.GetMatchesByCompetition_ById_live();
+  });
   }
 
   ngOnInit() {
@@ -405,7 +431,33 @@ export class TeamDetailComponent implements OnInit {
 
   }
 
+  GetMatchesByCompetition_ById_live(){
+            
+    this.liveMatchesApiService.liveMatches().subscribe(data => {
+         
+      console.log("Live-Matches-data", data);
+     
+      var result = data['data'];
 
+      console.log("live data", data['data']['events']);
+
+      console.log("Matches is Live", data);
+      if (result.events !== undefined) {
+         
+          this.live_matches= true;
+          var result_events = data['data'].events;
+       
+          let current_matchId = result_events['id'];
+          // this.GetCommentariesByMatchId(current_matchId);
+       
+                  this.live_matches_id = result_events['id'];
+                  this.l_status =  result_events['status'];
+                  this.l_timer = result_events['timer'];
+                  this.l_visitorteam_score = result_events['visitorteam_score'];
+                  this.l_localteam_score = result_events['localteam_score'];
+      }
+    });
+  }
 
   matchdetails(id, comp_id) {
     this.router.navigate(['/matches', id, { "comp_id": comp_id }]);

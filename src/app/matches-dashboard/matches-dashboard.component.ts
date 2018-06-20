@@ -88,7 +88,6 @@ export class MatchesDashboardComponent implements OnInit {
 
 
   ngOnInit() {
-
     // moment.js utc local timezone UTC
 
     this.liveMatchesApiService.liveMatches().subscribe(data => {
@@ -323,16 +322,15 @@ export class MatchesDashboardComponent implements OnInit {
                  
                 var date2 = new Date();
                 // Sun Dec 17 1995 03:24:00 GMT...
-               
-                  if(date1 >= date2){
-                        console.log("time is up");
-                        this.status_offon = true;
-                  }
-                  else{
-                    console.log("time is less");
-                    this.status_offon = false;
-                  }
-
+                var status_offon;
+                if(date1 >= date2){
+                      console.log("time is up");
+                 status_offon = false;
+                }
+                else{
+                  console.log("time is less");
+                  status_offon = true;
+                }
 
                 console.log("Matches type ang g1", data[i]);
                 this.match_ground_details.push({
@@ -362,7 +360,7 @@ export class MatchesDashboardComponent implements OnInit {
                   "id": item.id,
                   "match_number": data[i].match_number,
                   "match_type": data[i].match_type,
-                 
+                  "live_status":status_offon
                 });
 
               }

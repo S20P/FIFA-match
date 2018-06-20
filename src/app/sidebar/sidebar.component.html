@@ -12,13 +12,24 @@
                         <p class="match_time">{{sl_status}}</p>
                     </div>
                     <ng-template #nolivetime1>
-                        <div *ngIf="item_details.status==='FT'; else time">
+                        <div *ngIf="item_details.status==='FT'; else timew">
                             <p class="match_time">{{item_details.status}}</p>
                         </div>
                         <ng-template #time>
                             <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
                         </ng-template>
 
+
+                        <div *ngIf="item_details.status!=='FT'">
+                            <div *ngIf="item_details.live_status;else time2">
+                                <p class="match_time ">{{item_details.status}}</p>
+                            </div>
+
+                            <ng-template #time2>
+                                <p class="match_time">{{item_details.time | date: 'hh:mm a'}}</p>
+                            </ng-template>
+
+                        </div>
                     </ng-template>
 
                     <p class="btm-txt">{{item_details.match_type}}</p>
@@ -38,17 +49,34 @@
                         </p>
                     </div>
                     <ng-template #noscoreoff>
-                        <p><img class="flag-width" src="{{item_details.localteam_image}}" alt="">
 
-                            <span *ngIf="item_details.status==='FT'" class="score">
-                                            {{item_details.localteam_score}}
-                                        </span> {{item_details.localteam_name}}
-                        </p>
-                        <p><img class="flag-width" src="{{item_details.visitorteam_image}}" alt="">
-                            <span *ngIf="item_details.status==='FT'" class="score">
-                                             {{item_details.visitorteam_score}} 
-                                            </span> {{item_details.visitorteam_name}}
-                        </p>
+                        <div *ngIf="item_details.live_status;else currentsc">
+                            <p><img class="flag-width" src="{{item_details.localteam_image}}" alt=" ">
+
+                                <span class="score">
+                                                    {{item_details.localteam_score}}
+                                                </span> {{item_details.localteam_name}}
+                            </p>
+                            <p><img class="flag-width " src="{{item_details.visitorteam_image}}" alt=" ">
+                                <span class="score">
+                                                     {{item_details.visitorteam_score}} 
+                                                    </span> {{item_details.visitorteam_name}}
+                            </p>
+                        </div>
+                        <ng-template #currentsc>
+                            <p><img class="flag-width" src="{{item_details.localteam_image}}" alt=" ">
+
+                                <span *ngIf="item_details.status==='FT' " class="score">
+                                                    {{item_details.visitorteam_score}}
+                                                </span> {{item_details.localteam_name}}
+                            </p>
+                            <p><img class="flag-width " src="{{item_details.visitorteam_image}}" alt=" ">
+                                <span *ngIf="item_details.status==='FT' " class="score">
+                                                     {{item_details.visitorteam_score}} 
+                                                    </span> {{item_details.visitorteam_name}}
+                            </p>
+                        </ng-template>
+
                     </ng-template>
 
 
@@ -58,9 +86,16 @@
 
 
                 <div class="col-md-1 col-sm-1 col-xs-1 circle">
-                    <div *ngIf="slive_matches_id==item_details.id">
-                        <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                    <div *ngIf="item_details.status!=='FT'">
+                        <div *ngIf="item_details.live_status;else time2">
+                            <span class="status_offon "> <i class="fa fa-circle" aria-hidden="true "></i></span>
+                        </div>
                     </div>
+
+
+                    <!-- <div *ngIf="slive_matches_id==item_details.id">
+                        <span class="status_offon"> <i class="fa fa-circle" aria-hidden="true"></i></span>
+                    </div> -->
                 </div>
 
 

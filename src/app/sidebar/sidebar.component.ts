@@ -174,15 +174,15 @@ export class SidebarComponent implements OnInit {
                  
                 var date2 = new Date();
                 // Sun Dec 17 1995 03:24:00 GMT...
-               
-                  if(date1 >= date2){
-                        console.log("time is up");
-                        this.sstatus_offon = true;
-                  }
-                  else{
-                    console.log("time is less");
-                    this.sstatus_offon = false;
-                  }
+                var status_offon;
+                if(date1 >= date2){
+                      console.log("time is up");
+                 status_offon = false;
+                }
+                else{
+                  console.log("time is less");
+                  status_offon = true;
+                }
 
                 console.log("Matches type ang g1", data[i]);
                 this.match_ground_details.push({
@@ -211,7 +211,8 @@ export class SidebarComponent implements OnInit {
                   "_id": item._id,
                   "id": item.id,
                   "match_number": data[i].match_number,
-                  "match_type": data[i].match_type
+                  "match_type": data[i].match_type,
+                  "live_status":status_offon
                 });
 
               }

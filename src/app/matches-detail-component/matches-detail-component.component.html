@@ -30,6 +30,8 @@
                         <div class="team-score">
                             <!-- <h2>1 - 0</h2> -->
 
+
+
                             <div *ngIf="live_matches;else offstatus">
                                 <div class="team-status">
                                     <p class="big">{{match.time| date: 'dd MMM yyyy'}}</p>
@@ -43,6 +45,7 @@
 
                             <ng-template #offstatus>
 
+
                                 <div *ngIf="match.status=='FT'; else time1">
                                     <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
                                 </div>
@@ -51,8 +54,23 @@
                                     <div class="team-status">
                                         <p class="big">{{match.time| date: 'dd MMM yyyy'}}</p>
                                         <div class="border"></div>
-                                        <h2>{{match.time|date:'hh:mm a'}}</h2>
+                                        <div *ngIf="match.status!=='FT'">
+                                            <div *ngIf="match.live_status;else time2">
+                                                <h2 class="big">{{match.status}}</h2>
+
+                                                <h2>{{match.localteam_score}} - {{match.visitorteam_score}}</h2>
+                                            </div>
+                                            <ng-template #time2>
+                                                <h2>{{match.time|date:'hh:mm a'}}</h2>
+                                            </ng-template>
+                                        </div>
+
+
+
+
                                     </div>
+
+
                                 </ng-template>
                             </ng-template>
                         </div>
@@ -722,7 +740,7 @@
                                                     <div class="col-md-12 header">
                                                         <h4><b>COMMENTARY</b></h4>
                                                     </div>
-                                                    <p class="slogen cheadlines ">FULL TIME {{match.localteam_name}} {{match.localteam_score}} , {{match.visitorteam_name}} {{match.visitorteam_score}}</p>
+                                                    <p class="slogen cheadlines "> {{match.localteam_name}} {{match.localteam_score}} , {{match.visitorteam_name}} {{match.visitorteam_score}}</p>
 
                                                     <div class="card-body" *ngFor="let comment of Commentary_collection">
                                                         <div class="commentary-content">

@@ -367,13 +367,16 @@ export class MatchesDetailComponentComponent implements OnInit {
                             var date2 = new Date();
                             // Sun Dec 17 1995 03:24:00 GMT...
                             
-                              if(date1 >= date2){
-                                    console.log("time is up");
-                              }
-                              else{
-                                console.log("time is less");
-                              }
-
+                            var status_offon;
+                            if(date1 >= date2){
+                                  console.log("time is up");
+                             status_offon = false;
+                            }
+                            else{
+                              console.log("time is less");
+                              status_offon = true;
+                            }
+          
                             this.match_detailcollection
                                 .push({
                                     "comp_id": result[k].comp_id,
@@ -400,7 +403,8 @@ export class MatchesDetailComponentComponent implements OnInit {
                                     "visitorteam_image": visitorteam_image,
                                     "week": result[k].week,
                                     "_id": result[k]._id,
-                                    "id": result[k].id
+                                    "id": result[k].id,
+                                    "live_status":status_offon
                                 });
 
                             let events_data = result[k].events;
@@ -942,8 +946,6 @@ export class MatchesDetailComponentComponent implements OnInit {
                         "number": visitorteam_subs[vts].number,
                         "pos": visitorteam_subs[vts].pos,
                         "picture": visitorteamSubs_picture,
-
-
                     });
                 }
                 //  end visitorteam_subs------------------------------------------------------------------------------------
