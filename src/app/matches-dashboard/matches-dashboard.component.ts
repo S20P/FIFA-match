@@ -21,9 +21,7 @@ import 'rxjs/add/observable/timer';
 declare var jQuery: any;
 declare var $: any;
 import { DatePipe } from '@angular/common';
-
 import * as moment from 'moment';
-
 
 
 @Component({

@@ -15,6 +15,15 @@ import { OrderModule } from 'ngx-order-pipe';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { PushNotificationService } from './service/push-notification/push-notification.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { MessagingService } from './service/firebase/messaging.service';
 
 
 
@@ -33,9 +42,14 @@ import { PushNotificationService } from './service/push-notification/push-notifi
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     OrderModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // for database
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule 
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [MatchesApiService, MatchService, DatePipe,PushNotificationService],
+  providers: [MatchesApiService, MatchService, DatePipe,PushNotificationService,MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

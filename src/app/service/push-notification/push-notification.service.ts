@@ -61,7 +61,9 @@ export class PushNotificationService {
     source.forEach((item) => {
       let options = {
         body: item.alertContent,
-        icon: "/assets/img/ic_goal.png"
+        icon: "/assets/img/ic_goal.png",
+        tag:"",
+        
       };
       let notify = self.create(item.title, options).subscribe();
     })
