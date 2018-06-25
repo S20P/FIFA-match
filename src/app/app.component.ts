@@ -34,9 +34,6 @@ export class AppComponent {
     user;
 
 
-
-
-
     constructor(
         private _notificationService: PushNotificationService,
         private msgService: MessagingService

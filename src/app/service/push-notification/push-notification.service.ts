@@ -40,6 +40,14 @@ export class PushNotificationService {
         });
       };
       _notify.onclick = function (e) {
+
+
+        console.log("onclick msg", e['currentTarget']);
+        let notification = e['currentTarget'];
+        let link = notification['data'];
+        console.log("notification redirect to", link);
+        window.open(link);
+
         return obs.next({
           notification: _notify,
           event: e
@@ -54,6 +62,12 @@ export class PushNotificationService {
       _notify.onclose = function () {
         return obs.complete();
       };
+
+
+      console.log("message events is", _notify);
+
+
+
     });
   }
   generateNotification(source: Array<any>): void {
@@ -62,10 +76,10 @@ export class PushNotificationService {
       let options = {
         body: item.alertContent,
         icon: "/assets/img/ic_goal.png",
-        tag:"",
-        
+        data: item.click_action
       };
       let notify = self.create(item.title, options).subscribe();
+
     })
   }
 }
