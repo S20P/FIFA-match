@@ -1,5 +1,5 @@
 .match-page-header {
-    background: #2259c5;
+    background: #223052;
     padding: 10px;
     color: #fff;
 }
@@ -16,8 +16,8 @@
 ul.groups_list {
     list-style: none;
     margin-top: 10px;
-    border-bottom: 3px solid #001c54;
-    border-top: 3px solid #001c54;
+    border-bottom: 3px solid #425279;
+    border-top: 3px solid #425279;
     margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@ ul.groups_list {
 
 .grouptable thead,
 .teamgroupname {
-    background: #001C54;
+    background: #425279;
     color: #fff;
 }
 
@@ -62,7 +62,7 @@ td:first-child {
 }
 
 .matchheader {
-    background: #001c54;
+    background: #425279;
     color: #fff;
 }
 
@@ -87,7 +87,7 @@ td:first-child {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-    color: #2259c5;
+    color: #223052;
     background-color: unset;
     border: 0;
 }

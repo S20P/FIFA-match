@@ -34,6 +34,9 @@ export class AppComponent {
     user;
 
 
+
+
+
     constructor(
         private _notificationService: PushNotificationService,
         private msgService: MessagingService
@@ -49,7 +52,7 @@ export class AppComponent {
         console.log("msg is...*", msg);
 
         this.msgService.currentMessage.subscribe(data => {
-
+            console.log("message-resis", data);
             if (data !== null) {
                 this.message = data['data'];
                 console.log("message is...*", this.message);
@@ -61,7 +64,8 @@ export class AppComponent {
                 datamsg.push({
                     'title': this.message.title,
                     'alertContent': this.message.body,
-                    'click_action':this.message.click_action
+                    'click_action': this.message.click_action,
+                    'action_id':this.message.action_id
                 });
                 this._notificationService.generateNotification(datamsg);
             }

@@ -75,7 +75,7 @@ h2 {
 
 .panel.with-nav-tabs .nav-tabs {
     border-bottom: none;
-    background: #2259c5;
+    background: #223052;
 }
 
 .panel.with-nav-tabs .nav-justified {
@@ -105,7 +105,7 @@ h2 {
     border-color: transparent; */
     color: #ffffff;
     border-bottom: 2px solid #ffffff;
-    background: #2259c5 !important;
+    background: #223052 !important;
 }
 
 .with-nav-tabs.panel-default .nav-tabs>li.active>a,
@@ -117,7 +117,7 @@ h2 {
     border-bottom-color: transparent; */
     color: #ffffff;
     border-bottom: 2px solid #ffffff;
-    background: #2259c5 !important;
+    background: #223052 !important;
 }
 
 .with-nav-tabs.panel-default .nav-tabs>li.dropdown .dropdown-menu {
@@ -157,7 +157,7 @@ ul.nav.nav-tabs {
 /********************************************************************/
 
 .match-list-card-header {
-    background: #001c54;
+    background: #425279;
 }
 
 .match-list-card-header h4 {
@@ -195,7 +195,7 @@ ul.nav.nav-tabs {
     border: 1px solid transparent;
     /* background: #00AC77; */
     /* line-height: 30px; */
-    color: #2259c5;
+    color: #223052;
     font-weight: 600;
     /* width: 50px;
     margin-top: -5px; */
@@ -206,7 +206,7 @@ ul.nav.nav-tabs {
     /* background: #081F2C; */
     /* line-height: 30px;
     margin: auto; */
-    color: #2259c5;
+    color: #223052;
     font-weight: 600;
     /* width: 40px;
     margin-top: -5px; */
@@ -227,7 +227,7 @@ select#select option {
 }
 
 .match-page-header {
-    background: #2259c5;
+    background: #223052;
     padding: 10px;
     color: #fff;
 }
@@ -244,8 +244,8 @@ select#select option {
 ul.groups_list {
     list-style: none;
     margin-top: 10px;
-    border-bottom: 3px solid #001c54;
-    border-top: 3px solid #001c54;
+    border-bottom: 3px solid #425279;
+    border-top: 3px solid #425279;
     margin-bottom: 10px;
 }
 
@@ -259,7 +259,7 @@ ul.groups_list {
 
 .grouptable thead,
 .teamgroupname {
-    background: #001C54;
+    background: #425279;
     color: #fff;
 }
 
@@ -286,7 +286,7 @@ td:first-child {
 }
 
 .matchheader {
-    background: #001c54;
+    background: #425279;
     color: #fff;
 }
 
@@ -375,7 +375,7 @@ td.first {
 @media (max-width: 767px) {
     .top-header {
         padding: 7px;
-        background: #2259c5d9;
+        background: #223052d9;
     }
 }
 

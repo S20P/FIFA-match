@@ -4,6 +4,9 @@ import {
 import {
   Observable
 } from 'rxjs/Observable';
+
+
+
 @Injectable()
 export class PushNotificationService {
   public permission: Permission;
@@ -41,12 +44,23 @@ export class PushNotificationService {
       };
       _notify.onclick = function (e) {
 
-
         console.log("onclick msg", e['currentTarget']);
         let notification = e['currentTarget'];
         let link = notification['data'];
         console.log("notification redirect to", link);
-        window.open(link);
+       
+        console.log("location",window.location.origin);
+
+        let matche_id = notification['action_id'];
+       
+        //http://localhost:4200/matches/2323219;comp_id=1056
+
+       let  str_link = window.location.origin+"/matches/"+matche_id+";comp_id=1056";
+        console.log("str is",str_link);
+         
+        //this.router.navigate(['/matches', matche_id, { "comp_id": comp_id }]);
+
+       window.open(str_link);
 
         return obs.next({
           notification: _notify,
@@ -62,12 +76,6 @@ export class PushNotificationService {
       _notify.onclose = function () {
         return obs.complete();
       };
-
-
-      console.log("message events is", _notify);
-
-
-
     });
   }
   generateNotification(source: Array<any>): void {
@@ -76,12 +84,26 @@ export class PushNotificationService {
       let options = {
         body: item.alertContent,
         icon: "/assets/img/ic_goal.png",
-        data: item.click_action
+        data: item.click_action,
+        action_id: item.action_id
       };
       let notify = self.create(item.title, options).subscribe();
-
     })
   }
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
 }
 export declare type Permission = 'denied' | 'granted' | 'default';
 export interface PushNotification {

@@ -36,8 +36,9 @@
 
 .border {
     border: 1px solid #bbb;
-    width: 5%;
+    width: 10%;
     margin: auto;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -73,7 +74,7 @@
 .event h4,
 .status h4 {
     color: #ffffff;
-    background: #001c54;
+    background: #425279;
     line-height: 2.5;
     border-bottom: 1px solid #dcdcdc;
     text-transform: uppercase;
@@ -134,7 +135,7 @@
 /* commentry */
 
 .Commentary-box .header {
-    background: #001c54;
+    background: #425279;
 }
 
 .Commentary-box .card {
@@ -169,7 +170,7 @@
 .commentary-time {
     border-right: 1px solid #ccc;
     font-weight: bold;
-    color: #1d50b2;
+    color: #425279;
     font-size: 20px;
     margin-bottom: 5px;
 }
@@ -209,7 +210,7 @@ p.border-btm {
 /* lineup css */
 
 .lineupititle {
-    background: #001c54;
+    background: #425279;
     color: #fff;
 }
 
@@ -273,6 +274,18 @@ img.lineup_title_img {
     }
     .lineup_margin {
         margin-bottom: 5px !important;
+    }
+    h4.teamname-responsive {
+        margin-top: 0;
+    }
+    .team-status {
+        margin-top: 25px;
+    }
+    .visited-team-flag img {
+        margin-top: 12px;
+    }
+    .venue_name {
+        margin-top: 15px;
     }
 }
 
@@ -352,7 +365,7 @@ img.lineup_title_img {
 
 .panel.with-nav-tabs .nav-tabs {
     border-bottom: none;
-    background: #2259c5;
+    background: #223052;
 }
 
 .panel.with-nav-tabs .nav-justified {
@@ -388,7 +401,7 @@ img.lineup_title_img {
     border-color: transparent; */
     color: #ffffff;
     border-bottom: 2px solid #ffffff;
-    background: #2259c5 !important;
+    background: #223052 !important;
 }
 
 .with-nav-tabs.panel-default .nav-tabs>li.active>a,
@@ -400,7 +413,7 @@ img.lineup_title_img {
     border-bottom-color: transparent; */
     color: #ffffff;
     border-bottom: 2px solid #ffffff;
-    background: #2259c5 !important;
+    background: #223052 !important;
 }
 
 .with-nav-tabs.panel-default .nav-tabs>li.dropdown .dropdown-menu {
@@ -490,7 +503,7 @@ ul.nav.nav-tabs {
 }
 
 .lt-progress {
-    background-color: #001c54!important;
+    background-color: #425279!important;
     float: right;
 }
 

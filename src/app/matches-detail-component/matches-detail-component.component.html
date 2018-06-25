@@ -10,16 +10,16 @@
             <!-- team-detail-header -->
             <div class="team-detail-header">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="local-team c-pointer" (click)="teamdetails(match.localteam_id)">
                             <div class="local-team-flag">
                                 <img src="{{match.localteam_image}}">
                             </div>
                             <!-- <p>Barcelona</p> -->
-                            <h4>{{match.localteam_name}}</h4>
+                            <h4 class="teamname-responsive">{{match.localteam_name}}</h4>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div *ngIf="match.status=='FT'">
                             <div class="team-status">
                                 <p class="big">FT</p>
@@ -75,14 +75,14 @@
                             </ng-template>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="visited-team c-pointer" (click)="teamdetails(match.visitorteam_id)">
                             <div class="visited-team-flag">
                                 <img src="{{match.visitorteam_image}}">
 
                             </div>
                             <!-- <p>Real Sociedad</p> -->
-                            <h4>{{match.visitorteam_name}}</h4>
+                            <h4 class="teamname-responsive">{{match.visitorteam_name}}</h4>
                         </div>
                     </div>
                 </div>
