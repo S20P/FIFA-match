@@ -24,9 +24,6 @@
     .remove_left_padding {
         padding-left: 7.5px;
     }
-    .remove_right_padding {
-        padding-right: 7.5px;
-    }
     .match-page-section {
         padding: 40px 0px;
     }
@@ -70,7 +67,11 @@
     }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) {
+    .remove_right_padding {
+        padding-right: 7.5px;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 991px) {}
 

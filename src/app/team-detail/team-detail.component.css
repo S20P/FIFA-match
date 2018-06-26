@@ -433,3 +433,7 @@ td.first {
 .noborder {
     border: none;
 }
+
+.notfound {
+    padding-left: 15px;
+}

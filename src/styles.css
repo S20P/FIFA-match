@@ -782,7 +782,7 @@ i.fa.fa-circle {
 
 @media (min-width: 1240px) {
     .header_logo IMG {
-        PADDING: 0px 35px 0px 0px;
+        PADDING: 2px 35px 0px 0px;
     }
     /* ul.nav.navbar-nav {
         float: right;

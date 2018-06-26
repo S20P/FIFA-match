@@ -52,8 +52,18 @@
                                                 <div class="match-list-card-body collapse in" id="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
 
                                                     <div *ngFor="let item_details of match_ground_details;let j = index">
+                                                        <div *ngIf="item_details.status=='FT'">
+                                                            <div *ngIf="j==0" class="list-line row match-list">
+                                                                <p class="notfound">No matches found</p>
+                                                            </div>
+                                                        </div>
                                                         <div class="row match-detail" *ngIf="match_ground_details.length > 0;else nomatchcomp" (click)="matchdetails(item_details.id,item_details.comp_id)">
+
+
+
+
                                                             <div *ngIf="item_details.status!=='FT'">
+
                                                                 <div class="matches_date">
                                                                     <p>{{item_details.time|date:short}}</p>
                                                                 </div>

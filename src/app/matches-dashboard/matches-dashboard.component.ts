@@ -88,15 +88,7 @@ export class MatchesDashboardComponent implements OnInit {
   ngOnInit() {
     // moment.js utc local timezone UTC
 
-    this.liveMatchesApiService.liveMatches().subscribe(data => {
-      console.log("Live-Matches-data", data);
-      console.log("live data1", data['data']['events']);
-      var result = data['data'];
-      var events = result.events;
-      console.log("live events", events);
-      this.status_offon = true;
-      this.GetMatchesByCompetition_ById_live();
-  });
+    
 
 
 
@@ -128,8 +120,7 @@ export class MatchesDashboardComponent implements OnInit {
       if (day.length < 2) day = '0' + day;
       return [year, month, day].join('-');
     }
- 
-  
+   
 
     this.GetMatchesByDate(this.paramDate);
 
@@ -143,6 +134,17 @@ export class MatchesDashboardComponent implements OnInit {
       self.GetMatchesByDate(selected);
     });
 
+
+    this.liveMatchesApiService.liveMatches().subscribe(data => {
+      console.log("Live-Matches-data", data);
+      console.log("live data1", data['data']['events']);
+      var result = data['data'];
+      var events = result.events;
+      console.log("live events", events);
+      this.status_offon = true;
+      this.GetMatchesByCompetition_ById_live();
+     // this.GetMatchesByDate(this.paramDate);
+  });
 
 
     //  this.matchesApiService
@@ -241,7 +243,6 @@ export class MatchesDashboardComponent implements OnInit {
        
           let current_matchId = result_events['id'];
           // this.GetCommentariesByMatchId(current_matchId);
-       
                   this.live_matches_id = result_events['id'];
                   this.l_status =  result_events['status'];
                   this.l_timer = result_events['timer'];

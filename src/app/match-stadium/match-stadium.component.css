@@ -57,6 +57,9 @@ p.stadium-subtitle {
     .match-page-section {
         padding: 40px 0px;
     }
+    .stadium h4 {
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 767px) {

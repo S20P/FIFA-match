@@ -48,16 +48,7 @@ export class SidebarComponent implements OnInit {
     private route: ActivatedRoute,
     public datepipe: DatePipe,
     private liveMatchesApiService: MatchesApiService) {
-      this.liveMatchesApiService.liveMatches().subscribe(data => {
-        console.log("Live-Matches-data", data);
-        console.log("live data1", data['data']['events']);
-        var result = data['data'];
-        var events = result.events;
-        console.log("live events", events);
-        this.sstatus_offon = true;
-        this.GetMatchesByCompetition_ById_live();
-        this.slive_matches= true;
-    });
+    
   
      }
 
@@ -66,6 +57,20 @@ export class SidebarComponent implements OnInit {
     var dateofday = Date();
     
     var currentdaydate = formatDate(dateofday);
+
+    this.liveMatchesApiService.liveMatches().subscribe(data => {
+      console.log("Live-Matches-data", data);
+      console.log("live data1", data['data']['events']);
+      var result = data['data'];
+      var events = result.events;
+      console.log("live events", events);
+      this.sstatus_offon = true;
+      this.GetMatchesByCompetition_ById_live();
+     // this.GetMatchesByDate(currentdaydate);
+      this.slive_matches= true;
+  });
+
+
     function formatDate(date) {
       var d = new Date(date),
         month = '' + (d.getMonth() + 1),
