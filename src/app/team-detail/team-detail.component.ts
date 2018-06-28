@@ -68,6 +68,7 @@ live_matches:boolean;
 
   ngOnInit() {
     this.setTimer();
+    this.match_ground_details = [];
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get("id"));
@@ -432,31 +433,45 @@ live_matches:boolean;
   }
 
   GetMatchesByCompetition_ById_live(){
-            
+    let current_matchId;
     this.liveMatchesApiService.liveMatches().subscribe(data => {
-         
+
       console.log("Live-Matches-data", data);
-     
+
       var result = data['data'];
 
       console.log("live data", data['data']['events']);
 
       console.log("Matches is Live", data);
       if (result.events !== undefined) {
-         
-          this.live_matches= true;
-          var result_events = data['data'].events;
-       
-          let current_matchId = result_events['id'];
-          // this.GetCommentariesByMatchId(current_matchId);
-       
-                  this.live_matches_id = result_events['id'];
-                  this.l_status =  result_events['status'];
-                  this.l_timer = result_events['timer'];
-                  this.l_visitorteam_score = result_events['visitorteam_score'];
-                  this.l_localteam_score = result_events['localteam_score'];
+
+        this.live_matches = true;
+        var result_events = data['data'].events;
+
+        current_matchId = result_events['id'];
+        //   this.live_rcord.push(result_events);
+        var item = result_events;
+
+        for (let i = 0; i < this.match_ground_details['length']; i++) {
+          if (this.match_ground_details[i].id == current_matchId) {
+
+            var status_offon;
+
+            status_offon = true;
+
+            this.match_ground_details[i]['status'] = item.status;
+            this.match_ground_details[i]['localteam_score'] = item.localteam_score;
+            this.match_ground_details[i]['visitorteam_score'] = item.visitorteam_score;
+            this.match_ground_details[i]['id'] = item.id;
+            this.match_ground_details[i]['live_status'] = status_offon;
+
+          }
+        }
+
       }
     });
+
+      
   }
 
   matchdetails(id, comp_id) {

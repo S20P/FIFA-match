@@ -46,21 +46,19 @@ export class PushNotificationService {
 
         console.log("onclick msg", e['currentTarget']);
         let notification = e['currentTarget'];
-        let link = notification['data'];
-        console.log("notification redirect to", link);
-       
-        console.log("location",window.location.origin);
 
-        let matche_id = notification['action_id'];
-       
+        console.log("notification", notification);
+        let matche_id = notification['data'];
+
+
         //http://localhost:4200/matches/2323219;comp_id=1056
 
-       let  str_link = window.location.origin+"/matches/"+matche_id+";comp_id=1056";
-        console.log("str is",str_link);
-         
+        let str_link = window.location.origin + "/matches/" + matche_id + ";comp_id=1056";
+        console.log("str is", str_link);
+
         //this.router.navigate(['/matches', matche_id, { "comp_id": comp_id }]);
 
-       window.open(str_link);
+        window.open(str_link);
 
         return obs.next({
           notification: _notify,
@@ -84,10 +82,10 @@ export class PushNotificationService {
       let options = {
         body: item.alertContent,
         icon: "/assets/img/ic_goal.png",
-        data: item.click_action,
-        action_id: item.action_id
+        data: item.action_id,
       };
-      let notify = self.create(item.title, options).subscribe();
+      let title = "footzylive";
+      let notify = self.create(title, options).subscribe();
     })
   }
 
@@ -95,7 +93,7 @@ export class PushNotificationService {
 
 
 
-  
+
 
 
 

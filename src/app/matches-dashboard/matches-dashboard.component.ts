@@ -53,21 +53,18 @@ export class MatchesDashboardComponent implements OnInit {
   ];
 
   All_Matches = [];
-
+  clickId = [];
   status_offon: boolean = false;
-
-  live_matches:boolean;
-
+  live_matches: boolean;
   l_timer;
   l_visitorteam_score;
   l_localteam_score;
-
+  live_rcord = [];
   public showloader: boolean = false;
   private subscription: Subscription;
   private timer: Observable<any>;
   date;
   live_matches_id;
-  
   todays_Matches_title;
   l_status;
 
@@ -77,20 +74,19 @@ export class MatchesDashboardComponent implements OnInit {
     private route: ActivatedRoute,
     public datepipe: DatePipe,
     private liveMatchesApiService: MatchesApiService
-    
-  ) { 
+
+  ) {
     this.status_offon = false;
     this.live_matches = false;
-    
   }
 
 
   ngOnInit() {
-    // moment.js utc local timezone UTC
-
-    
 
 
+    this.match_ground_details = [];
+
+     // moment.js utc local timezone UTC
 
     this.setTimer();
 
@@ -108,7 +104,7 @@ export class MatchesDashboardComponent implements OnInit {
     this.todays_Matches_title = today;
 
     var dateofday = Date();
-    
+
     var currentdaydate = formatDate(dateofday);
     function formatDate(date) {
       var d = new Date(date),
@@ -120,31 +116,30 @@ export class MatchesDashboardComponent implements OnInit {
       if (day.length < 2) day = '0' + day;
       return [year, month, day].join('-');
     }
-   
+
 
     this.GetMatchesByDate(this.paramDate);
 
     let self = this;
     $("#datepicker").on("change", function () {
       var selected = $(this).val();
-    console.log("date is one",selected);
-    this.paramDate = selected;
-    this.todays_Matches_title = selected;
-    console.log("date is currentdaydate",currentdaydate);
+      console.log("date is one", selected);
+      this.paramDate = selected;
+      this.todays_Matches_title = selected;
+      console.log("date is currentdaydate", currentdaydate);
       self.GetMatchesByDate(selected);
     });
 
-
     this.liveMatchesApiService.liveMatches().subscribe(data => {
-      console.log("Live-Matches-data", data);
-      console.log("live data1", data['data']['events']);
-      var result = data['data'];
-      var events = result.events;
-      console.log("live events", events);
+      // console.log("Live-Matches-data", data);
+      // console.log("live data1", data['data']['events']);
+      // var result = data['data'];
+      // var events = result.events;
+      // console.log("live events", events);
       this.status_offon = true;
       this.GetMatchesByCompetition_ById_live();
-     // this.GetMatchesByDate(this.paramDate);
-  });
+
+    });
 
 
     //  this.matchesApiService
@@ -154,20 +149,26 @@ export class MatchesDashboardComponent implements OnInit {
     //      this.messages.push(data['data']);
     //    });
 
-   // this.GetAllKnockout();
+    // this.GetAllKnockout();
 
-   var date1 = new Date('2018/06/19 03:20:00 PM');
-   // Sun Dec 17 1995 03:24:00 GMT...
-    
-   var date2 = new Date();
-   // Sun Dec 17 1995 03:24:00 GMT...
-   
-     if(date1 >= date2){
-           console.log("time is up");
-     }
-     else{
-       console.log("time is less");
-     }
+    var date1 = new Date('2018/06/19 03:20:00 PM');
+    // Sun Dec 17 1995 03:24:00 GMT...
+
+    var date2 = new Date();
+    // Sun Dec 17 1995 03:24:00 GMT...
+
+    if (date1 >= date2) {
+      console.log("time is up");
+    }
+    else {
+      console.log("time is less");
+    }
+
+
+    console.log("live_rcord", this.live_rcord);
+
+
+
 
   }
 
@@ -176,7 +177,7 @@ export class MatchesDashboardComponent implements OnInit {
   //     console.log("GetAllKnockout", data);
   //   });
   // }
-     
+
 
 
 
@@ -225,42 +226,75 @@ export class MatchesDashboardComponent implements OnInit {
   }
 
 
-  GetMatchesByCompetition_ById_live(){
-            
+  GetMatchesByCompetition_ById_live() {
+
+    let current_matchId;
     this.liveMatchesApiService.liveMatches().subscribe(data => {
-         
+
       console.log("Live-Matches-data", data);
-     
+
       var result = data['data'];
 
       console.log("live data", data['data']['events']);
 
       console.log("Matches is Live", data);
       if (result.events !== undefined) {
-         
-          this.live_matches= true;
-          var result_events = data['data'].events;
-       
-          let current_matchId = result_events['id'];
-          // this.GetCommentariesByMatchId(current_matchId);
-                  this.live_matches_id = result_events['id'];
-                  this.l_status =  result_events['status'];
-                  this.l_timer = result_events['timer'];
-                  this.l_visitorteam_score = result_events['visitorteam_score'];
-                  this.l_localteam_score = result_events['localteam_score'];
+
+        this.live_matches = true;
+        var result_events = data['data'].events;
+
+        current_matchId = result_events['id'];
+        //   this.live_rcord.push(result_events);
+        var item = result_events;
+
+        for (let i = 0; i < this.match_ground_details['length']; i++) {
+          if (this.match_ground_details[i].id == current_matchId) {
+           
+            var status_offon;
+
+            status_offon = true;
+
+                  this.match_ground_details[i]['status'] = item.status;
+                  this.match_ground_details[i]['localteam_score'] = item.localteam_score;
+                  this.match_ground_details[i]['visitorteam_score'] = item.visitorteam_score;
+                  this.match_ground_details[i]['id'] = item.id;
+                  this.match_ground_details[i]['live_status'] = status_offon;
+                 
+          }
+        }
+        
       }
     });
+
+ 
+
+    // console.log("match_ground_details",clickId);
+
+    // this.match_ground_details.forEach(function(item, i) { 
+    //   console.log("item",item);
+    //   if (item.id == this.live_matches_id){
+    //     this.match_ground_details[i] = 1010;
+    //   }
+    //  });
+
+
+    console.log("match_ground_details", this.match_ground_details);
+
   }
 
-    
-
-
   GetMatchesByDate(selected) {
+
+
+
     this.todays_Matches_title = selected;
     console.log("selected date is...", selected);
 
     let result = [];
     this.match_ground_details = [];
+
+    for (let i = 0; i < this.match_ground_details['length']; i++) {
+      this.match_ground_details.splice(i, 1);
+    }
 
     //  console.log("dddddd",paramDate);
     // parameter: date (Date Format Must be YYYY-MM-DD)-------------
@@ -272,8 +306,6 @@ export class MatchesDashboardComponent implements OnInit {
       var result = data['data'];
       if (result !== undefined) {
         for (let item of result) {
-
-
           //Change UTC timezone to IST(Local)
           let timezone = selected + " " + item.time;
 
@@ -286,6 +318,8 @@ export class MatchesDashboardComponent implements OnInit {
 
               if (data[i].id == item.id && data[i].comp_id == item.comp_id) {
 
+                // if(this.match_ground_details.indexOf(item.comp_id) !== item.comp_id) {
+                //  console.log("indexof",this.match_ground_details.indexOf(item.comp_id));
 
                 var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.localteam_id + ".png";
                 var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.visitorteam_id + ".png";
@@ -318,18 +352,26 @@ export class MatchesDashboardComponent implements OnInit {
                 }
                 var date1 = new Date(match_time);
                 // Sun Dec 17 1995 03:24:00 GMT...
-                 
+
                 var date2 = new Date();
                 // Sun Dec 17 1995 03:24:00 GMT...
                 var status_offon;
-                if(date1 >= date2){
-                      console.log("time is up");
-                 status_offon = false;
+                if (date1 >= date2) {
+                  console.log("time is up");
+                  status_offon = false;
                 }
-                else{
+                else {
                   console.log("time is less");
                   status_offon = true;
                 }
+                var status;
+                if (item.status == "") {
+                  status = item.time;
+                }
+                else {
+                  status = item.status;
+                }
+
 
                 console.log("Matches type ang g1", data[i]);
                 this.match_ground_details.push({
@@ -359,14 +401,11 @@ export class MatchesDashboardComponent implements OnInit {
                   "id": item.id,
                   "match_number": data[i].match_number,
                   "match_type": data[i].match_type,
-                  "live_status":status_offon
+                  "live_status": status_offon
                 });
-
               }
             }
-
           });
-
         }
       }
     });
@@ -397,6 +436,7 @@ export class MatchesDashboardComponent implements OnInit {
     //result = [];
     console.log("filter-date_data", this.match_ground_details);
     //this.match_ground_details = [];
+    //  this.match_ground_details = [];
   }
 
 
@@ -407,42 +447,42 @@ export class MatchesDashboardComponent implements OnInit {
       this.AllCompetitions = data['data'];
       for (var i = 0; i < this.AllCompetitions.length; i++) {
 
-        if(this.AllCompetitions[i].id=='1056'){
+        if (this.AllCompetitions[i].id == '1056') {
 
-        this.AllCompetitions_match.push({
-          "id": this.AllCompetitions[i].id, "name": this.AllCompetitions[i].name,
-        }
-        );
-
-      
-        this.matchService.GetAllCompetitions_ById(this.AllCompetitions[i].id).subscribe(data => {
-          console.log("GetCompetitionStandingById", data);
-        });
-
-
-        this.matchService.GetMatchesByCompetition_ById(this.AllCompetitions[i].id).subscribe(data => {
-          console.log("GetMatchesByCompetition_ById", data);
-
-          var result = data['data'];
-
-          this.All_Matches.push(result);
-
-
-          if (result !== undefined) {
-            for (var k = 0; k < result.length; k++) {
-              var myString = result[k].formatted_date;
-              var arr = myString.split('.');
-              let day = arr[0];
-              let month = arr[1];
-              let year = arr[2];
-              var fulldate = year + "-" + month + "-" + day;
-              this.alldaymatch_list.push(fulldate);
-              this.loadjquery();
-            }
+          this.AllCompetitions_match.push({
+            "id": this.AllCompetitions[i].id, "name": this.AllCompetitions[i].name,
           }
-        });
+          );
+
+
+          this.matchService.GetAllCompetitions_ById(this.AllCompetitions[i].id).subscribe(data => {
+            console.log("GetCompetitionStandingById", data);
+          });
+
+
+          this.matchService.GetMatchesByCompetition_ById(this.AllCompetitions[i].id).subscribe(data => {
+            console.log("GetMatchesByCompetition_ById", data);
+
+            var result = data['data'];
+
+            this.All_Matches.push(result);
+
+
+            if (result !== undefined) {
+              for (var k = 0; k < result.length; k++) {
+                var myString = result[k].formatted_date;
+                var arr = myString.split('.');
+                let day = arr[0];
+                let month = arr[1];
+                let year = arr[2];
+                var fulldate = year + "-" + month + "-" + day;
+                this.alldaymatch_list.push(fulldate);
+                this.loadjquery();
+              }
+            }
+          });
+        }
       }
-    }
     });
     console.log('AllCompetitions_details', this.AllCompetitions_match);
   }
@@ -472,7 +512,7 @@ export class MatchesDashboardComponent implements OnInit {
     this.timer = Observable.timer(2000); // 5000 millisecond means 5 seconds
     this.subscription = this.timer.subscribe(() => {
       // set showloader to false to hide loading div from view after 5 seconds
-     this.showloader = false;
+      this.showloader = false;
     });
   }
 
@@ -500,7 +540,6 @@ export class MatchesDashboardComponent implements OnInit {
           if (item[i].comp_id == comp_id) {
             array1.push(item[i]);
           }
-
         }
       }
     }

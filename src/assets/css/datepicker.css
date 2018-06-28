@@ -240,6 +240,13 @@ span.ui-datepicker-month {
         font-size: 8pt;
         padding: 5px;
     }
+    .ui-datepicker-calendar tr:last-child .ui-state-active {
+        margin-bottom: 0;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        margin: 1px;
+    }
 }
 
 @media (max-width: 415px) {
@@ -261,6 +268,13 @@ span.ui-datepicker-month {
         filter: dropshadow(color=#fff, offx=1, offy=1);
     }
     .highlight a {
+        margin: 1px;
+    }
+    .ui-datepicker-calendar tr:last-child .ui-state-active {
+        margin-bottom: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
         margin: 1px;
     }
 }
@@ -292,6 +306,13 @@ span.ui-datepicker-month {
         font-size: 8pt;
         padding: 5px;
     }
+    .ui-datepicker-calendar tr:last-child .ui-state-active {
+        margin-bottom: 0;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        margin: 1px;
+    }
 }
 
 @media (max-width: 340px) {
@@ -320,5 +341,12 @@ span.ui-datepicker-month {
     .ui-datepicker th {
         font-size: 7pt;
         padding: 4px;
+    }
+    .ui-datepicker-calendar tr:last-child .ui-state-active {
+        margin-bottom: 0;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin: 1px;
     }
 }

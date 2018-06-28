@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit {
   sl_localteam_score;
   slive_matches_id;
   sl_status;
-
+  currentdaydate;
   constructor(private matchesApiService: MatchesApiService,
     private matchService: MatchService,
     private router: Router,
@@ -53,6 +53,8 @@ export class SidebarComponent implements OnInit {
      }
 
   ngOnInit() {
+    this.match_ground_details = [];
+    
     this.sstatus_offon = false;
     var dateofday = Date();
     
@@ -84,42 +86,58 @@ export class SidebarComponent implements OnInit {
      console.log("today side bar",currentdaydate);
 
      this.GetMatchesByDate(currentdaydate);
+     this.currentdaydate = currentdaydate;
     
   }
   GetMatchesByCompetition_ById_live(){
-            
+    let current_matchId;
     this.liveMatchesApiService.liveMatches().subscribe(data => {
-         
+
       console.log("Live-Matches-data", data);
-     
+
       var result = data['data'];
 
       console.log("live data", data['data']['events']);
 
       console.log("Matches is Live", data);
       if (result.events !== undefined) {
-         
-          this.slive_matches= true;
-          var result_events = data['data'].events;
-       
-          let current_matchId = result_events['id'];
-          // this.GetCommentariesByMatchId(current_matchId);
-       
-                  this.slive_matches_id = result_events['id'];
-                  this.sl_status =  result_events['status'];
-                  this.sl_timer = result_events['timer'];
-                  this.sl_visitorteam_score = result_events['visitorteam_score'];
-                  this.sl_localteam_score = result_events['localteam_score'];
+
+        this.slive_matches = true;
+        var result_events = data['data'].events;
+
+        current_matchId = result_events['id'];
+        //   this.live_rcord.push(result_events);
+        var item = result_events;
+
+        for (let i = 0; i < this.match_ground_details['length']; i++) {
+          if (this.match_ground_details[i].id == current_matchId) {
+           
+            var status_offon;
+
+            status_offon = true;
+                  this.match_ground_details[i]['status'] = item.status;
+                  this.match_ground_details[i]['localteam_score'] = item.localteam_score;
+                  this.match_ground_details[i]['visitorteam_score'] = item.visitorteam_score;
+                  this.match_ground_details[i]['id'] = item.id;
+                  this.match_ground_details[i]['live_status'] = status_offon;
+                }
+        }
+        
       }
     });
   }
+
+
+
   GetMatchesByDate(selected) {
 
     console.log("selected date is...", selected);
-
     let result = [];
     this.match_ground_details = [];
 
+    for (let i = 0; i < this.match_ground_details['length']; i++) {
+      this.match_ground_details.splice(i, 1);
+    }
     //  console.log("dddddd",paramDate);
     // parameter: date (Date Format Must be YYYY-MM-DD)-------------
     // let date = paramDate;
@@ -130,7 +148,6 @@ export class SidebarComponent implements OnInit {
       var result = data['data'];
       if (result !== undefined) {
         for (let item of result) {
-
 
           //Change UTC timezone to IST(Local)
           let timezone = selected + " " + item.time;
@@ -222,7 +239,7 @@ export class SidebarComponent implements OnInit {
 
               }
             }
-
+            
           });
 
         }

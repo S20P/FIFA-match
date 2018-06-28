@@ -6,10 +6,11 @@ import { Observable } from 'rxjs/Observable';
 export class MatchesApiService {
 
   private url = 'http://206.189.161.54:8080/';
+  //private url = "http://e14ba598.ngrok.io";
+  
   //private url1 = 'http://206.189.161.54:8080/SendSocketData';
 
-  
-  private socket;
+    private socket;
 
 
   constructor() {     

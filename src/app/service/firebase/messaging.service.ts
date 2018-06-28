@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+ import * as firebase from 'firebase';
 import 'rxjs/add/operator/take';
 declare var $: any;
-
+// import firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
@@ -53,8 +54,8 @@ export class MessagingService {
   receiveMessage() {
     this.messaging.onMessage((payload) => {
       console.log("Message received. ", payload);
-      this.message = payload;
-      this.currentMessage.next(payload)
+       this.message = payload;
+       this.currentMessage.next(payload)
     });
   }
 
@@ -69,7 +70,11 @@ export class MessagingService {
       // headers = this.headers.set("Content-Length", '0');
 
 
-      let apiurl = `${this.api + token + "/rel/topics/livescores"}`;
+      // let apiurl = `${this.api + token + "/rel/topics/livescores"}`;
+      // let apiurl = `${this.api + token + "/rel/topics/2323224"}`;
+
+       let apiurl = `${this.api + token + "/rel/topics/2323223"}`;
+      
       console.log("urlis", apiurl);
       // this.http.post(apiurl, { headers: headers }).subscribe(
       //   data => {

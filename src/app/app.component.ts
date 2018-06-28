@@ -48,19 +48,16 @@ export class AppComponent {
     ngOnInit() {
 
         this.msgService.getPermission();
-        let msg = this.msgService.receiveMessage();
-        console.log("msg is...*", msg);
+       // let msg = this.msgService.receiveMessage();
+      //  console.log("msg is...*", msg);
 
         this.msgService.currentMessage.subscribe(data => {
             console.log("message-resis", data);
             if (data !== null) {
                 this.message = data['data'];
                 console.log("message is...*", this.message);
-
-
                 console.log("body", this.message.body);
                 let datamsg: Array<any> = [];
-
                 datamsg.push({
                     'title': this.message.title,
                     'alertContent': this.message.body,
