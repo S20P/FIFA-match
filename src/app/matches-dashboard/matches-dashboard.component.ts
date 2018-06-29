@@ -311,6 +311,89 @@ export class MatchesDashboardComponent implements OnInit {
 
           let match_time = calcTime(timezone, '+11');
           console.log("time ", match_time);
+
+          var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.localteam_id + ".png";
+          var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.visitorteam_id + ".png";
+
+
+          var localteam_image;
+          var visitorteam_image;
+
+          var Image_team1 = isUrlExists(flag__loal);
+
+          if (Image_team1 == false) {
+            console.log('Image does not exist');
+            localteam_image = "assets/img/avt_flag.jpg"
+          }
+          else {
+            console.log('Image Exists');
+            localteam_image = flag__loal;
+          }
+
+
+          var Image_team2 = isUrlExists(flag_visit);
+
+          if (Image_team2 == false) {
+            console.log('Image does not exist');
+            visitorteam_image = "assets/img/avt_flag.jpg"
+          }
+          else {
+            console.log('Image Exists');
+            visitorteam_image = flag_visit;
+          }
+          var date1 = new Date(match_time);
+          // Sun Dec 17 1995 03:24:00 GMT...
+
+          var date2 = new Date();
+          // Sun Dec 17 1995 03:24:00 GMT...
+          var status_offon;
+          if (date1 >= date2) {
+            console.log("time is up");
+            status_offon = false;
+          }
+          else {
+            console.log("time is less");
+            status_offon = true;
+          }
+          var status;
+          if (item.status == "") {
+            status = item.time;
+          }
+          else {
+            status = item.status;
+          }
+
+
+          this.match_ground_details.push({
+            "comp_id": item.comp_id,
+            "et_score": item.et_score,
+            "formatted_date": item.formatted_date,
+            "ft_score": item.ft_score,
+            "ht_score": item.ht_score,
+            "localteam_id": item.localteam_id,
+            "localteam_name": item.localteam_name,
+            "localteam_score": item.localteam_score,
+            "localteam_image": localteam_image,
+            "penalty_local": item.penalty_local,
+            "penalty_visitor": item.penalty_visitor,
+            "season": item.season,
+            "status": item.status,
+            "time": match_time,
+            "venue": item.venue,
+            "venue_city": item.venue_city,
+            "venue_id": item.venue_id,
+            "visitorteam_id": item.visitorteam_id,
+            "visitorteam_name": item.visitorteam_name,
+            "visitorteam_score": item.visitorteam_score,
+            "visitorteam_image": visitorteam_image,
+            "week": item.week,
+            "_id": item._id,
+            "id": item.id,
+            "live_status": status_offon
+          });
+
+          console.log("details....",this.match_ground_details);
+
           this.matchService.GetStaticMatches().subscribe(data => {
 
             console.log("Matches type ang g", data);
@@ -321,88 +404,9 @@ export class MatchesDashboardComponent implements OnInit {
                 // if(this.match_ground_details.indexOf(item.comp_id) !== item.comp_id) {
                 //  console.log("indexof",this.match_ground_details.indexOf(item.comp_id));
 
-                var flag__loal = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.localteam_id + ".png";
-                var flag_visit = "https://s3.ap-south-1.amazonaws.com/tuppleapps/fifa18images/teamsNew/" + item.visitorteam_id + ".png";
-
-
-                var localteam_image;
-                var visitorteam_image;
-
-                var Image_team1 = isUrlExists(flag__loal);
-
-                if (Image_team1 == false) {
-                  console.log('Image does not exist');
-                  localteam_image = "assets/img/avt_flag.jpg"
-                }
-                else {
-                  console.log('Image Exists');
-                  localteam_image = flag__loal;
-                }
-
-
-                var Image_team2 = isUrlExists(flag_visit);
-
-                if (Image_team2 == false) {
-                  console.log('Image does not exist');
-                  visitorteam_image = "assets/img/avt_flag.jpg"
-                }
-                else {
-                  console.log('Image Exists');
-                  visitorteam_image = flag_visit;
-                }
-                var date1 = new Date(match_time);
-                // Sun Dec 17 1995 03:24:00 GMT...
-
-                var date2 = new Date();
-                // Sun Dec 17 1995 03:24:00 GMT...
-                var status_offon;
-                if (date1 >= date2) {
-                  console.log("time is up");
-                  status_offon = false;
-                }
-                else {
-                  console.log("time is less");
-                  status_offon = true;
-                }
-                var status;
-                if (item.status == "") {
-                  status = item.time;
-                }
-                else {
-                  status = item.status;
-                }
-
-
                 console.log("Matches type ang g1", data[i]);
-                this.match_ground_details.push({
-                  "comp_id": item.comp_id,
-                  "et_score": item.et_score,
-                  "formatted_date": item.formatted_date,
-                  "ft_score": item.ft_score,
-                  "ht_score": item.ht_score,
-                  "localteam_id": item.localteam_id,
-                  "localteam_name": item.localteam_name,
-                  "localteam_score": item.localteam_score,
-                  "localteam_image": localteam_image,
-                  "penalty_local": item.penalty_local,
-                  "penalty_visitor": item.penalty_visitor,
-                  "season": item.season,
-                  "status": item.status,
-                  "time": match_time,
-                  "venue": item.venue,
-                  "venue_city": item.venue_city,
-                  "venue_id": item.venue_id,
-                  "visitorteam_id": item.visitorteam_id,
-                  "visitorteam_name": item.visitorteam_name,
-                  "visitorteam_score": item.visitorteam_score,
-                  "visitorteam_image": visitorteam_image,
-                  "week": item.week,
-                  "_id": item._id,
-                  "id": item.id,
-                  "match_number": data[i].match_number,
-                  "match_type": data[i].match_type,
-                  "live_status": status_offon
-                });
+                Object.assign(this.match_ground_details[i], { "match_number": data[i].match_number, "match_type": data[i].match_type });
+
               }
             }
           });

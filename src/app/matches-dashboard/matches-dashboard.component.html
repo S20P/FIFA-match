@@ -86,11 +86,15 @@
 
                                             <!-- offline  -->
                                             <ng-template #offlineTime1>
-                                                <div *ngIf="item_details.status!=='';else time1 || item_details.status!=='FT';else time1">
-                                                    <p>{{item_details.status}}</p>
+
+                                                <div *ngIf="item_details.status==''">
+                                                    <p>{{item_details.time|date:'hh:mm a'}}</p>
+                                                </div>
+                                                <div *ngIf="item_details.status!=='FT' && item_details.status!=='';else time1">
+                                                    <p>{{item_details.time|date:'hh:mm a'}}</p>
                                                 </div>
                                                 <ng-template #time1>
-                                                    <p>{{item_details.time|date:'hh:mm a'}}</p>
+                                                    <p>{{item_details.status}}</p>
                                                 </ng-template>
                                             </ng-template>
                                             <!-- end offline -->
